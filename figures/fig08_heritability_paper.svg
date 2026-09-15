@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="516.0pt" height="362.50pt" viewBox="0 0 516.0 362.50" font-family="Menlo, 'SF Mono', Consolas, 'Liberation Mono', monospace">
+<rect width="516.0" height="362.50" fill="#EEF3F1"/>
+<g transform="translate(0,-47.50)">
+<circle cx="17.00" cy="67.50" r="2.80" fill="#c9761a" opacity="1.00"/>
+<text x="25.00" y="70.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">first definition of the condition</text>
+<circle cx="177.06" cy="67.50" r="2.80" fill="#2f6fc4" opacity="1.00"/>
+<text x="185.06" y="70.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">alternative definitions</text>
+<circle cx="294.98" cy="67.50" r="2.50" fill="#EEF3F1" opacity="1.00" stroke="#5E6E72" stroke-width="1.0"/>
+<text x="302.98" y="70.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">estimate below zero, drawn at zero</text>
+<line x1="13.00" y1="80.50" x2="22.00" y2="80.50" stroke="#3A4A51" stroke-width="1.6" stroke-linecap="round" opacity="1.00"/>
+<text x="25.00" y="83.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">bar: 50% interval</text>
+<rect x="105.64" y="77.50" width="9.00" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<text x="117.64" y="83.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">sleeve: 95% interval, cut at zero</text>
+<text x="14.00" y="114.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Epilepsy</text>
+<text x="14.00" y="124.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">873 to 15,645 cases</text>
+<line x1="36.00" y1="189.60" x2="88.00" y2="189.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="36.00" y1="151.20" x2="88.00" y2="151.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="32.00" y="230.40" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0</text>
+<text x="32.00" y="192.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.1</text>
+<text x="32.00" y="153.60" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.2</text>
+<line x1="36.00" y1="228.00" x2="88.00" y2="228.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="42.23" y1="228.00" x2="42.23" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="42.23" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">1k</text>
+<line x1="66.57" y1="228.00" x2="66.57" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="66.57" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">5k</text>
+<line x1="87.54" y1="228.00" x2="87.54" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="87.54" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">20k</text>
+<rect x="81.22" y="200.64" width="5.20" height="12.79" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="73.32" y="211.01" width="5.20" height="13.70" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="71.92" y="211.97" width="5.20" height="13.85" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="71.14" y="209.91" width="5.20" height="14.75" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="47.57" y="151.96" width="5.20" height="48.47" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="37.58" y="161.16" width="5.20" height="66.84" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="42.82" y="136.76" width="5.20" height="64.12" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="83.82" y1="209.23" x2="83.82" y2="204.83" stroke="#c9761a" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="83.82" cy="207.03" r="2.50" fill="#c9761a" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="75.92" y1="220.22" x2="75.92" y2="215.51" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="75.92" cy="217.86" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="74.52" y1="221.28" x2="74.52" y2="216.52" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="74.52" cy="218.90" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="73.74" y1="219.82" x2="73.74" y2="214.75" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="73.74" cy="217.29" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="50.17" y1="184.53" x2="50.17" y2="167.86" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="50.17" cy="176.20" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="40.18" y1="210.22" x2="40.18" y2="185.11" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="40.18" cy="197.66" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="45.42" y1="179.85" x2="45.42" y2="157.80" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="45.42" cy="168.83" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<path d="M 90.00,168.83 L 93.00,168.83 L 96.00,162.54" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="162.44" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="164.94" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">generalized, mode</text>
+<path d="M 90.00,176.20 L 93.00,176.20 L 96.00,171.54" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="171.44" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="173.94" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">generalized</text>
+<path d="M 90.00,197.66 L 93.00,197.66 L 96.00,191.38" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="191.28" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="193.78" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">generalized, strict</text>
+<path d="M 90.00,207.03 L 93.00,207.03 L 96.00,200.75" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="200.65" r="1.60" fill="#c9761a" opacity="1.00"/>
+<text x="104.00" y="203.15" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">any</text>
+<path d="M 90.00,217.29 L 93.00,217.29 L 96.00,211.00" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="210.90" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="213.40" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">focal, mode</text>
+<path d="M 90.00,217.86 L 93.00,217.86 L 96.00,220.00" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="219.90" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="222.40" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">focal</text>
+<path d="M 90.00,218.90 L 93.00,218.90 L 96.00,229.00" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="228.90" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="231.40" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">focal, strict</text>
+<text x="190.00" y="114.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Sleep apnoea</text>
+<text x="190.00" y="124.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">56,885 to 65,076 cases</text>
+<line x1="212.00" y1="189.60" x2="252.00" y2="189.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="212.00" y1="151.20" x2="252.00" y2="151.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="208.00" y="230.40" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0</text>
+<text x="208.00" y="192.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.1</text>
+<text x="208.00" y="153.60" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.2</text>
+<line x1="212.00" y1="228.00" x2="252.00" y2="228.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="227.13" y1="228.00" x2="227.13" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="227.13" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">50k</text>
+<line x1="244.33" y1="228.00" x2="244.33" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="244.33" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">100k</text>
+<rect x="227.73" y="175.64" width="5.20" height="8.88" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="230.15" y="177.67" width="5.20" height="8.43" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="231.07" y="183.92" width="5.20" height="7.98" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="230.33" y1="181.60" x2="230.33" y2="178.55" stroke="#c9761a" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="230.33" cy="180.08" r="2.50" fill="#c9761a" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="232.75" y1="183.33" x2="232.75" y2="180.43" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="232.75" cy="181.88" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="233.67" y1="189.28" x2="233.67" y2="186.54" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="233.67" cy="187.91" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<path d="M 254.00,180.08 L 257.00,180.08 L 260.00,180.08" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="263.60" cy="179.98" r="1.60" fill="#c9761a" opacity="1.00"/>
+<text x="268.00" y="182.48" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">hospital records</text>
+<path d="M 254.00,181.88 L 257.00,181.88 L 260.00,189.08" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="263.60" cy="188.98" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="268.00" y="191.48" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">+ primary care</text>
+<path d="M 254.00,187.91 L 257.00,187.91 L 260.00,198.08" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="263.60" cy="197.98" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="268.00" y="200.48" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">any sleep disorder</text>
+<text x="348.00" y="114.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Insomnia</text>
+<text x="348.00" y="124.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">6,776 to 8,336 cases</text>
+<line x1="370.00" y1="189.60" x2="410.00" y2="189.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="370.00" y1="151.20" x2="410.00" y2="151.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="366.00" y="230.40" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0</text>
+<text x="366.00" y="192.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.1</text>
+<text x="366.00" y="153.60" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.2</text>
+<line x1="370.00" y1="228.00" x2="410.00" y2="228.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="379.89" y1="228.00" x2="379.89" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="379.89" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">5k</text>
+<line x1="397.09" y1="228.00" x2="397.09" y2="230.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="397.09" y="238.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">10k</text>
+<rect x="384.83" y="195.38" width="5.20" height="17.31" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="389.97" y="189.11" width="5.20" height="15.96" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="387.43" y1="207.01" x2="387.43" y2="201.06" stroke="#c9761a" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="387.43" cy="204.04" r="2.50" fill="#c9761a" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="392.57" y1="199.83" x2="392.57" y2="194.34" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="392.57" cy="197.09" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<path d="M 412.00,197.09 L 415.00,197.09 L 418.00,197.09" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="421.60" cy="196.99" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="426.00" y="199.49" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">all of F51</text>
+<path d="M 412.00,204.04 L 415.00,204.04 L 418.00,206.09" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="421.60" cy="205.99" r="1.60" fill="#c9761a" opacity="1.00"/>
+<text x="426.00" y="208.49" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">F51.0 or G47.0</text>
+<text x="14.00" y="268.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Constipation</text>
+<text x="14.00" y="278.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">22,972 to 51,956 cases</text>
+<line x1="36.00" y1="343.60" x2="88.00" y2="343.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="36.00" y1="305.20" x2="88.00" y2="305.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="32.00" y="384.40" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0</text>
+<text x="32.00" y="346.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.1</text>
+<text x="32.00" y="307.60" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.2</text>
+<line x1="36.00" y1="382.00" x2="88.00" y2="382.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="44.37" y1="382.00" x2="44.37" y2="384.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="44.37" y="392.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">20k</text>
+<line x1="73.93" y1="382.00" x2="73.93" y2="384.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="73.93" y="392.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">50k</text>
+<rect x="72.56" y="363.82" width="5.20" height="6.17" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="46.24" y="361.62" width="5.20" height="8.28" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="75.16" y1="367.97" x2="75.16" y2="365.85" stroke="#c9761a" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="75.16" cy="366.91" r="2.50" fill="#c9761a" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="48.84" y1="367.18" x2="48.84" y2="364.33" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="48.84" cy="365.76" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<path d="M 90.00,365.76 L 93.00,365.76 L 96.00,365.76" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="365.66" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="104.00" y="368.16" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">all of K59</text>
+<path d="M 90.00,366.91 L 93.00,366.91 L 96.00,374.76" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="99.60" cy="374.66" r="1.60" fill="#c9761a" opacity="1.00"/>
+<text x="104.00" y="377.16" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">K59.0 or laxatives</text>
+<text x="190.00" y="268.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">ADHD</text>
+<text x="190.00" y="278.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">4,452 to 4,737 cases</text>
+<line x1="212.00" y1="343.60" x2="252.00" y2="343.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="212.00" y1="305.20" x2="252.00" y2="305.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="208.00" y="384.40" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0</text>
+<text x="208.00" y="346.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.1</text>
+<text x="208.00" y="307.60" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.2</text>
+<line x1="212.00" y1="382.00" x2="252.00" y2="382.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="234.11" y1="382.00" x2="234.11" y2="384.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="234.11" y="392.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">5k</text>
+<line x1="251.31" y1="382.00" x2="251.31" y2="384.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="251.31" y="392.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">10k</text>
+<rect x="228.63" y="334.48" width="5.20" height="24.69" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="230.17" y="319.19" width="5.20" height="27.85" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="231.23" y1="351.07" x2="231.23" y2="342.58" stroke="#c9761a" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="231.23" cy="346.83" r="2.50" fill="#c9761a" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<line x1="232.77" y1="337.90" x2="232.77" y2="328.33" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="232.77" cy="333.12" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<path d="M 254.00,333.12 L 257.00,333.12 L 260.00,333.12" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="263.60" cy="333.02" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="268.00" y="335.52" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">all of F90</text>
+<path d="M 254.00,346.83 L 257.00,346.83 L 260.00,346.83" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="263.60" cy="346.73" r="1.60" fill="#c9761a" opacity="1.00"/>
+<text x="268.00" y="349.23" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">F90.0</text>
+<text x="348.00" y="268.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Intellectual disability</text>
+<text x="348.00" y="278.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">913 to 1,429 cases</text>
+<line x1="370.00" y1="343.60" x2="410.00" y2="343.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="370.00" y1="305.20" x2="410.00" y2="305.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="366.00" y="384.40" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0</text>
+<text x="366.00" y="346.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.1</text>
+<text x="366.00" y="307.60" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">0.2</text>
+<line x1="370.00" y1="382.00" x2="410.00" y2="382.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="386.70" y1="382.00" x2="386.70" y2="384.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="386.70" y="392.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">1k</text>
+<line x1="403.90" y1="382.00" x2="403.90" y2="384.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="403.90" y="392.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">2k</text>
+<rect x="381.84" y="343.55" width="5.20" height="38.45" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<rect x="392.96" y="329.58" width="5.20" height="52.42" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<circle cx="384.44" cy="382.00" r="2.30" fill="#EEF3F1" opacity="1.00" stroke="#5E6E72" stroke-width="0.9"/>
+<line x1="395.56" y1="367.31" x2="395.56" y2="348.00" stroke="#2f6fc4" stroke-width="2.0" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="395.56" cy="357.65" r="2.50" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<path d="M 412.00,357.65 L 415.00,357.65 L 418.00,357.65" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="421.60" cy="357.55" r="1.60" fill="#2f6fc4" opacity="1.00"/>
+<text x="426.00" y="360.05" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">any (F7)</text>
+<path d="M 412.00,382.00 L 415.00,382.00 L 418.00,382.00" fill="none" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="421.60" cy="381.90" r="1.60" fill="#5E6E72" opacity="1.00"/>
+<text x="426.00" y="384.40" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">mild F70, below 0</text>
+</g>
+</svg>

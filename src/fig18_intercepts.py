@@ -1,95 +1,100 @@
-"""Figure 18. Sample overlap shows up where it should, in the LDSC intercept, and nowhere else.
+"""Figure: sample overlap shows up in the cross-trait LDSC intercept, where it should, and nowhere else.
 
-The cross-trait LDSC intercept absorbs shared samples between two GWAS, which keeps rg unbiased.
-Each row is one psychiatric GWAS; each dot is its intercept with one of the FinnGen endpoints, laid out
-as a beeswarm so no dot hides another. The pale band around zero spans plus or minus 1.96 times the
-median intercept SE: where the intercepts of a GWAS with no shared people should fall. Autism,
+Each row is one psychiatric GWAS; each dot is its cross-trait intercept with one FinnGen endpoint, laid out
+as a beeswarm so no dot hides another. The pale band around zero spans plus or minus 1.96 times the median
+intercept standard error: where a GWAS with no people in common with FinnGen should sit. Autism,
 schizophrenia, bipolar disorder and clinically defined depression contain no FinnGen samples. The full
-depression GWAS and its EHR subset include FinnGen R5, and the PTSD Freeze 3 cohort list includes
-FinnGen ("fing"), so their intercepts should rise off zero. Black tick: median.
+depression GWAS and its EHR subset include FinnGen R5, and the PTSD Freeze 3 cohort list includes FinnGen,
+so their intercepts should lift off zero. The dark tick is the median.
 
-Source: results/ldsc/rg.tsv (standard two-step LDSC).
+Source: results/ldsc/rg.tsv (standard two-step LDSC). Every sentence in the reading panel is computed.
 """
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-import viz_style as vs
-from itoju_labels import TRAIT_LABEL
+import itoju_svg as sv
 
-ROOT = vs.ROOT
-BLOCKS = [("No FinnGen samples", ["ASD", "SCZ", "BIP", "MDD_Clin"]),
-          ("Includes FinnGen samples", ["PTSD", "MDD", "MDD_EHR"])]
-SLEEVE = "#e6e1d6"
-DOT_PT = 4.0
-AX_LEFT, AX_W = 0.40, 0.57
+ROOT = sv.ROOT
+BLOCKS = [("NO FINNGEN SAMPLES", ["ASD", "SCZ", "BIP", "MDD_Clin"]),
+          ("INCLUDE FINNGEN SAMPLES", ["PTSD", "MDD", "MDD_EHR"])]
+NAME = dict(sv.TRAIT_NAME, MDD="depression, all")
+LO, HI = -0.02, 0.05
+R_DOT = 1.55
 
 
-def swarm(xs_pt, d):
-    """Offsets (points) that keep dots of diameter d from touching, closest to the row line first."""
-    placed, out = [], np.zeros(len(xs_pt))
-    for i in np.argsort(xs_pt):
-        x = xs_pt[i]
-        for k in range(0, 80):
-            off = ((k + 1) // 2) * d * (1 if k % 2 else -1) if k else 0.0
-            if all((x - px) ** 2 + (off - py) ** 2 >= (d * 0.98) ** 2 for px, py in placed):
+def swarm(xs, d):
+    placed, out = [], [0.0] * len(xs)
+    for i in np.argsort(xs):
+        k = 0
+        while True:
+            off = ((k + 1) // 2) * d * (1 if k % 2 else -1)
+            if all((xs[i] - px) ** 2 + (off - py) ** 2 >= d * d for px, py in placed):
                 break
-        placed.append((x, off))
+            k += 1
+        placed.append((xs[i], off))
         out[i] = off
     return out
 
 
 def main():
-    vs.apply()
     rg = pd.read_csv(ROOT / "results" / "ldsc" / "rg.tsv", sep="\t")
-    endpoints = set(rg[rg.trait1 == "ASD"].trait2) - {"SCZ", "BIP", "MDD", "PTSD", "MDD_EHR", "MDD_Clin"}
-    traits = [t for _, ts in BLOCKS for t in ts]
-    sub = rg[rg.trait1.isin(traits) & rg.trait2.isin(endpoints)].dropna(subset=["gcov_int"])
+    psych = {"SCZ", "BIP", "MDD", "PTSD", "MDD_EHR", "MDD_Clin", "ASD"}
+    endpoints = set(rg[rg.trait1 == "ASD"].trait2) - psych
+    sub = rg[rg.trait1.isin(psych) & rg.trait2.isin(endpoints)].dropna(subset=["gcov_int"])
     band = 1.96 * float(sub.gcov_int_se.median())
-    xlo = np.floor(sub.gcov_int.min() / 0.01) * 0.01 - 0.005
-    xhi = np.ceil(sub.gcov_int.max() / 0.01) * 0.01 + 0.005
 
-    # everything vertical is laid out in points, so each row gets exactly the height its swarm needs
-    pt_per_x = AX_W * vs.SINGLE * 72 / (xhi - xlo)
-    offs = {t: swarm(sub[sub.trait1 == t].gcov_int.values * pt_per_x, DOT_PT) for t in traits}
-    y, heads, order = 8.0, [], []
-    for block, ts in BLOCKS:
-        heads.append((block, y))
-        y += 12.0
-        for t in ts:
-            ext = np.abs(offs[t]).max() + DOT_PT / 2
-            y += max(ext, 7.0)
-            order.append((t, y, ext))
-            y += max(ext, 7.0) + 5.0
-        y += 6.0
-    axes_pt, top_pt, bottom_pt = y, 34.0, 36.0
-    fig_h = (axes_pt + top_pt + bottom_pt) / 72
-    fig = plt.figure(figsize=(vs.SINGLE, fig_h))
-    ax = fig.add_axes([AX_LEFT, bottom_pt / 72 / fig_h, AX_W, axes_pt / 72 / fig_h])
-    ax.set_xlim(xlo, xhi)
-    ax.set_ylim(axes_pt, 0)
-    ax.axvspan(-band, band, color=SLEEVE, lw=0, zorder=0)
-    ax.axvline(0, color=vs.INK_2, lw=0.5, zorder=1)
-    for block, yy in heads:
-        ax.text(-0.02, yy, block, transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=7.6,
-                fontweight="bold", color=vs.INK)
-    for t, yy, ext in order:
-        s_ = sub[sub.trait1 == t]
-        face = "white" if t in vs.HOLLOW else vs.TRAIT[t]
-        ax.scatter(s_.gcov_int, yy + offs[t], s=DOT_PT ** 2 * 0.8, facecolor=face, edgecolor=vs.TRAIT[t],
-                   linewidths=0.8, zorder=3)
-        med = float(np.median(s_.gcov_int))
-        ax.plot([med, med], [yy - min(ext, 9), yy + min(ext, 9)], color=vs.INK, lw=1.2, zorder=4)
-        ax.text(-0.02, yy, TRAIT_LABEL[t], transform=ax.get_yaxis_transform(), ha="right", va="center",
-                fontsize=7.5, color=vs.INK_2)
-        print(f"  {t:9s} n {len(s_)} median {med:.4f} range {s_.gcov_int.min():.4f} to {s_.gcov_int.max():.4f}")
-    ax.set_yticks([])
-    ax.spines["left"].set_visible(False)
-    ax.set_xlabel("cross-trait LDSC intercept", fontsize=7.5)
-    fig.text(0.02, 1 - 6 / 72 / fig_h, "One dot per FinnGen endpoint.  Black tick: median.\n"
-             f"Pale band: where no shared people should put it (1.96 x median SE, {band:.3f}).",
-             fontsize=7, color=vs.INK_2, va="top", linespacing=1.35)
-    vs.save(fig, "fig18_intercepts")
+    W = sv.SINGLE
+    left, lab_w = 12.0, 84.0
+    ax0, ax1 = left + lab_w, W - 10
+    X = sv.scale(LO, HI, ax0, ax1)
+    row_h, head_h, top = 26.0, 16.0, 102.0
+    body = sum(head_h + row_h * len(ts) for _, ts in BLOCKS)
+    H = top + body + 104
+    f = sv.Figure(W, H)
+    f.header("itoju  /  sample overlap",
+             "Shared samples lift the intercept",
+             "Cross-trait LDSC intercept with each FinnGen endpoint")
+    f.key_row(left, 64, [("band", sv.NOISE, "where no shared samples sit")])
+    f.key_row(left, 76, [("dot", sv.INK_2, "one endpoint"), ("line", sv.INK, "median")])
+    f.rect(X(-band), top - 4, X(band) - X(-band), body, sv.NOISE)
+    f.line(X(0), top - 4, X(0), top + body, sv.RULE, 0.5)
+
+    y = top
+    medians = {}
+    for head, traits in BLOCKS:
+        f.text(left, y + 9, head, 7.0, sv.DIM, spacing=0.4)
+        y += head_h
+        for t in traits:
+            s_ = sub[sub.trait1 == t]
+            cy = y + row_h / 2
+            xs = np.array([X(np.clip(v, LO, HI)) for v in s_.gcov_int])
+            offs = swarm(xs, 2 * R_DOT * 1.04)
+            col = sv.TRAIT[t]
+            for x, o in zip(xs, offs):
+                if t == "MDD_Clin":
+                    f.circle(x, cy + o, R_DOT - 0.2, sv.GROUND, stroke=col, sw=0.8)
+                else:
+                    f.circle(x, cy + o, R_DOT, col)
+            med = float(np.median(s_.gcov_int))
+            medians[t] = med
+            f.line(X(med), cy - 9, X(med), cy + 9, sv.INK, 1.3)
+            f.text(left + lab_w - 6, cy + 2.5, NAME[t], 7.0, sv.INK_2, anchor="end")
+            y += row_h
+    ya = top + body + 2
+    f.line(ax0, ya, ax1, ya, sv.RULE, 0.5)
+    for v in (-0.02, 0, 0.02, 0.04):
+        f.line(X(v), ya, X(v), ya + 2.5, sv.RULE, 0.5)
+        f.text(X(v), ya + 10.5, "0" if v == 0 else sv.fmt(v, 2, sign=True), 7.0, sv.DIM, anchor="middle")
+    f.text((ax0 + ax1) / 2, ya + 20, "cross-trait intercept", 7.0, sv.DIM, anchor="middle")
+
+    none = [medians[t] for t in BLOCKS[0][1]]
+    print("  medians:", {k: round(v, 4) for k, v in medians.items()}, f"band {band:.4f}")
+    lines = [f"Median {min(none):.3f} to {max(none):.3f} with no FinnGen samples;",
+             f"{medians['PTSD']:.3f} for PTSD, {medians['MDD']:.3f} and {medians['MDD_EHR']:.3f} for",
+             "the depression GWAS that include FinnGen."]
+    f.reading(left, ya + 30, W - left - 10, lines, strong=())
+    f.source("two-step LDSC, results/ldsc/rg.tsv")
+    f.save("fig18_intercepts")
 
 
 if __name__ == "__main__":

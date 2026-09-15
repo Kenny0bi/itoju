@@ -1,140 +1,152 @@
-"""Figure 11. Why a difference between two genetic correlations can be precise.
+"""Figure: why a difference between two genetic correlations can be precise.
 
-Top row: the 200 genome blocks of LDSC's jackknife, each a dot at its rg pseudovalue under the two
-definitions (centered on the estimates). Bottom row: a quantile dot plot of the per-block
-differences, 20 dots, each standing for 10 blocks. Above the line, the blocks paired as they really
-are; below it, the same blocks with the pairing broken (every block of one definition against every
-block of the other), which is what the difference would look like if the two estimates shared no
-people. The narrower the upper stack, the smaller the SE of the difference.
+LDSC estimates its standard errors with a jackknife over 200 genome blocks. On the common SNP set, block
+k is the same stretch of genome for both definitions, so each block gives a pair of pseudovalues.
+Top of each panel: the 200 pairs, centred on the two estimates, against the line of equal values.
+Bottom: every block's difference (second definition minus first) as a tick, with its density above. The
+coloured density keeps the blocks paired as they are; the gray one pairs each block with a random other block, which is what the
+difference would look like if the two estimates shared no people. The narrower the filled swarm, the
+smaller the standard error of the difference.
 
-Pairs: depression x sleep apnoea (nested definitions), PTSD x constipation (partly shared),
-PTSD x EHR vs clinical depression (almost nothing shared). Source: results/definition_effect/ldsc.
+  a  depression: sleep apnoea (hospital records) against any sleep disorder, nested definitions
+  b  PTSD: constipation or laxatives against all of K59, partly shared cases
+  c  PTSD: depression from health records against clinical depression, almost no shared samples
+
+Source: results/definition_effect/ldsc (LDSC delete values). The SE printed is the paper's estimator:
+paired sqrt(var(p2 - p1) / n); pairing broken sqrt((var p1 + var p2) / n).
 """
-from pathlib import Path
-
-import matplotlib.pyplot as plt
 import numpy as np
 
-import viz_style as vs
-from itoju_labels import ENDPOINT_LABEL
+import itoju_svg as sv
 
-
-ROOT = vs.ROOT
+ROOT = sv.ROOT
 RUNS = ROOT / "results" / "definition_effect" / "ldsc"
+PANELS = [
+    ("a", "Nested definitions", "depression: sleep apnoea vs any sleep", "MDD", "G6_SLEEPAPNO", "SLEEP", "",
+     "hospital records", "any sleep disorder"),
+    ("b", "Partly shared cases", "PTSD: constipation vs all of K59", "PTSD", "K11_CONSTIPATION", "K11_OTHFUNC", "",
+     "K59.0 or laxatives", "all of K59"),
+    ("c", "Almost nothing shared", "PTSD: EHR vs clinical depression", "PTSD", "MDD_EHR", "MDD_Clin", "__control",
+     "depression, EHR", "depression, clinical"),
+]
+LIM, DLIM, R_DOT = 2.4, 2.4, 1.05
 
 
-def pseudo(first, second, run_first, tag=""):
-    log = RUNS / f"rg_{run_first}{tag}.log"
+def pseudo(run, second, tag=""):
+    log = RUNS / f"rg_{run}{tag}.log"
     text = log.read_text()
     lines = text[text.find("Summary of Genetic Correlation Results"):].splitlines()[1:]
     hdr = lines[0].split()
-    for l in lines[1:]:
-        rec = dict(zip(hdr, l.split()))
-        if rec["p2"].endswith(f"/{second}.sumstats.gz"):
-            break
-    stem = f"{log.stem}{run_first}.sumstats.gz_{second}.sumstats.gz"
+    rec = next(dict(zip(hdr, l.split())) for l in lines[1:] if l.split() and l.split()[1].endswith(f"/{second}.sumstats.gz"))
+    stem = f"{log.stem}{run}.sumstats.gz_{second}.sumstats.gz"
     g = np.loadtxt(RUNS / f"{stem}.gencov.delete").reshape(-1)
     h1 = np.loadtxt(RUNS / f"{stem}.hsq1.delete").reshape(-1)
     h2 = np.loadtxt(RUNS / f"{stem}.hsq2.delete").reshape(-1)
-    rg, se = float(rec["rg"]), float(rec["se"])
     n = len(g)
-    return n * rg - (n - 1) * g / np.sqrt(h1 * h2), rg, se
+    rg = float(rec["rg"])
+    return n * rg - (n - 1) * g / np.sqrt(h1 * h2), rg
 
 
-PANELS = [
-    ("a", "Nested definitions", "depression x sleep apnoea", "MDD", "G6_SLEEPAPNO", "SLEEP", "MDD", ""),
-    ("b", "Partly shared", "PTSD x constipation", "PTSD", "K11_CONSTIPATION", "K11_OTHFUNC", "PTSD", ""),
-    ("c", "Almost nothing shared", "PTSD x depression", "PTSD", "MDD_EHR", "MDD_Clin", "PTSD", "__control"),
-]
-LABEL = dict(ENDPOINT_LABEL, MDD_EHR="EHR depression", MDD_Clin="clinical depression",
-             G6_SLEEPAPNO="sleep apnoea, hospital", SLEEP="any sleep disorder")
-LIM = 3.2
-NDOT = 20
-BW = 0.25
-FIG_H = 4.9
-COLW, GAP, LEFT = 0.262, 0.058, 0.075
+def kde(values, grid):
+    """Gaussian kernel density with Silverman's bandwidth."""
+    bw = 1.06 * np.std(values, ddof=1) * len(values) ** (-0.2)
+    z = (grid[:, None] - values[None, :]) / bw
+    return np.exp(-0.5 * z * z).sum(axis=1) / (len(values) * bw * np.sqrt(2 * np.pi))
 
 
-def stacks(values):
-    q = np.quantile(values, (np.arange(NDOT) + 0.5) / NDOT)
-    bins = np.round(q / BW).astype(int)
-    xs, hs = [], []
-    for b in np.unique(bins):
-        k = int((bins == b).sum())
-        xs += [b * BW] * k
-        hs += list(np.arange(k) + 0.5)
-    return np.array(xs), np.array(hs)
+def swarm(xs, y0, d):
+    placed, out = [], [None] * len(xs)
+    for i in np.argsort(np.abs(xs - np.median(xs))):
+        k = 0
+        while True:
+            off = ((k + 1) // 2) * d * (1 if k % 2 else -1)
+            if all((xs[i] - px) ** 2 + (off - py) ** 2 >= d * d for px, py in placed):
+                break
+            k += 1
+        placed.append((xs[i], off))
+        out[i] = (xs[i], y0 + off)
+    return out
 
 
 def main():
-    vs.apply()
-    rows = []
-    for letter, head, sub, shared, d1, d2, run, tag in PANELS:
-        p1, r1, _ = pseudo(shared, d1, run, tag)
-        p2, r2, _ = pseudo(shared, d2, run, tag)
-        x, y = p1 - r1, p2 - r2
-        n = len(x)
-        rows.append(dict(
-            letter=letter, head=head, sub=sub, color=vs.TRAIT[shared], d1=d1, d2=d2, x=x, y=y,
-            corr=np.corrcoef(x, y)[0, 1],
-            se_pair=np.sqrt(np.var(p2 - p1, ddof=1) / n),
-            se_unp=np.sqrt((np.var(p1, ddof=1) + np.var(p2, ddof=1)) / n),
-            paired=stacks(y - x), unpaired=stacks((y[None, :] - x[:, None]).ravel())))
-    top_units = max(r["paired"][1].max() for r in rows) + 1.0
-    bot_units = max(r["unpaired"][1].max() for r in rows) + 1.0
+    W = sv.DOUBLE
+    left, gap = 14.0, 14.0
+    col_w = (W - left - 10 - 2 * gap) / 3
+    H = 522.0
+    f = sv.Figure(W, H)
+    f.header("itoju  /  why the difference is precise",
+             "When two definitions share people, their noise cancels block by block",
+             "LDSC's 200-block jackknife, paired block by block across two definitions of one condition")
+    f.key_row(left, 72, [("dot", sv.INK_2, "one genome block, both definitions"),
+                         ("line", sv.INK_2, "one block's difference"),
+                         ("band", sv.NOISE, "blocks paired at random")])
+    readings = []
+    for k, (letter, title, sub, trait, d1, d2, tag, lab1, lab2) in enumerate(PANELS):
+        x0 = left + k * (col_w + gap)
+        col = sv.TRAIT[trait]
+        p1, r1 = pseudo(trait, d1, tag)
+        p2, r2 = pseudo(trait, d2, tag)
+        n = len(p1)
+        dev1, dev2 = p1 - r1, p2 - r2
+        corr = float(np.corrcoef(dev1, dev2)[0, 1])
+        se_pair = float(np.sqrt(np.var(p2 - p1, ddof=1) / n))
+        se_broken = float(np.sqrt((np.var(p1, ddof=1) + np.var(p2, ddof=1)) / n))
+        readings.append((title, sub, se_pair, se_broken, corr))
+        print(f"  {letter} {trait} {d1} vs {d2}: r {corr:.3f}, SE paired {se_pair:.4f}, broken {se_broken:.4f}")
 
-    fig = plt.figure(figsize=(vs.DOUBLE, FIG_H))
-    w_pt = COLW * vs.DOUBLE * 72
-    unit_pt = BW / (2 * LIM) * w_pt
-    bh = (top_units + bot_units) * unit_pt / (FIG_H * 72)     # dot units map to points 1:1 in x and y
-    by = 0.075
-    ty = by + bh + 0.165
-    th = COLW * vs.DOUBLE / FIG_H
-    for i, r in enumerate(rows):
-        x0 = LEFT + i * (COLW + GAP)
-        top = fig.add_axes([x0, ty, COLW, th])
-        t = np.array([-LIM, LIM])
-        top.plot(t, t, color=vs.INK_2, lw=0.6, zorder=2)
-        inside = (np.abs(r["x"]) <= LIM) & (np.abs(r["y"]) <= LIM)
-        top.scatter(r["x"][inside], r["y"][inside], s=7, color=r["color"], alpha=0.85, linewidths=0, zorder=3)
-        top.set_xlim(-LIM, LIM)
-        top.set_ylim(-LIM, LIM)
-        top.set_aspect("equal")
-        top.set_xticks([-3, 0, 3])
-        top.set_yticks([-3, 0, 3])
-        top.set_xlabel(LABEL[r["d1"]], fontsize=7.5, labelpad=2)
-        top.set_ylabel(LABEL[r["d2"]], fontsize=7.5, labelpad=1)
-        top.text(0.0, 1.15, f"{r['letter']}  {r['head']}", transform=top.transAxes, fontsize=8.5, color=vs.INK)
-        top.text(0.0, 1.05, r["sub"], transform=top.transAxes, fontsize=7.5, color=vs.INK_2)
-        top.text(0.04, 0.96, f"blocks agree, r = {r['corr']:.2f}", transform=top.transAxes, fontsize=7,
-                 color=vs.INK_2, va="top")
-        off = int((~inside).sum())
+        f.text(x0, 96, f"{letter}  {title}", 9.0, sv.INK, family=sv.SERIF)
+        f.text(x0, 106.5, sub, 7.0, sv.INK_2)
+        side = 116.0
+        sx0, sy0 = x0 + (col_w - side) / 2, 116.0
+        S = sv.scale(-LIM, LIM, 0, side)
+        f.rect(sx0, sy0, side, side, "none", stroke=sv.GRID, sw=0.6)
+        f.line(sx0, sy0 + side, sx0 + side, sy0, sv.RULE, 0.6, dash="2 2")
+        for a, b in zip(np.clip(dev1, -LIM, LIM), np.clip(dev2, -LIM, LIM)):
+            f.circle(sx0 + S(a), sy0 + side - S(b), 1.15, col, opacity=0.85)
+        f.text(sx0, sy0 + side + 10, f"across: {lab1}", 7.0, sv.DIM)
+        f.text(sx0, sy0 + side + 19, f"up: {lab2}", 7.0, sv.DIM)
+        off = int(((np.abs(dev1) > LIM) | (np.abs(dev2) > LIM)).sum())
+        f.text(x0, sy0 + side + 33, f"blocks agree, r = {corr:.2f}", 7.2, sv.INK)
         if off:
-            top.text(0.96, 0.04, f"{off} block off scale", transform=top.transAxes, fontsize=7, color=vs.MUTED,
-                     ha="right", va="bottom")
+            f.text(x0 + col_w, sy0 + side + 33, f"{off} off scale", 7.0, sv.DIM, anchor="end")
 
-        bot = fig.add_axes([x0, by, COLW, bh])
-        d_pt = unit_pt * 0.86
-        px, ph = r["paired"]
-        ux, uh = r["unpaired"]
-        bot.scatter(px, ph, s=d_pt ** 2, color=r["color"], linewidths=0, zorder=3)
-        bot.scatter(ux, -uh, s=(d_pt * 0.9) ** 2, facecolor="white", edgecolor=vs.MUTED, linewidths=0.7, zorder=3)
-        bot.axhline(0, color=vs.INK_2, lw=0.6)
-        bot.set_xlim(-LIM, LIM)
-        bot.set_ylim(-bot_units, top_units)
-        bot.set_yticks([])
-        bot.spines["left"].set_visible(False)
-        bot.set_xticks([-3, 0, 3])
-        bot.set_xlabel("per-block difference", fontsize=7.5, labelpad=2)
-        bot.text(-LIM, top_units - 0.3, f"paired\nSE {r['se_pair']:.3f}", fontsize=7, color=vs.INK_2, va="top",
-                 linespacing=1.2)
-        bot.text(-LIM, -bot_units + 0.3, f"pairing broken\nSE {r['se_unp']:.3f}", fontsize=7, color=vs.INK_2,
-                 va="bottom", linespacing=1.2)
-    fig.text(LEFT, by + bh + 0.03, "Each dot below stands for 10 of the 200 genome blocks.  Filled: the blocks "
-             "paired as they are.\nHollow: every block of one definition against every block of the other, "
-             "as if the two estimates shared no people.\nDot colors follow the psychiatric trait: depression in a, PTSD in b and c.",
-             fontsize=7, color=vs.INK_2, linespacing=1.3)
-    vs.save(fig, "fig11_block_geometry")
+        D = sv.scale(-DLIM, DLIM, x0 + 4, x0 + col_w - 4)
+        rng = np.random.default_rng(7)
+        diff = dev2 - dev1
+        broken = dev2[rng.permutation(n)] - dev1
+        grid = np.linspace(-DLIM, DLIM, 241)
+        dens = [kde(diff, grid), kde(broken, grid)]
+        peak = max(d.max() for d in dens)
+        y_pair, y_broken, y_axis = 334.0, 404.0, 420.0
+        f.text(x0, 284, "paired", 7.0, sv.INK_2)
+        f.text(x0 + col_w, 284, f"SE {se_pair:.3f}", 9.0, sv.INK, family=sv.SERIF, anchor="end")
+        f.text(x0, 354, "pairing broken", 7.0, sv.INK_2)
+        f.text(x0 + col_w, 354, f"SE {se_broken:.3f}", 9.0, sv.INK, family=sv.SERIF, anchor="end")
+        for d, yb, fill, stroke in ((dens[0], y_pair, col, col), (dens[1], y_broken, sv.NOISE, sv.DIM)):
+            h = 38.0 * d / peak
+            pts = [(D(g), yb - hh) for g, hh in zip(grid, h)]
+            f.polygon([(D(-DLIM), yb)] + pts + [(D(DLIM), yb)], fill, opacity=0.35 if fill == col else 1.0)
+            f.polyline(pts, stroke, 0.9, mark=False)
+        for v in np.clip(diff, -DLIM, DLIM):
+            f.line(D(v), y_pair + 1.5, D(v), y_pair + 6, col, 0.35, opacity=0.8)
+        for v in np.clip(broken, -DLIM, DLIM):
+            f.line(D(v), y_broken + 1.5, D(v), y_broken + 6, sv.DIM, 0.35, opacity=0.8)
+        f.line(x0 + 4, y_axis, x0 + col_w - 4, y_axis, sv.RULE, 0.5)
+        for v, s in ((-2, "-2"), (0, "0"), (2, "+2")):
+            f.line(D(v), y_axis, D(v), y_axis + 2.5, sv.RULE, 0.5)
+            f.text(D(v), y_axis + 10.5, s, 7.0, sv.DIM, anchor="middle")
+        f.line(D(0), 292, D(0), y_axis, sv.GRID, 0.5)
+        f.text(x0 + col_w / 2, y_axis + 20, "per-block difference", 7.0, sv.DIM, anchor="middle")
+
+    (t_a, _, sp_a, sb_a, _), (t_b, _, sp_b, sb_b, _), (t_c, _, sp_c, sb_c, _) = readings
+    lines = [
+        f"Nested definitions: pairing the blocks cuts the standard error of the difference from {sb_a:.3f} to {sp_a:.3f}.",
+        f"Partly shared cases: from {sb_b:.3f} to {sp_b:.3f}. Almost nothing shared: from {sb_c:.3f} to {sp_c:.3f}.",
+        "Shared people, not sample size, decide how small a definition effect can be seen.",
+    ]
+    f.reading(left, 452, W - left - 10, lines, strong=(0,))
+    f.source("LDSC delete-one-block values on the common SNP set, 200 blocks")
+    f.save("fig11_block_geometry")
 
 
 if __name__ == "__main__":

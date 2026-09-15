@@ -1,148 +1,168 @@
-"""Figure 15. Positive control: depression defined from health records casts a wider genetic net.
+"""Figure: the positive control. Depression defined from health records casts a wider genetic net.
 
-Depression defined from electronic health records and depression defined by clinical assessment are
-two definitions of one condition (rg between them 0.86). The known result (Cai et al. 2020) is that
-the looser definition carries less specific genetics, so it should overlap more with everything else.
+Depression has two PGC GWAS that differ only in how cases were defined: from electronic health records,
+and by clinical assessment. The known result (Cai et al. 2020) is that the looser definition carries less
+specific genetics, so it should correlate more strongly with other conditions.
 
-Left: one spoke per trait or FinnGen endpoint (31), grouped by body system. Distance from the center
-is rg with depression. The filled shape joins rg with the EHR definition; the dark outline joins rg
-with the clinical definition. Where the fill reaches past the outline, the EHR definition correlates
-more strongly. Spokes whose difference passes the jackknife test (p < 0.05) are drawn in color.
-Right: the same 31 differences (EHR minus clinical), ranked, each inside its noise sleeve (plus or
-minus 1.96 SE of the difference); a colored stem escapes its sleeve.
+One row per other trait or FinnGen endpoint (31), sorted by the difference. Each arrow starts at the
+genetic correlation with clinically defined depression (hollow dot) and ends at the correlation with
+EHR-defined depression (arrowhead), so an arrow pointing right means the EHR definition correlates more
+strongly. Arrows whose difference reaches p < 0.05 in the shared-block jackknife are drawn heavier in
+turmeric. The column at the right sets each difference inside its own noise sleeve (1.96 SE).
 
-Source: results/definition_effect/pairwise_delta.tsv (family "MDD definition (positive control)").
+Sources: results/definition_effect/pairwise_delta.tsv (family "MDD definition (positive control)"),
+results/ldsc/h2.tsv and rg.tsv. Every sentence in the reading panel is computed.
 """
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.patches import Circle, Polygon
 
-import viz_style as vs
+import itoju_svg as sv
+from itoju_labels import ENDPOINT_GROUP, ENDPOINT_LABEL, TRAIT_LABEL
 
-ROOT = vs.ROOT
-SLEEVE = "#e6e1d6"
-GRAY = "#b9b5ac"
-TINT = "#f8e7bb"
-COL = vs.TRAIT["MDD"]
-RMIN, RMAX, HOLE = -0.2, 1.0, 0.12
-XCAP = 0.6
-# spokes in order, grouped by body system; a gap separates the groups
-GROUPS = [
-    [("ASD", "Autism"), ("SCZ", "Schizophrenia"), ("BIP", "Bipolar"), ("PTSD", "PTSD")],
-    [("F5_ADHD", "ADHD (F90.0)"), ("KRA_PSY_HYPERKIN_EXMORE", "ADHD (F90)"),
-     ("KRA_PSY_MENTALRET_EXMORE", "Intellectual disability"), ("KRA_PSY_DEVWIDE_EXMORE", "Autism spectrum (F84)"),
-     ("KRA_PSY_AUTISM_EXMORE", "Autism (F84.0, F84.5)")],
-    [("G6_EPLEPSY", "Epilepsy, any"), ("FE", "Focal epilepsy"), ("FE_STRICT", "Focal, strict"),
-     ("FE_MODE", "Focal, mode"), ("GE", "Generalized epilepsy"), ("GE_STRICT", "Generalized, strict"),
-     ("GE_MODE", "Generalized, mode"), ("G6_STATUSEPI", "Status epilepticus")],
-    [("G6_SLEEPAPNO", "Apnoea, hospital"), ("G6_SLEEPAPNO_INCLAVO", "Apnoea + primary care"),
-     ("SLEEP", "Any sleep disorder"), ("F5_INSOMNIA", "Insomnia"), ("KRA_PSY_SLEEP_NONORG_EXMORE", "Nonorganic sleep"),
-     ("G6_SLEEPDISOTH", "Other sleep disorders"), ("F5_SLEEP_NOS", "Sleep, unspecified")],
-    [("K11_CONSTIPATION", "Constipation/laxatives"), ("K11_OTHFUNC", "Functional bowel (K59)"),
-     ("K11_IBS", "Irritable bowel"), ("K11_FUNCDYSP", "Functional dyspepsia"), ("K11_REFLUX", "Reflux")],
-    [("N14_NEUROMUSCDYSBLADD", "Neurogenic bladder"), ("N14_OTHBLADD", "Other bladder")],
-]
+ROOT = sv.ROOT
+STRONG = "#b98500"       # the depression hue, one step darker so a thin arrow still reads on the ground
+WEAK = "#8D9C97"
+DCAP = 0.45
 
 
-def radius(v):
-    return HOLE + (np.clip(v, RMIN, RMAX) - RMIN) / (RMAX - RMIN) * (1 - HOLE)
+def label(e):
+    if e in TRAIT_LABEL:
+        return TRAIT_LABEL[e]
+    g, lab = ENDPOINT_GROUP[e], ENDPOINT_LABEL[e]
+    if g in ("Neighbouring conditions", "Constipation") or lab.lower().startswith(g.lower()):
+        return lab
+    if g == "Intellectual disability":
+        return "Intellectual disability (F7)" if "F7)" in lab else "Intellectual disability (F70)"
+    return f"{g}: {lab[0].lower() + lab[1:] if not lab[:2].isupper() else lab}"
+
+
+def arrow(f, x0, x1, y, colour, width):
+    f.line(x0, y, x1, y, colour, width, mark=True)
+    d = 1 if x1 >= x0 else -1
+    if abs(x1 - x0) > 0.5:
+        f.polygon([(x1, y), (x1 - d * 4.2, y - 2.4), (x1 - d * 4.2, y + 2.4)], colour, mark=True)
 
 
 def main():
-    vs.apply()
     pw = pd.read_csv(ROOT / "results" / "definition_effect" / "pairwise_delta.tsv", sep="\t")
     c = pw[pw.family == "MDD definition (positive control)"].copy()
     ehr_first = c.def1 == "MDD_EHR"
+    assert set(c.def1) | set(c.def2) == {"MDD_EHR", "MDD_Clin"}
     c["ehr"] = np.where(ehr_first, c.rg1, c.rg2)
     c["clin"] = np.where(ehr_first, c.rg2, c.rg1)
     c["diff"] = c.ehr - c.clin
     c["hw"] = 1.96 * c.se_delta
-    c["clear"] = c["diff"].abs() > c.hw
-    c = c.set_index("shared")
-    spokes = [s for g in GROUPS for s in g]
-    assert sorted(k for k, _ in spokes) == sorted(c.index), "every control comparison needs a spoke"
-    label = dict(spokes)
+    c = c.sort_values("diff", ascending=False).reset_index(drop=True)
+    n = len(c)
+    bonf = 0.05 / n
+    h2 = pd.read_csv(ROOT / "results" / "ldsc" / "h2.tsv", sep="\t").set_index("trait")
+    rg = pd.read_csv(ROOT / "results" / "ldsc" / "rg.tsv", sep="\t")
+    between = rg[((rg.trait1 == "MDD_EHR") & (rg.trait2 == "MDD_Clin")) | ((rg.trait1 == "MDD_Clin") & (rg.trait2 == "MDD_EHR"))].iloc[0]
 
-    fig = plt.figure(figsize=(vs.DOUBLE, 4.45))
-    ax = fig.add_axes([0.01, 0.0, 0.60, 0.875])
-    ax.set_aspect("equal")
-    ax.axis("off")
-    ax.set_xlim(-2.0, 2.0)
-    ax.set_ylim(-1.8, 1.8)
+    W = sv.DOUBLE
+    left, lab_r, ax0, ax1 = 14.0, 196.0, 204.0, 386.0
+    d0, d1, col_v = 404.0, 478.0, 508.0
+    top, row_h = 110.0, 11.0
+    H = top + n * row_h + 98
+    f = sv.Figure(W, H)
+    f.header("itoju  /  the positive control",
+             "Looser depression casts a wider genetic net",
+             "Genetic correlation with depression defined by clinical assessment and from health records")
+    n_up = int((c["diff"] > 0).sum())
+    f.text(W - 12, 38, f"{n_up} of {n}", 20.0, sv.INK, family=sv.SERIF, anchor="end")
+    f.text(W - 12, 49, "arrows point right", 7.0, sv.DIM, anchor="end")
+    kx = f.key_row(left, 74, [("hollow", sv.INK_2, "clinical assessment")])
+    f.line(kx, 71.5, kx + 12, 71.5, sv.INK_2, 1.1)
+    f.polygon([(kx + 14, 71.5), (kx + 9.8, 69.1), (kx + 9.8, 73.9)], sv.INK_2)
+    kx += 18
+    f.text(kx, 74, "health records (EHR)", 7.0, sv.INK_2)
+    kx += sv.text_width("health records (EHR)") + 10
+    f.line(kx, 71.5, kx + 12, 71.5, STRONG, 1.9)
+    f.polygon([(kx + 14, 71.5), (kx + 9.8, 69.1), (kx + 9.8, 73.9)], STRONG)
+    kx += 18
+    f.text(kx, 74, "difference p < 0.05", 7.0, sv.INK_2)
+    kx += sv.text_width("difference p < 0.05") + 10
+    f.key_row(kx, 74, [("band", sv.NOISE, "noise, 1.96 SE")])
 
-    slots = sum(len(g) for g in GROUPS) + len(GROUPS)
-    theta, pos = {}, 0
-    for g in GROUPS:
-        for key, _ in g:
-            theta[key] = np.deg2rad(90 - 360 * (pos + 0.5) / slots)
-            pos += 1
-        pos += 1
-    gap_angle = np.deg2rad(90 - 360 * (slots - 0.5) / slots)
+    X = sv.scale(-0.1, 0.9, ax0, ax1)
+    D = sv.scale(-DCAP, DCAP, d0, d1)
+    f.text((ax0 + ax1) / 2, 98, "genetic correlation with depression", 7.0, sv.DIM, anchor="middle")
+    f.text((d0 + d1) / 2, 98, "EHR minus clinical", 7.0, sv.DIM, anchor="middle")
+    for v in (0, 0.5):
+        f.line(X(v), top - 5, X(v), top + n * row_h, sv.GRID, 0.5)
+    for i, r in c.iterrows():
+        y = top + i * row_h + 3
+        sig = r.p < 0.05
+        f.text(lab_r, y + 2.5, label(r.shared), 7.0, sv.INK if sig else sv.INK_2, anchor="end")
+        col, wid = (STRONG, 1.9) if sig else (WEAK, 1.1)
+        f.circle(X(r.clin), y, 2.2, sv.GROUND, stroke=sv.INK_2 if not sig else STRONG, sw=0.9)
+        arrow(f, X(r.clin) + (2.2 if r.ehr >= r.clin else -2.2), X(r.ehr), y, col, wid)
+        f.rect(D(-min(r.hw, DCAP)), y - 3, D(min(r.hw, DCAP)) - D(-min(r.hw, DCAP)), 6, sv.NOISE, rx=1)
+        f.line(D(0), y - 4.5, D(0), y + 4.5, sv.RULE, 0.5)
+        f.circle(D(max(min(r["diff"], DCAP), -DCAP)), y, 2.2, STRONG if sig else sv.GROUND,
+                 stroke=None if sig else sv.INK_2, sw=0.9)
+        f.text(col_v, y + 2.5, sv.fmt(r["diff"], 2, sign=True), 7.0, sv.INK if sig else sv.DIM, anchor="end")
+    ya = top + n * row_h + 2
+    f.line(ax0, ya, ax1, ya, sv.RULE, 0.5)
+    for v in (0, 0.5):
+        f.line(X(v), ya, X(v), ya + 2.5, sv.RULE, 0.5)
+        f.text(X(v), ya + 10.5, f"{v:g}", 7.0, sv.DIM, anchor="middle")
+    f.line(d0, ya, d1, ya, sv.RULE, 0.5)
+    for v, s in ((-0.4, "-0.4"), (0, "0"), (0.4, "+0.4")):
+        f.line(D(v), ya, D(v), ya + 2.5, sv.RULE, 0.5)
+        f.text(D(v), ya + 10.5, s, 7.0, sv.DIM, anchor="middle")
 
-    for v, lw in ((0.0, 0.8), (0.5, 0.5), (1.0, 0.5)):
-        ax.add_patch(Circle((0, 0), radius(v), fill=False, edgecolor=vs.GRID if v else "#cfccc3", lw=lw, zorder=0))
-        # ring labels sit in the gap between the last and first group, above the filled shape
-        ax.text(radius(v) * np.cos(gap_angle), radius(v) * np.sin(gap_angle), f"{v:g}", ha="center", va="center",
-                fontsize=7, color=vs.INK_2, zorder=7,
-                bbox=dict(boxstyle="round,pad=0.12", facecolor="white", edgecolor="none"))
-    for key, _ in spokes:
-        t = theta[key]
-        ax.plot([HOLE * np.cos(t), np.cos(t)], [HOLE * np.sin(t), np.sin(t)], color=vs.GRID, lw=0.4, zorder=0)
+    n_nom = int((c.p < 0.05).sum())
+    n_bonf = int((c.p < bonf).sum())
+    print(f"  control rows {n}: EHR higher {n_up}, p<0.05 {n_nom}, Bonferroni over {n} {n_bonf}; rg between {between.rg:.3f} ({between.se:.3f}); "
+          f"h2 clinical {h2.loc['MDD_Clin', 'h2']:.3f}, EHR {h2.loc['MDD_EHR', 'h2']:.3f}; detectable {c.min_detectable_delta.min():.2f}-{c.min_detectable_delta.max():.2f}")
+    lines = [
+        f"EHR-defined depression correlates more strongly in {n_up} of {n}; {n_nom} reach p < 0.05, {n_bonf} survive Bonferroni.",
+        f"The two definitions correlate at {between.rg:.3f} (SE {between.se:.3f}), and clinical heritability is "
+        f"{h2.loc['MDD_Clin', 'h2']:.3f} against {h2.loc['MDD_EHR', 'h2']:.3f}.",
+        "The two GWAS share almost no people, so their noise does not cancel and single differences stay wide.",
+    ]
+    f.reading(left, ya + 22, W - left - 10, lines, strong=(0,))
+    f.source("PGC MDD2025 EHR and clinical GWAS, FinnGen R12; shared-block jackknife")
+    f.save("fig15_positive_control")
+    paper_single(c)
 
-    def ring(col):
-        return np.array([[radius(c.loc[k, col]) * np.cos(theta[k]), radius(c.loc[k, col]) * np.sin(theta[k])]
-                         for k, _ in spokes])
-    e, cl = ring("ehr"), ring("clin")
-    ax.add_patch(Polygon(e, closed=True, facecolor=TINT, edgecolor=COL, lw=1.1, zorder=2))
-    ax.add_patch(Polygon(cl, closed=True, fill=False, edgecolor=vs.INK_2, lw=0.9, zorder=3))
-    ax.scatter(cl[:, 0], cl[:, 1], s=7, facecolor="white", edgecolor=vs.INK_2, linewidths=0.6, zorder=4)
-    for (key, name), pe, pc in zip(spokes, e, cl):
-        t = theta[key]
-        clear = bool(c.loc[key, "clear"])
-        if clear:
-            ax.plot([pc[0], pe[0]], [pc[1], pe[1]], color=COL, lw=2.4, solid_capstyle="butt", zorder=5)
-            ax.scatter(*pe, s=16, color=COL, linewidths=0, zorder=6)
-        deg = np.rad2deg(t)
-        right = np.cos(t) >= -1e-9
-        r_lab = 1.04
-        ax.text(r_lab * np.cos(t), r_lab * np.sin(t), name, rotation=deg if right else deg + 180,
-                rotation_mode="anchor", ha="left" if right else "right", va="center", fontsize=7,
-                color=vs.INK if clear else vs.INK_2, fontweight="bold" if clear else "normal")
 
-    # key for the net
-    fig.text(0.02, 0.965, "Filled shape: rg with depression defined from health records", fontsize=7.5, color=vs.INK_2)
-    fig.text(0.02, 0.935, "Dark outline: rg with depression defined by clinical assessment", fontsize=7.5, color=vs.INK_2)
-    fig.text(0.02, 0.905, "Rings: rg 0, 0.5, 1.  Colored spoke, bold name: difference p < 0.05", fontsize=7.5,
-             color=vs.INK_2)
-
-    # ranked differences, each in its sleeve
-    order = c.sort_values("diff", ascending=False)
-    n = len(order)
-    b = fig.add_axes([0.785, 0.10, 0.205, 0.775])
-    ys = np.arange(n)
-    hw = np.minimum(order.hw.values, XCAP)
-    b.hlines(ys, -hw, hw, colors=SLEEVE, linewidth=4.2, zorder=1)
-    b.axvline(0, color=vs.INK_2, lw=0.5, zorder=2)
-    cols = [COL if k else GRAY for k in order.clear]
-    b.hlines(ys, 0, order["diff"].values, colors=cols, linewidth=1.1, zorder=3)
-    k = order.clear.values
-    b.scatter(order["diff"].values[k], ys[k], s=12, color=COL, linewidths=0, zorder=4)
-    for y, (key, r) in zip(ys, order.iterrows()):
-        b.text(-XCAP - 0.04, y, label[key], ha="right", va="center", fontsize=7,
-               color=vs.INK if r.clear else vs.INK_2, fontweight="bold" if r.clear else "normal")
-    b.set_ylim(n - 0.4, -0.6)
-    b.set_xlim(-XCAP - 0.02, XCAP + 0.02)
-    b.set_yticks([])
-    b.spines["left"].set_visible(False)
-    b.set_xticks([-0.5, 0, 0.5])
-    b.set_xticklabels(["-0.5", "0", "+0.5"])
-    b.set_xlabel("EHR minus clinical, rg", fontsize=7.5)
-    n_pos, n_clear = int((c["diff"] > 0).sum()), int(c.clear.sum())
-    fig.text(0.785 - 0.155, 0.955, f"EHR higher in {n_pos} of {n}; {n_clear} escape their sleeve", fontsize=8,
-             color=vs.INK)
-    fig.text(0.785 - 0.155, 0.925, "Sleeve: 1.96 SE of the difference, cut at 0.6", fontsize=7, color=vs.INK_2)
-    vs.save(fig, "fig15_positive_control")
+def paper_single(c):
+    """The paper's single-column layout: the same arrows, shorter labels, no difference column."""
+    W = sv.SINGLE
+    left, lab_r, ax0, ax1 = 10.0, 126.0, 132.0, W - 8
+    f = sv.Figure(W, 2000.0)          # drawn tall, trimmed to the content at the end
+    kx = f.key_row(left, 12, [("hollow", sv.INK_2, "clinical assessment")])
+    f.line(kx, 9.5, kx + 10, 9.5, sv.INK_2, 1.1)
+    f.polygon([(kx + 12, 9.5), (kx + 8, 7.1), (kx + 8, 11.9)], sv.INK_2)
+    f.text(kx + 16, 12, "health records (EHR)", 7.0, sv.INK_2)
+    f.line(left, 21.5, left + 10, 21.5, STRONG, 1.9)
+    f.polygon([(left + 12, 21.5), (left + 8, 19.1), (left + 8, 23.9)], STRONG)
+    f.text(left + 16, 24, "difference p < 0.05; right: EHR higher", 7.0, sv.INK_2, max_w=W - 10 - left - 16)
+    X = sv.scale(-0.1, 0.9, ax0, ax1)
+    top, row_h = 38.0, 10.4
+    for v in (0, 0.5):
+        f.line(X(v), top - 4, X(v), top + len(c) * row_h, sv.GRID, 0.5)
+    for i, r in c.iterrows():
+        y = top + i * row_h + 3
+        sig = r.p < 0.05
+        lab = label(r.shared)
+        if sv.text_width(lab) > lab_r - left:          # the group prefix does not fit in one column
+            lab = ENDPOINT_LABEL.get(r.shared, lab)
+        f.text(lab_r, y + 2.5, lab, 7.0, sv.INK if sig else sv.INK_2, anchor="end", max_w=lab_r - left)
+        col, wid = (STRONG, 1.8) if sig else (WEAK, 1.0)
+        f.circle(X(r.clin), y, 2.0, sv.GROUND, stroke=STRONG if sig else sv.INK_2, sw=0.9)
+        arrow(f, X(r.clin) + (2.0 if r.ehr >= r.clin else -2.0), X(r.ehr), y, col, wid)
+    ya = top + len(c) * row_h + 2
+    f.line(ax0, ya, ax1, ya, sv.RULE, 0.5)
+    for v in (0, 0.5):
+        f.line(X(v), ya, X(v), ya + 2.5, sv.RULE, 0.5)
+        f.text(X(v), ya + 10.5, f"{v:g}", 7.0, sv.DIM, anchor="middle")
+    f.text((left + ax1) / 2, ya + 20, "genetic correlation with depression", 7.0, sv.DIM, anchor="middle")
+    f.h = ya + 26
+    f.parts[0] = f'<rect width="{f.w}" height="{f.h}" fill="{sv.GROUND}"/>'
+    f.save("fig15_positive_control_paper", paper=False, png=False)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,360 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="516.0pt" height="472.50pt" viewBox="0 0 516.0 472.50" font-family="Menlo, 'SF Mono', Consolas, 'Liberation Mono', monospace">
+<rect width="516.0" height="472.50" fill="#EEF3F1"/>
+<g transform="translate(0,-47.50)">
+<rect x="14.00" y="63.00" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<text x="27.00" y="70.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">counted in hospital or death records</text>
+<rect x="192.70" y="63.00" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<path d="M 201.70,63.00 L 201.70,68.10 L 196.60,63.00 Z" fill="#12998c" stroke="#EEF3F1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<text x="205.70" y="70.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">also counted from primary care</text>
+<rect x="346.12" y="63.00" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<text x="359.12" y="70.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">not counted</text>
+<rect x="14.00" y="79.20" width="10.00" height="4.60" rx="2.3" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<path d="M 19.00,79.20 L 16.30,79.20 A 2.3 2.3 0 0 0 16.30,83.80 L 19.00,83.80 Z" fill="#3A4A51" stroke="#3A4A51" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<text x="27.00" y="84.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">counts a drug purchase</text>
+<rect x="134.01" y="78.20" width="9.40" height="6.60" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<rect x="134.01" y="79.50" width="9.40" height="1.50" rx="0" fill="#3A4A51" opacity="1.00"/>
+<text x="146.71" y="84.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">counts a reimbursement right</text>
+<circle cx="283.70" cy="81.50" r="3.60" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.9"/>
+<line x1="281.20" y1="84.00" x2="286.20" y2="79.00" stroke="#3A4A51" stroke-width="0.9" stroke-linecap="butt" opacity="1.00"/>
+<text x="291.70" y="84.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">must not meet another definition</text>
+<rect x="14.90" y="94.70" width="2.20" height="3.40" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<rect x="17.90" y="90.90" width="2.20" height="7.20" rx="0" fill="#3A4A51" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<rect x="20.90" y="93.50" width="2.20" height="4.60" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<text x="27.00" y="97.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">must be the most frequent code</text>
+<circle cx="172.42" cy="94.50" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="172.42" cy="94.50" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="180.42" y="97.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">control rule differs from the first</text>
+<circle cx="346.91" cy="94.50" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<text x="354.91" y="97.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">rule does not apply</text>
+<text x="175.50" y="122.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" letter-spacing="0.6">ICD-10 CODES</text>
+<text x="367.00" y="122.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" letter-spacing="0.6">RULES</text>
+<text x="372.00" y="133.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">drug</text>
+<text x="402.00" y="133.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">reimb.</text>
+<text x="432.00" y="133.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">excl.</text>
+<text x="462.00" y="133.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">mode</text>
+<text x="492.00" y="133.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">control</text>
+<line x1="14.00" y1="138.00" x2="506.00" y2="138.00" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="14.00" y="170.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Epilepsy</text>
+<text x="182.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 182.50 171.00)">G40.0</text>
+<text x="193.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 193.50 171.00)">G40.1</text>
+<text x="204.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 204.50 171.00)">G40.2</text>
+<text x="215.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 215.50 171.00)">G40.3</text>
+<text x="226.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 226.50 171.00)">G40.4</text>
+<text x="237.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 237.50 171.00)">G40.5</text>
+<text x="248.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 248.50 171.00)">G40.6</text>
+<text x="259.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 259.50 171.00)">G40.7</text>
+<text x="270.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 270.50 171.00)">G40.8</text>
+<text x="281.50" y="171.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 281.50 171.00)">G40.9</text>
+<rect x="175.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="230.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="241.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="252.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="263.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="274.50" y="175.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<circle cx="372.00" cy="180.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<rect x="397.30" y="176.70" width="9.40" height="6.60" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<rect x="397.30" y="178.00" width="9.40" height="1.50" rx="0" fill="#3A4A51" opacity="1.00"/>
+<circle cx="432.00" cy="180.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="180.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="180.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<text x="172.00" y="182.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Any epilepsy</text>
+<rect x="175.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="186.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="191.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="191.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="191.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="191.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="191.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="191.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="193.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Focal</text>
+<rect x="175.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="197.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="202.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="202.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="202.00" r="3.60" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.9"/>
+<line x1="429.50" y1="204.50" x2="434.50" y2="199.50" stroke="#3A4A51" stroke-width="0.9" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="462.00" cy="202.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="202.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="202.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="204.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Focal, strict</text>
+<rect x="175.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="208.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="213.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="213.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="213.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<rect x="457.90" y="213.20" width="2.20" height="3.40" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<rect x="460.90" y="209.40" width="2.20" height="7.20" rx="0" fill="#3A4A51" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<rect x="463.90" y="212.00" width="2.20" height="4.60" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<circle cx="492.00" cy="213.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="213.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="215.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Focal, mode</text>
+<rect x="175.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="186.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="219.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="224.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="224.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="224.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="224.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="224.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="224.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="226.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Generalized</text>
+<rect x="175.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="186.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="230.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="235.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="235.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="235.00" r="3.60" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.9"/>
+<line x1="429.50" y1="237.50" x2="434.50" y2="232.50" stroke="#3A4A51" stroke-width="0.9" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="462.00" cy="235.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="235.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="235.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="237.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Generalized, strict</text>
+<rect x="175.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="186.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="241.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="246.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="246.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="246.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<rect x="457.90" y="246.20" width="2.20" height="3.40" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<rect x="460.90" y="242.40" width="2.20" height="7.20" rx="0" fill="#3A4A51" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<rect x="463.90" y="245.00" width="2.20" height="4.60" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.6"/>
+<circle cx="492.00" cy="246.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="246.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="248.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Generalized, mode</text>
+<text x="14.00" y="287.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Sleep apnoea</text>
+<text x="182.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 182.50 288.00)">F51.0</text>
+<text x="193.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 193.50 288.00)">F51.1</text>
+<text x="204.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 204.50 288.00)">F51.2</text>
+<text x="215.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 215.50 288.00)">F51.3</text>
+<text x="226.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 226.50 288.00)">F51.4</text>
+<text x="237.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 237.50 288.00)">F51.5</text>
+<text x="248.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 248.50 288.00)">F51.8</text>
+<text x="259.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 259.50 288.00)">F51.9</text>
+<text x="270.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 270.50 288.00)">G47.0</text>
+<text x="281.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 281.50 288.00)">G47.1</text>
+<text x="292.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 292.50 288.00)">G47.2</text>
+<text x="303.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 303.50 288.00)">G47.3</text>
+<text x="314.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 314.50 288.00)">G47.4</text>
+<text x="325.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 325.50 288.00)">G47.8</text>
+<text x="336.50" y="288.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 336.50 288.00)">G47.9</text>
+<rect x="175.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="186.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="285.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="296.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="307.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="318.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="329.50" y="292.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="297.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="297.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="297.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="297.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="297.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<text x="172.00" y="299.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Hospital records</text>
+<rect x="175.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="186.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="274.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="285.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="296.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<path d="M 305.50,303.50 L 305.50,308.60 L 300.40,303.50 Z" fill="#12998c" stroke="#EEF3F1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="307.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="318.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="329.50" y="303.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="308.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="308.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="308.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="308.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="308.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="308.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="310.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">+ primary care</text>
+<rect x="175.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="230.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="241.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="252.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="263.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="274.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="285.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="296.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="307.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="318.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="329.50" y="314.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<circle cx="372.00" cy="319.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<rect x="397.30" y="315.70" width="9.40" height="6.60" rx="0" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<rect x="397.30" y="317.00" width="9.40" height="1.50" rx="0" fill="#3A4A51" opacity="1.00"/>
+<circle cx="432.00" cy="319.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="319.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="319.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="319.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="321.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Any sleep disorder</text>
+<text x="14.00" y="360.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Insomnia</text>
+<text x="182.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 182.50 361.00)">F51.0</text>
+<text x="193.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 193.50 361.00)">F51.1</text>
+<text x="204.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 204.50 361.00)">F51.2</text>
+<text x="215.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 215.50 361.00)">F51.3</text>
+<text x="226.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 226.50 361.00)">F51.4</text>
+<text x="237.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 237.50 361.00)">F51.5</text>
+<text x="248.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 248.50 361.00)">F51.8</text>
+<text x="259.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 259.50 361.00)">F51.9</text>
+<text x="270.50" y="361.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 270.50 361.00)">G47.0</text>
+<rect x="175.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="252.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="263.50" y="365.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<circle cx="372.00" cy="370.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="370.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="370.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="370.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="370.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<text x="172.00" y="372.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Insomnia (F51.0, G47.0)</text>
+<rect x="175.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="230.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="241.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="252.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="263.50" y="376.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="381.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="381.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="381.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="381.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="381.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="381.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="383.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Nonorganic sleep (F51)</text>
+<text x="14.00" y="422.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">Constipation</text>
+<text x="182.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 182.50 423.00)">K59.0</text>
+<text x="193.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 193.50 423.00)">K59.1</text>
+<text x="204.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 204.50 423.00)">K59.2</text>
+<text x="215.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 215.50 423.00)">K59.3</text>
+<text x="226.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 226.50 423.00)">K59.4</text>
+<text x="237.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 237.50 423.00)">K59.8</text>
+<text x="248.50" y="423.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 248.50 423.00)">K59.9</text>
+<rect x="175.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="219.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="230.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="241.50" y="427.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="367.00" y="429.70" width="10.00" height="4.60" rx="2.3" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<path d="M 372.00,429.70 L 369.30,429.70 A 2.3 2.3 0 0 0 369.30,434.30 L 372.00,434.30 Z" fill="#3A4A51" stroke="#3A4A51" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="402.00" cy="432.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="432.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="432.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="432.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<text x="172.00" y="434.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Constipation or laxatives</text>
+<rect x="175.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="219.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="230.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="241.50" y="438.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<circle cx="372.00" cy="443.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="443.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="443.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="443.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="443.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="443.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="445.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">Functional bowel (K59)</text>
+<text x="14.00" y="484.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">ADHD</text>
+<text x="182.50" y="485.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 182.50 485.00)">F90.0</text>
+<text x="193.50" y="485.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 193.50 485.00)">F90.1</text>
+<text x="204.50" y="485.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 204.50 485.00)">F90.8</text>
+<text x="215.50" y="485.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" transform="rotate(-90 215.50 485.00)">F90.9</text>
+<rect x="175.50" y="489.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="489.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="197.50" y="489.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<rect x="208.50" y="489.50" width="9.00" height="9.00" rx="0.8" fill="#E2EAE7" opacity="1.00" stroke="#CAD6D1" stroke-width="0.4"/>
+<circle cx="372.00" cy="494.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="494.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="494.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="494.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="494.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<text x="172.00" y="496.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">F90.0</text>
+<rect x="175.50" y="500.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="186.50" y="500.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="197.50" y="500.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<rect x="208.50" y="500.50" width="9.00" height="9.00" rx="0.8" fill="#4b57c9" opacity="1.00"/>
+<circle cx="372.00" cy="505.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="402.00" cy="505.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="432.00" cy="505.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="462.00" cy="505.00" r="1.10" fill="#CAD6D1" opacity="1.00"/>
+<circle cx="492.00" cy="505.00" r="3.80" fill="#FFFFFF" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<circle cx="492.00" cy="505.00" r="1.50" fill="#3A4A51" opacity="1.00"/>
+<text x="172.00" y="507.50" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">F90, strict controls</text>
+</g>
+</svg>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="252.0pt" height="320.0pt" viewBox="0 0 252.0 320.0" font-family="Menlo, 'SF Mono', Consolas, 'Liberation Mono', monospace">
+<rect width="252.0" height="320.0" fill="#EEF3F1"/>
+<rect x="10.00" y="6.00" width="6.00" height="6.00" rx="0" fill="#c9761a" opacity="1.00"/>
+<text x="21.00" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">first definition</text>
+<rect x="98.42" y="6.00" width="6.00" height="6.00" rx="0" fill="#2f6fc4" opacity="1.00"/>
+<text x="109.42" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">alternatives</text>
+<rect x="9.00" y="18.50" width="9.00" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<text x="21.00" y="24.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">noise, 1.96 SE of the difference</text>
+<text x="10.00" y="42.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">1  Three borders</text>
+<text x="130.00" y="42.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">2  Five GWAS each</text>
+<text x="10.00" y="158.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">3  The rg moves</text>
+<text x="130.00" y="158.00" font-size="8.0" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">4  Beyond its noise?</text>
+<text x="10.00" y="56.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">hospital records</text>
+<rect x="10.00" y="58.50" width="50.70" height="6.00" rx="1" fill="#c9761a" opacity="1.00"/>
+<text x="63.70" y="64.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">56,885</text>
+<text x="10.00" y="73.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">+ primary care</text>
+<rect x="10.00" y="75.50" width="55.90" height="6.00" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="68.90" y="81.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">62,722</text>
+<text x="10.00" y="90.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">any sleep disorder</text>
+<rect x="10.00" y="92.50" width="58.00" height="6.00" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="71.00" y="98.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">65,076</text>
+<line x1="60.70" y1="75.00" x2="60.70" y2="82.00" stroke="#14232B" stroke-width="0.8" stroke-linecap="butt" opacity="1.00" stroke-dasharray="1.6 1.2"/>
+<line x1="60.70" y1="92.00" x2="60.70" y2="99.00" stroke="#14232B" stroke-width="0.8" stroke-linecap="butt" opacity="1.00" stroke-dasharray="1.6 1.2"/>
+<text x="10.00" y="118.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">dashed: hospital length</text>
+<line x1="168.00" y1="63.00" x2="174.00" y2="58.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="63.00" x2="174.00" y2="72.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="63.00" x2="174.00" y2="86.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="63.00" x2="174.00" y2="100.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="63.00" x2="174.00" y2="114.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<rect x="130.00" y="56.00" width="38.00" height="14.00" rx="2" fill="#D5DFDB" opacity="1.00"/>
+<rect x="130.00" y="56.00" width="2.50" height="14.00" rx="0" fill="#c9761a" opacity="1.00"/>
+<text x="135.00" y="65.50" font-size="7.0" fill="#14232B" text-anchor="start" xml:space="preserve">hospital</text>
+<line x1="168.00" y1="83.00" x2="174.00" y2="58.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="83.00" x2="174.00" y2="72.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="83.00" x2="174.00" y2="86.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="83.00" x2="174.00" y2="100.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="83.00" x2="174.00" y2="114.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<rect x="130.00" y="76.00" width="38.00" height="14.00" rx="2" fill="#D5DFDB" opacity="1.00"/>
+<rect x="130.00" y="76.00" width="2.50" height="14.00" rx="0" fill="#2f6fc4" opacity="1.00"/>
+<text x="135.00" y="85.50" font-size="7.0" fill="#14232B" text-anchor="start" xml:space="preserve">+ primary</text>
+<line x1="168.00" y1="103.00" x2="174.00" y2="58.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="103.00" x2="174.00" y2="72.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="103.00" x2="174.00" y2="86.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="103.00" x2="174.00" y2="100.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="168.00" y1="103.00" x2="174.00" y2="114.00" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<rect x="130.00" y="96.00" width="38.00" height="14.00" rx="2" fill="#D5DFDB" opacity="1.00"/>
+<rect x="130.00" y="96.00" width="2.50" height="14.00" rx="0" fill="#2f6fc4" opacity="1.00"/>
+<text x="135.00" y="105.50" font-size="7.0" fill="#14232B" text-anchor="start" xml:space="preserve">any sleep</text>
+<circle cx="176.00" cy="58.00" r="2.50" fill="#6a48c4" opacity="1.00"/>
+<text x="181.00" y="60.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">autism</text>
+<circle cx="176.00" cy="72.00" r="2.50" fill="#3a9ad9" opacity="1.00"/>
+<text x="181.00" y="74.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">schizophrenia</text>
+<circle cx="176.00" cy="86.00" r="2.50" fill="#e2562b" opacity="1.00"/>
+<text x="181.00" y="88.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">bipolar</text>
+<circle cx="176.00" cy="100.00" r="2.50" fill="#e8a300" opacity="1.00"/>
+<text x="181.00" y="102.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">depression</text>
+<circle cx="176.00" cy="114.00" r="2.50" fill="#c2408e" opacity="1.00"/>
+<text x="181.00" y="116.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">PTSD</text>
+<line x1="10.00" y1="216.00" x2="118.00" y2="216.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<path d="M 46.34,212.00 Q 67.04,170.00 85.53,207.52" fill="none" stroke="#e8a300" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 87.74,212.00 L 83.20,208.66 L 87.87,206.37 Z" fill="#e8a300" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<circle cx="46.34" cy="216.00" r="3.00" fill="#c9761a" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<circle cx="87.74" cy="216.00" r="3.00" fill="#2f6fc4" opacity="1.00" stroke="#EEF3F1" stroke-width="0.6"/>
+<text x="67.04" y="188.00" font-size="7.0" fill="#14232B" text-anchor="middle" xml:space="preserve">+0.068</text>
+<text x="46.34" y="227.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">hospital</text>
+<text x="46.34" y="236.00" font-size="7.0" fill="#14232B" text-anchor="middle" xml:space="preserve">rg 0.353</text>
+<text x="87.74" y="227.00" font-size="7.0" fill="#3A4A51" text-anchor="middle" xml:space="preserve">any sleep</text>
+<text x="87.74" y="236.00" font-size="7.0" fill="#14232B" text-anchor="middle" xml:space="preserve">rg 0.420</text>
+<text x="130.00" y="174.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">noise: 1.96 SE = 0.014</text>
+<rect x="146.33" y="186.00" width="26.33" height="12.00" rx="1.5" fill="#CDD8D4" opacity="1.00"/>
+<line x1="159.50" y1="183.00" x2="159.50" y2="201.00" stroke="#3A4A51" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="159.50" y1="192.00" x2="221.47" y2="192.00" stroke="#e8a300" stroke-width="1.6" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="221.47" cy="192.00" r="2.80" fill="#e8a300" opacity="1.00"/>
+<text x="130.00" y="214.00" font-size="7.0" fill="#14232B" text-anchor="start" xml:space="preserve">shift +0.068, p = 2.8e-20</text>
+<text x="130.00" y="223.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">far outside its noise</text>
+<line x1="10.00" y1="258.00" x2="242.00" y2="258.00" stroke="#CAD6D1" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<text x="10.00" y="270.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve" letter-spacing="0.6">CHECKS BESIDE THE DESIGN</text>
+<circle cx="12.50" cy="279.50" r="2.00" fill="none" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<text x="19.00" y="282.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">published autism heritability and ADHD rg reproduced</text>
+<circle cx="12.50" cy="289.00" r="2.00" fill="none" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<text x="19.00" y="291.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">positive control: EHR against clinical depression</text>
+<circle cx="12.50" cy="298.50" r="2.00" fill="none" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<text x="19.00" y="301.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">definition codes mapped to SNOMED CT through OMOP</text>
+<circle cx="12.50" cy="308.00" r="2.00" fill="none" opacity="1.00" stroke="#3A4A51" stroke-width="0.8"/>
+<text x="19.00" y="310.50" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Finnish against European LD scores</text>
+</svg>

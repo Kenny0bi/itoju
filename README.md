@@ -6,7 +6,7 @@ FinnGen publishes several definitions of the same condition side by side, each w
 
 **9 of 135** comparisons survive Bonferroni correction. Widening sleep apnoea to any sleep disorder raises the genetic correlation with every large psychiatric GWAS by **0.05 to 0.07**. Adding primary care records to the same definition moves it by **0.013 at most**, when the test could see a shift of 0.015. For autism, no definition effect survives correction.
 
-![Definition swings](figures/fig10_definition_swings.png)
+![What moves the genetics when a definition changes](figures/fig10_what_moves.png)
 
 *Itọ́jú* is Yoruba for care.
 
@@ -76,9 +76,9 @@ The mapping caught a mistake in my own labelling. I had been treating one FinnGe
 
 ## The animation
 
-![LD score regression on this study's data](figures/itoju_ldsc.gif)
+![Why a small shift can still be certain](figures/itoju_animation.gif)
 
-The one idea the rest depends on: in LD score regression the average product of two studies' z-scores rises with a SNP's LD score, the slope carries the shared genetics, and the intercept carries the people who are in both studies. The video is [figures/itoju_ldsc.mp4](figures/itoju_ldsc.mp4).
+The one idea the difference test rests on, with this study's own numbers. Depression's genetic correlation with sleep apnoea is 0.353 under hospital records and 0.420 under any sleep disorder, and on their own the two 95% intervals overlap. LDSC measures its noise by leaving out one of 200 genome blocks at a time, and on a common SNP set every block gives a pair of values, one per definition. The pairs agree (r = 0.96) because the two definitions share people. Subtract block by block and that shared noise cancels: the standard error of the difference is 0.007, against 0.035 if each block is paired with a random other one. The shift of +0.068 ends up far outside its own noise. Every number comes from [animation/export_block_numbers.py](animation/export_block_numbers.py), and the video is [figures/itoju_animation.mp4](figures/itoju_animation.mp4).
 
 ## Honest limits
 
@@ -112,7 +112,6 @@ python src/06_finnish_ldscores.py 21 22      # Finnish LD scores from the FinnGe
 bash src/08a_extract_omop.sh /path/to/athena # vocabulary slices; SNOMED CT content stays local
 python src/08b_omop_mapping.py
 for f in src/fig*.py; do python "$f"; done   # every figure, saved through automatic layout checks
-python src/test_viz_checks.py                # tests for the layout checks themselves
 python src/verify_refs.py paper/references.bib paper/itoju.tex   # every reference against Crossref
 ```
 
@@ -127,7 +126,7 @@ The published result tables carry SNOMED CT concept IDs only, never concept cont
 - [src/07_definition_effect.py](src/07_definition_effect.py) and [src/05_delta_rg.py](src/05_delta_rg.py) the shared-block jackknife difference test, Cochran's Q and the smallest detectable shift
 - [src/06_finnish_ldscores.py](src/06_finnish_ldscores.py) LD scores from the FinnGen LD matrix
 - [src/08a_extract_omop.sh](src/08a_extract_omop.sh) and [src/08b_omop_mapping.py](src/08b_omop_mapping.py) ICD-10 to SNOMED CT, ATC to RxNorm, hierarchy-aware overlap
-- [src/fig*.py](src/) and [src/viz_style.py](src/viz_style.py) the figures and the layout checks every figure passes
+- [src/fig*.py](src/) and [src/itoju_svg.py](src/itoju_svg.py) the figures, drawn as SVG at print size, and the checks every figure passes on its rendered PDF: no text overlapping text, off the canvas, under 7 pt or on a data mark, and a key in every figure. Each figure is also saved in a paper version without its headline and reading panel, which the caption carries
 - [results/](results/) every table the figures and the paper read
 - [animation/](animation/) the Manim scene and the script that exports its numbers
 - [paper/itoju.pdf](paper/itoju.pdf) the full write-up, IEEE format, 40 references checked against Crossref

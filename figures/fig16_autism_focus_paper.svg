@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="252.0pt" height="363.0pt" viewBox="0 0 252.0 363.0" font-family="Menlo, 'SF Mono', Consolas, 'Liberation Mono', monospace">
+<rect width="252.0" height="363.0" fill="#EEF3F1"/>
+<rect x="9.00" y="6.50" width="9.00" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<text x="21.00" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">chance: 1.96 SE</text>
+<rect x="93.21" y="6.50" width="9.00" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<text x="105.21" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">detectable 4 in 5</text>
+<circle cx="13.00" cy="21.50" r="2.80" fill="#6a48c4" opacity="1.00"/>
+<text x="21.00" y="24.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">p &lt; 0.05</text>
+<circle cx="67.71" cy="21.50" r="2.50" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="75.71" y="24.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">not significant</text>
+<text x="244.00" y="42.00" font-size="7.0" fill="#5E6E72" text-anchor="end" xml:space="preserve">shift, detectable</text>
+<text x="10.00" y="60.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Epilepsy</text>
+<text x="52.60" y="60.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">vs any epilepsy</text>
+<text x="16.00" y="72.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Focal</text>
+<text x="244.00" y="72.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">-0.13, 0.20</text>
+<rect x="89.86" y="76.00" width="74.27" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="101.02" y="76.00" width="51.96" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="74.50" x2="127.00" y2="83.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="79.00" x2="102.69" y2="79.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="102.69" cy="79.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="16.00" y="92.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Focal, strict</text>
+<text x="244.00" y="92.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">-0.15, 0.24</text>
+<rect x="81.45" y="96.00" width="91.10" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="95.13" y="96.00" width="63.74" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="94.50" x2="127.00" y2="103.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="99.00" x2="99.26" y2="99.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="99.26" cy="99.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="16.00" y="112.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Focal, mode</text>
+<text x="244.00" y="112.00" font-size="7.0" fill="#14232B" text-anchor="end" xml:space="preserve">-0.20, 0.24</text>
+<rect x="81.27" y="116.00" width="91.46" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="95.01" y="116.00" width="63.98" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="114.50" x2="127.00" y2="123.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="119.00" x2="89.94" y2="119.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="89.94" cy="119.00" r="2.40" fill="#6a48c4" opacity="1.00"/>
+<text x="16.00" y="132.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Generalized</text>
+<text x="244.00" y="132.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">0.00, 0.30</text>
+<rect x="70.28" y="136.00" width="113.43" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="87.32" y="136.00" width="79.36" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="134.50" x2="127.00" y2="143.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="139.00" x2="126.15" y2="139.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="126.15" cy="139.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="16.00" y="152.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Generalized, strict</text>
+<text x="244.00" y="152.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">-0.07, 0.70</text>
+<rect x="14.00" y="156.00" width="226.00" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="35.02" y="156.00" width="183.97" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="154.50" x2="127.00" y2="163.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="159.00" x2="113.87" y2="159.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="113.87" cy="159.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="16.00" y="172.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Generalized, mode</text>
+<text x="244.00" y="172.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">0.00, 0.35</text>
+<rect x="60.82" y="176.00" width="132.35" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="80.70" y="176.00" width="92.59" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="174.50" x2="127.00" y2="183.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="179.00" x2="127.15" y2="179.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="127.15" cy="179.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="10.00" y="192.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Sleep apnoea</text>
+<text x="70.90" y="192.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">vs hospital records</text>
+<text x="16.00" y="204.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">+ primary care</text>
+<text x="244.00" y="204.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">-0.01, 0.03</text>
+<rect x="121.60" y="208.00" width="10.80" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="123.22" y="208.00" width="7.56" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="206.50" x2="127.00" y2="215.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="211.00" x2="124.59" y2="211.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="124.59" cy="211.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="16.00" y="224.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Any sleep disorder</text>
+<text x="244.00" y="224.00" font-size="7.0" fill="#14232B" text-anchor="end" xml:space="preserve">+0.03, 0.04</text>
+<rect x="120.03" y="228.00" width="13.94" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="122.12" y="228.00" width="9.76" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="226.50" x2="127.00" y2="235.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="231.00" x2="132.07" y2="231.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="132.07" cy="231.00" r="2.40" fill="#6a48c4" opacity="1.00"/>
+<text x="10.00" y="244.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Insomnia</text>
+<text x="52.60" y="244.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">vs insomnia (F51.0, G47.0)</text>
+<text x="16.00" y="256.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Nonorganic sleep (F51)</text>
+<text x="244.00" y="256.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">+0.09, 0.15</text>
+<rect x="98.94" y="260.00" width="56.11" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="107.37" y="260.00" width="39.26" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="258.50" x2="127.00" y2="267.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="263.00" x2="144.59" y2="263.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="144.59" cy="263.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="10.00" y="276.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Constipation</text>
+<text x="70.90" y="276.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">vs constipation or laxatives</text>
+<text x="16.00" y="288.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">Functional bowel (K59)</text>
+<text x="244.00" y="288.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">-0.01, 0.21</text>
+<rect x="88.24" y="292.00" width="77.53" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="99.88" y="292.00" width="54.24" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="290.50" x2="127.00" y2="299.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="295.00" x2="125.17" y2="295.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="125.17" cy="295.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<text x="10.00" y="308.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">ADHD</text>
+<text x="34.30" y="308.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">vs F90.0</text>
+<text x="16.00" y="320.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">F90, strict controls</text>
+<text x="244.00" y="320.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">+0.02, 0.12</text>
+<rect x="103.63" y="324.00" width="46.74" height="6.00" rx="1" fill="#DCE5E1" opacity="1.00"/>
+<rect x="110.65" y="324.00" width="32.70" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<line x1="127.00" y1="322.50" x2="127.00" y2="331.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="127.00" y1="327.00" x2="130.07" y2="327.00" stroke="#6a48c4" stroke-width="1.5" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="130.07" cy="327.00" r="2.10" fill="#EEF3F1" opacity="1.00" stroke="#6a48c4" stroke-width="1.0"/>
+<line x1="32.83" y1="54.00" x2="32.83" y2="334.00" stroke="#CAD6D1" stroke-width="0.4" stroke-linecap="butt" opacity="1.00"/>
+<line x1="221.17" y1="54.00" x2="221.17" y2="334.00" stroke="#CAD6D1" stroke-width="0.4" stroke-linecap="butt" opacity="1.00"/>
+<line x1="14.00" y1="337.00" x2="240.00" y2="337.00" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="32.83" y1="337.00" x2="32.83" y2="339.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="32.83" y="347.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">-0.5</text>
+<line x1="127.00" y1="337.00" x2="127.00" y2="339.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="127.00" y="347.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">0</text>
+<line x1="221.17" y1="337.00" x2="221.17" y2="339.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="221.17" y="347.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">+0.5</text>
+<text x="127.00" y="357.00" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">shift in rg with autism (sleeves cut at 0.6)</text>
+</svg>

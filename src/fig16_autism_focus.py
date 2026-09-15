@@ -1,95 +1,160 @@
-"""Figure 16. Autism in focus: how large a definition effect could this study see, and how large was it?
+"""Figure: autism, and how large a definition effect these data could have seen.
 
-One row per alternative definition, compared with the first definition of its condition, with
-iPSYCH-PGC autism as the shared trait. Each row is a caliper:
-  stem          the observed shift in rg (this definition minus the first)
-  dark sleeve   plus or minus 1.96 SE of the difference: shifts the test cannot tell from chance
-  pale sleeve   the smallest shift the design would catch 4 times in 5 (alpha 0.05, power 0.80)
-A stem that escapes the dark sleeve is colored. The two columns on the right give the observed shift
-and the catchable one, so a well-powered null (small pale sleeve, stem inside) reads at a glance.
+One row per alternative definition, compared with the first definition of its condition, with the
+iPSYCH-PGC autism GWAS as the shared trait. Each row is a caliper on one axis of shift in genetic
+correlation: the darker sleeve is plus or minus 1.96 SE of the difference (shifts the test cannot tell
+from chance), the paler sleeve is the smallest shift detectable at 80% power, and the violet stem is the
+shift itself. The columns at the right give rg under the two definitions (common SNP set, the estimates
+the test compares), the shift, and the detectable shift, so a well-powered null reads at a glance.
 
-Source: results/definition_effect/pairwise_delta.tsv.
+Source: results/definition_effect/pairwise_delta.tsv. Every sentence in the reading panel is computed.
 """
-import matplotlib.pyplot as plt
 import pandas as pd
 
-import viz_style as vs
+import itoju_svg as sv
 from itoju_labels import GROUPS
 
-ROOT = vs.ROOT
+ROOT = sv.ROOT
 SETS = ["Epilepsy", "Sleep apnoea", "Insomnia", "Constipation", "ADHD"]
-ASD = vs.TRAIT["ASD"]
-INNER = "#d8d0bf"
-OUTER = "#efebe2"
-GRAY = "#aaa69c"
-XCAP = 0.6
+CAP = 0.6
+BONF = 0.05 / 135
+ASD = sv.TRAIT["ASD"]
 
 
 def main():
-    vs.apply()
     pw = pd.read_csv(ROOT / "results" / "definition_effect" / "pairwise_delta.tsv", sep="\t")
     pw = pw[pw.shared == "ASD"]
     groups = dict(GROUPS)
-
-    rows, headers, y = [], [], 0.0
+    rows = []
     for name in SETS:
         defs = groups[name]
-        headers.append((name, defs[0][1], y))
-        y += 1.05
+        first_e, first_lab = defs[0]
+        rows.append(("head", name, first_lab))
         for e, lab in defs[1:]:
-            r = pw[((pw.def1 == defs[0][0]) & (pw.def2 == e)) | ((pw.def1 == e) & (pw.def2 == defs[0][0]))].iloc[0]
-            shift = r.delta if r.def1 == e else -r.delta
-            rows.append((lab, y, shift, 1.96 * r.se_delta, r.min_detectable_delta))
-            y += 1.0
-        y += 0.45
-    total = y - 0.45
+            r = pw[((pw.def1 == first_e) & (pw.def2 == e)) | ((pw.def1 == e) & (pw.def2 == first_e))]
+            assert len(r) == 1, (first_e, e)
+            r = r.iloc[0]
+            if r.def1 == first_e:
+                rg_a, rg_b, shift = r.rg1, r.rg2, -r.delta
+            else:
+                rg_a, rg_b, shift = r.rg2, r.rg1, r.delta
+            rows.append(("row", name, lab, rg_a, rg_b, shift, 1.96 * r.se_delta, r.min_detectable_delta, r.p))
 
-    fig = plt.figure(figsize=(vs.SINGLE, 0.14 * total + 0.88))
-    ax = fig.add_axes([0.385, 0.19, 0.36, 0.73])
-    for lab, yy, shift, hw, mdd in rows:
-        ax.hlines(yy, -min(mdd, XCAP), min(mdd, XCAP), colors=OUTER, linewidth=6.5, zorder=1)
-        ax.hlines(yy, -min(hw, XCAP), min(hw, XCAP), colors=INNER, linewidth=6.5, zorder=2)
-        clear = abs(shift) > hw
-        ax.hlines(yy, 0, shift, colors=ASD, linewidth=1.5 if clear else 1.0, zorder=4)
-        ax.scatter(shift, yy, s=18, facecolor=ASD if clear else "white", edgecolor=ASD, linewidths=1.0, zorder=5)
-        ax.text(-XCAP - 0.05, yy, lab, ha="right", va="center", fontsize=7, color=vs.INK_2)
-        shown = "0.00" if abs(shift) < 0.005 else f"{shift:+.2f}"   # no "-0.00"
-        ax.text(1.22, yy, shown, transform=ax.get_yaxis_transform(), ha="right",
-                va="center", fontsize=7, color=vs.INK if clear else vs.INK_2)
-        ax.text(1.62, yy, f"{mdd:.2f}", transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=7,
-                color=vs.INK_2)
-    name_x = (0.02 - 0.385) / 0.36          # figure left margin, in axes units
-    for name, first, yy in headers:
-        ax.text(name_x, yy, f"{name}", transform=ax.get_yaxis_transform(), ha="left", va="center", fontsize=7.6,
-                fontweight="bold", color=vs.INK)
-        # the header row carries no marks, so the reference definition can sit over the gauge
-        ax.text(-XCAP - 0.02, yy, f"vs {first[0].lower() + first[1:] if not first[:2].isupper() else first}",
-                ha="left", va="center", fontsize=7, color=vs.MUTED)
-    # zero line drawn row by row, so it never runs through a header's text
-    ax.vlines([0] * len(rows), [yy - 0.5 for _, yy, *_ in rows], [yy + 0.5 for _, yy, *_ in rows], colors=vs.INK_2,
-              lw=0.5, zorder=3)
-    ax.set_ylim(total, -1.1)
-    ax.set_xlim(-XCAP - 0.02, XCAP + 0.02)
-    ax.set_yticks([])
-    ax.spines["left"].set_visible(False)
-    ax.set_xticks([-0.5, 0, 0.5])
-    ax.set_xticklabels(["-0.5", "0", "+0.5"])
-    ax.set_xlabel("shift in rg with autism", fontsize=7.5)
-    ax.text(1.22, -0.95, "shift", transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=7,
-            color=vs.INK)
-    ax.text(1.62, -0.95, "catchable", transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=7,
-            color=vs.INK)
-    # key
-    kx = fig.add_axes([0.02, 0.005, 0.96, 0.075])
-    kx.set_xlim(0, 100)
-    kx.set_ylim(0, 1)
-    kx.axis("off")
-    kx.hlines(0.5, 0.5, 9.5, colors=OUTER, linewidth=6.5)
-    kx.hlines(0.5, 3, 7, colors=INNER, linewidth=6.5)
-    kx.text(11, 0.5, "Dark: shifts the test cannot tell from chance (1.96 SE).\n"
-            "Pale: shift caught 4 times in 5. Filled dot: p < 0.05. Cut at 0.6.", va="center",
-            fontsize=7, color=vs.INK_2, linespacing=1.3)
-    vs.save(fig, "fig16_autism_focus")
+    W = sv.DOUBLE
+    left, ax0, ax1 = 14.0, 182.0, 350.0
+    col_rg, col_shift, col_det = 414.0, 450.0, 506.0
+    head_h, row_h, top = 16.0, 15.5, 108.0
+    body = sum(head_h if r[0] == "head" else row_h for r in rows)
+    H = top + body + 108
+    f = sv.Figure(W, H)
+    f.header("itoju  /  autism",
+             "For autism, no change of definition moves the genetics beyond chance",
+             "Shift in genetic correlation with iPSYCH-PGC autism against the first definition of each condition")
+    f.key_row(left, 72, [("band", sv.NOISE, "chance: 1.96 SE of the difference"),
+                         ("band", sv.NOISE_2, "detectable 4 times in 5"),
+                         ("dot", ASD, "p < 0.05"), ("hollow", ASD, "not significant")])
+    X = sv.scale(-CAP, CAP, ax0, ax1)
+    f.text(col_rg, 96, "rg, first to second", 7.0, sv.DIM, anchor="end")
+    f.text(col_shift, 96, "shift", 7.0, sv.DIM, anchor="end")
+    f.text(col_det, 96, "detectable", 7.0, sv.DIM, anchor="end")
+
+    y = top
+    for r in rows:
+        if r[0] == "head":
+            _, name, first_lab = r
+            f.text(left, y + 8, name, 7.6, sv.INK)
+            vs = first_lab[0].lower() + first_lab[1:] if not first_lab[:2].isupper() else first_lab
+            f.text(left + sv.text_width(name, 7.6) + 8, y + 8, f"vs {vs}", 7.0, sv.DIM)
+            y += head_h
+            continue
+        _, name, lab, rg_a, rg_b, shift, hw, mdd, p = r
+        cy = y + 4.5
+        for v in (-0.5, 0.5):
+            f.line(X(v), y - 3, X(v), y + row_h - 3, sv.GRID, 0.5)
+        f.text(left + 10, y + 7, lab, 7.0, sv.INK_2)
+        f.rect(X(-min(mdd, CAP)), cy - 3.5, X(min(mdd, CAP)) - X(-min(mdd, CAP)), 7, sv.NOISE_2, rx=1)
+        f.rect(X(-min(hw, CAP)), cy - 3.5, X(min(hw, CAP)) - X(-min(hw, CAP)), 7, sv.NOISE, rx=1)
+        f.line(X(0), cy - 5.5, X(0), cy + 5.5, sv.RULE, 0.5)
+        f.line(X(0), cy, X(max(min(shift, CAP), -CAP)), cy, ASD, 1.6, mark=True)
+        if p < 0.05:
+            f.circle(X(shift), cy, 2.6, ASD)
+        else:
+            f.circle(X(shift), cy, 2.3, sv.GROUND, stroke=ASD, sw=1.0)
+        f.text(col_rg, y + 7, f"{rg_a:.2f} to {rg_b:.2f}", 7.0, sv.INK_2, anchor="end")
+        f.text(col_shift, y + 7, sv.fmt(shift, 2, sign=True), 7.0, sv.INK if p < 0.05 else sv.INK_2, anchor="end")
+        f.text(col_det, y + 7, f"{mdd:.2f}", 7.0, sv.INK_2, anchor="end")
+        y += row_h
+    ya = top + body + 2
+    f.line(ax0, ya, ax1, ya, sv.RULE, 0.5)
+    for v, s in ((-0.5, "-0.5"), (0, "0"), (0.5, "+0.5")):
+        f.line(X(v), ya, X(v), ya + 2.5, sv.RULE, 0.5)
+        f.text(X(v), ya + 10.5, s, 7.0, sv.DIM, anchor="middle")
+    f.text((ax0 + ax1) / 2, ya + 20, "shift in rg with autism (sleeves cut at 0.6)", 7.0, sv.DIM, anchor="middle")
+
+    data = [r for r in rows if r[0] == "row"]
+    n_nom = sum(r[8] < 0.05 for r in data)
+    n_bonf = sum(r[8] < BONF for r in data)
+    con = next(r for r in data if r[1] == "Constipation")
+    apn = [r for r in data if r[1] == "Sleep apnoea"]
+    epi = [r for r in data if r[1] == "Epilepsy"]
+    print(f"  autism rows {len(data)}: p<0.05 {n_nom}, Bonferroni {n_bonf}; constipation shift {con[5]:+.4f} detectable {con[7]:.3f}; "
+          f"apnoea detectable {min(r[7] for r in apn):.3f}-{max(r[7] for r in apn):.3f}; epilepsy {min(r[7] for r in epi):.3f}-{max(r[7] for r in epi):.3f}")
+    lines = [
+        f"Against each condition's first definition, {n_nom} of {len(data)} changes reach p < 0.05; {n_bonf} survive Bonferroni.",
+        f"Constipation moves by {sv.fmt(con[5], 3, sign=True)} where a shift of {con[7]:.2f} was detectable: a well-powered null.",
+        f"Sleep apnoea could show a shift of {min(r[7] for r in apn):.2f}; epilepsy needs {min(r[7] for r in epi):.2f} "
+        f"to {max(r[7] for r in epi):.2f}, which these data cannot resolve.",
+    ]
+    f.reading(left, ya + 30, W - left - 10, lines, strong=(0,))
+    f.source("iPSYCH-PGC autism and FinnGen R12; detectable shift = 2.80 SE (alpha 0.05, power 0.80)")
+    f.save("fig16_autism_focus")
+    paper_single(rows)
+
+
+def paper_single(rows):
+    """The paper's single-column layout: each definition named above its caliper, shift and detectable shift at right."""
+    W = sv.SINGLE
+    left, right = 10.0, sv.SINGLE - 8
+    f = sv.Figure(W, 2000.0)          # drawn tall, trimmed to the content at the end
+    f.key_row(left, 12, [("band", sv.NOISE, "chance: 1.96 SE"), ("band", sv.NOISE_2, "detectable 4 in 5")])
+    f.key_row(left, 24, [("dot", ASD, "p < 0.05"), ("hollow", ASD, "not significant")])
+    X = sv.scale(-CAP, CAP, left + 4, right - 4)
+    f.text(right, 42, "shift, detectable", 7.0, sv.DIM, anchor="end")
+    top = 56.0
+    body_top = top
+    y = top
+    for r in rows:
+        if r[0] == "head":
+            _, name, first_lab = r
+            vs = first_lab[0].lower() + first_lab[1:] if not first_lab[:2].isupper() else first_lab
+            f.text(left, y + 4, name, 7.6, sv.INK)
+            f.text(left + sv.text_width(name, 7.6) + 6, y + 4, f"vs {vs}", 7.0, sv.DIM, max_w=right - left - sv.text_width(name, 7.6) - 6)
+            y += 12
+            continue
+        _, name, lab, rg_a, rg_b, shift, hw, mdd, p = r
+        f.text(left + 6, y + 4, lab, 7.0, sv.INK_2)
+        f.text(right, y + 4, f"{sv.fmt(shift, 2, sign=True)}, {mdd:.2f}", 7.0, sv.INK if p < 0.05 else sv.INK_2, anchor="end")
+        cy = y + 11
+        f.rect(X(-min(mdd, CAP)), cy - 3, X(min(mdd, CAP)) - X(-min(mdd, CAP)), 6, sv.NOISE_2, rx=1)
+        f.rect(X(-min(hw, CAP)), cy - 3, X(min(hw, CAP)) - X(-min(hw, CAP)), 6, sv.NOISE, rx=1)
+        f.line(X(0), cy - 4.5, X(0), cy + 4.5, sv.RULE, 0.5)
+        f.line(X(0), cy, X(max(min(shift, CAP), -CAP)), cy, ASD, 1.5, mark=True)
+        if p < 0.05:
+            f.circle(X(shift), cy, 2.4, ASD)
+        else:
+            f.circle(X(shift), cy, 2.1, sv.GROUND, stroke=ASD, sw=1.0)
+        y += 20
+    for v in (-0.5, 0.5):
+        f.line(X(v), body_top - 2, X(v), y - 2, sv.GRID, 0.4)
+    ya = y + 1
+    f.line(X(-CAP), ya, X(CAP), ya, sv.RULE, 0.5)
+    for v, s in ((-0.5, "-0.5"), (0, "0"), (0.5, "+0.5")):
+        f.line(X(v), ya, X(v), ya + 2.5, sv.RULE, 0.5)
+        f.text(X(v), ya + 10.5, s, 7.0, sv.DIM, anchor="middle")
+    f.text((left + right) / 2, ya + 20, "shift in rg with autism (sleeves cut at 0.6)", 7.0, sv.DIM, anchor="middle")
+    f.h = ya + 26
+    f.parts[0] = f'<rect width="{f.w}" height="{f.h}" fill="{sv.GROUND}"/>'
+    f.save("fig16_autism_focus_paper", paper=False, png=False)
 
 
 if __name__ == "__main__":

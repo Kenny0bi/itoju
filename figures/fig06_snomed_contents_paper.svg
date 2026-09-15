@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="252.0pt" height="282.0pt" viewBox="0 0 252.0 282.0" font-family="Menlo, 'SF Mono', Consolas, 'Liberation Mono', monospace">
+<rect width="252.0" height="282.0" fill="#EEF3F1"/>
+<rect x="10.00" y="6.00" width="6.00" height="6.00" rx="0" fill="#c9761a" opacity="1.00"/>
+<text x="21.00" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">only first</text>
+<rect x="73.14" y="6.00" width="6.00" height="6.00" rx="0" fill="#2f6fc4" opacity="1.00"/>
+<text x="84.14" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">only second</text>
+<path d="M 140.49,6.00 L 146.49,6.00 L 140.49,12.00 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 146.49,6.00 L 146.49,12.00 L 140.49,12.00 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<text x="151.49" y="12.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">in both</text>
+<text x="10.00" y="32.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Sleep apnoea</text>
+<text x="244.00" y="32.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">1 of 17 shared</text>
+<path d="M 10.00,36.00 L 18.60,36.00 L 10.00,44.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 18.60,36.00 L 18.60,44.60 L 10.00,44.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="21.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="32.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="43.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="54.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="65.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="76.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="87.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="98.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="109.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="120.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="131.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="142.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="153.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="164.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="175.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="186.00" y="36.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="54.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">sleep apnoea 1, any sleep disorder 17</text>
+<text x="10.00" y="66.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Insomnia</text>
+<text x="244.00" y="66.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">2 of 11 shared</text>
+<path d="M 10.00,70.00 L 18.60,70.00 L 10.00,78.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 18.60,70.00 L 18.60,78.60 L 10.00,78.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 21.00,70.00 L 29.60,70.00 L 21.00,78.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 29.60,70.00 L 29.60,78.60 L 21.00,78.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="32.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="43.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="54.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="65.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="76.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="87.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="98.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="109.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="120.00" y="70.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="88.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">F51.0 or G47.0 2, all of F51 11</text>
+<text x="10.00" y="100.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Constipation</text>
+<text x="244.00" y="100.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">1 of 14 shared</text>
+<path d="M 10.00,104.00 L 18.60,104.00 L 10.00,112.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 18.60,104.00 L 18.60,112.60 L 10.00,112.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="21.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="32.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="43.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="54.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="65.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="76.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="87.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="98.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="109.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="120.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="131.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="142.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="153.00" y="104.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="122.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">K59.0 or laxatives 1, all of K59 14</text>
+<text x="10.00" y="131.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">adds irritable bowel syndrome, functional</text>
+<text x="10.00" y="140.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">diarrhoea, neurogenic bowel and more</text>
+<text x="10.00" y="152.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">ADHD</text>
+<text x="244.00" y="152.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">2 of 4 shared</text>
+<path d="M 10.00,156.00 L 18.60,156.00 L 10.00,164.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 18.60,156.00 L 18.60,164.60 L 10.00,164.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 21.00,156.00 L 29.60,156.00 L 21.00,164.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 29.60,156.00 L 29.60,164.60 L 21.00,164.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="32.00" y="156.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="43.00" y="156.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="174.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">F90.0 2, all of F90 4</text>
+<text x="10.00" y="186.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Intellectual disability</text>
+<text x="244.00" y="186.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">1 of 7 shared</text>
+<path d="M 10.00,190.00 L 18.60,190.00 L 10.00,198.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 18.60,190.00 L 18.60,198.60 L 10.00,198.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="21.00" y="190.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="32.00" y="190.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="43.00" y="190.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="54.00" y="190.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="65.00" y="190.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="76.00" y="190.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="208.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">mild, F70 1, any, F7 7</text>
+<text x="10.00" y="220.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Epilepsy</text>
+<text x="244.00" y="220.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">3 of 16 shared</text>
+<path d="M 10.00,224.00 L 18.60,224.00 L 10.00,232.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 18.60,224.00 L 18.60,232.60 L 10.00,232.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 21.00,224.00 L 29.60,224.00 L 21.00,232.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 29.60,224.00 L 29.60,232.60 L 21.00,232.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 32.00,224.00 L 40.60,224.00 L 32.00,232.60 Z" fill="#c9761a" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<path d="M 40.60,224.00 L 40.60,232.60 L 32.00,232.60 Z" fill="#2f6fc4" stroke="none" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.00"/>
+<rect x="43.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="54.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="65.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="76.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="87.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="98.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="109.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="120.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="131.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="142.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="153.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="164.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="175.00" y="224.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="242.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">focal 3, any epilepsy 16</text>
+<text x="10.00" y="254.00" font-size="7.6" fill="#14232B" text-anchor="start" xml:space="preserve">Epilepsy</text>
+<text x="244.00" y="254.00" font-size="7.0" fill="#3A4A51" text-anchor="end" xml:space="preserve">0 of 9 shared</text>
+<rect x="10.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#c9761a" opacity="1.00"/>
+<rect x="21.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#c9761a" opacity="1.00"/>
+<rect x="32.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#c9761a" opacity="1.00"/>
+<rect x="43.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="54.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="65.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="76.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="87.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<rect x="98.00" y="258.00" width="8.60" height="8.60" rx="1" fill="#2f6fc4" opacity="1.00"/>
+<text x="10.00" y="276.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">focal 3, generalized 6</text>
+</svg>

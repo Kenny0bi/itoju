@@ -1,114 +1,131 @@
-"""Figure 6. What two definitions of one condition contain, and how much they share, counted in SNOMED CT.
+"""Figure: what two definitions of one condition let in, counted in SNOMED CT concepts.
 
-Each definition's ICD-10 codes are translated to standard SNOMED CT concepts (OMOP "Maps to"). For each
-pair of definitions, every concept either definition admits is one square, so set size and overlap are
-read as area and position:
-  ochre square   only in the first (narrower) definition
-  split square   in both definitions
-  blue square    only in the second definition
-The ochre bracket above spans the first definition's concepts and the blue bracket below the second's,
-each with its count. Squares sit in the order only-first, shared, only-second, so the shared part is
-always where the two brackets meet.
+Each definition's ICD-10 codes are translated to standard SNOMED CT concepts through the OMOP "Maps to"
+relationship. For each pair of definitions, every concept either one admits is one square, in the order
+only-first, shared, only-second, so set size and overlap read as length and position. The count of
+shared concepts is printed at the right, and the concepts the wider constipation definition adds are
+named (a short excerpt; the published tables carry concept IDs only).
 
-Laxative purchases in the constipation definition have no SNOMED CT condition concept and are not drawn.
-The published tables carry concept IDs only; the one annotated concept list is a short excerpt.
 Sources: results/omop/endpoint_snomed_concepts.tsv (src/08b), data/ref/omop/target_concepts.tsv.
 """
-import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib.patches import Polygon, Rectangle
 
-import viz_style as vs
+import itoju_svg as sv
 
-ROOT = vs.ROOT
-FIRST = "#c9761a"    # validated pair with SECOND (dataviz validator, all checks pass)
-SECOND = "#2f6fc4"
+ROOT = sv.ROOT
 PAIRS = [  # condition, first endpoint, its label, second endpoint, its label
     ("Sleep apnoea", "G6_SLEEPAPNO", "sleep apnoea", "SLEEP", "any sleep disorder"),
     ("Insomnia", "F5_INSOMNIA", "F51.0 or G47.0", "KRA_PSY_SLEEP_NONORG_EXMORE", "all of F51"),
     ("Constipation", "K11_CONSTIPATION", "K59.0 or laxatives", "K11_OTHFUNC", "all of K59"),
     ("ADHD", "F5_ADHD", "F90.0", "KRA_PSY_HYPERKIN_EXMORE", "all of F90"),
-    ("Intellectual disability", "F5_MILDRET", "mild (F70)", "KRA_PSY_MENTALRET_EXMORE", "any (F7)"),
+    ("Intellectual disability", "F5_MILDRET", "mild, F70", "KRA_PSY_MENTALRET_EXMORE", "any, F7"),
     ("Epilepsy", "FE", "focal", "G6_EPLEPSY", "any epilepsy"),
     ("Epilepsy", "FE", "focal", "GE", "generalized"),
 ]
 NOTE_FOR = "K11_OTHFUNC"
-NOTE_CONCEPTS = ["Irritable bowel syndrome", "Functional diarrhea", "Neurogenic bowel"]
-X0 = 1.28          # inches: where the squares start
-PITCH = 0.128      # inches per square
-SIZE = 0.108
-ROW = 0.60
-NOTE = 0.24
-TOP = 0.62
+NOTE_NAMES = ["Irritable bowel syndrome", "Functional diarrhea", "Neurogenic bowel"]
+SQ, PITCH = 9.0, 11.5
 
 
 def main():
-    vs.apply()
     sc = pd.read_csv(ROOT / "results" / "omop" / "endpoint_snomed_concepts.tsv", sep="\t", dtype=str)
     tgt = pd.read_csv(ROOT / "data" / "ref" / "omop" / "target_concepts.tsv", sep="\t", dtype=str,
                       keep_default_na=False, quoting=3).set_index("concept_id")
     concepts = lambda e: set(sc[sc.endpoint == e].snomed_concept_id)
-
     rows = []
     for cond, a, alab, b, blab in PAIRS:
         A, B = concepts(a), concepts(b)
-        rows.append((cond, alab, blab, len(A - B), len(A & B), len(B - A), b, B - A))
-        print(f"  {cond:24s} {alab:>20s} vs {blab:<20s} only first {len(A - B):2d}  shared {len(A & B):2d}  only second {len(B - A):2d}")
-    widest = max(o + s + t for _, _, _, o, s, t, _, _ in rows)
-    assert X0 + widest * PITCH < vs.SINGLE - 0.03, "squares would run off the column"
+        rows.append(dict(cond=cond, alab=alab, blab=blab, only_a=len(A - B), both=len(A & B), only_b=len(B - A),
+                         b=b, added=sorted(tgt.loc[c, "concept_name"] for c in B - A)))
+        print(f"  {cond:24s} {alab:>18s} vs {blab:<18s} only first {len(A - B):2d} shared {len(A & B):2d} only second {len(B - A):2d}")
 
-    fig_h = TOP + len(rows) * ROW + NOTE + 0.05
-    fig = plt.figure(figsize=(vs.SINGLE, fig_h))
-    ax = fig.add_axes([0, 0, 1, 1])
-    ax.set_xlim(0, vs.SINGLE)
-    ax.set_ylim(fig_h, 0)
-    ax.axis("off")
+    W = sv.DOUBLE
+    left, x_sq, x_share = 14.0, 176.0, 400.0
+    row_h, top = 34.0, 104.0
+    note_h = 12.0
+    H = top + len(rows) * row_h + note_h + 78
+    f = sv.Figure(W, H)
+    f.header("itoju  /  what a definition lets in",
+             "The same condition name can let in a handful of diagnoses or dozens",
+             "Each square is one standard SNOMED CT concept a definition's ICD-10 codes map to (OMOP, Athena)")
+    f.key_row(left, 70, [("square", sv.FIRST, "only in the first definition"),
+                         ("square", sv.SECOND, "only in the second")])
+    kx = left + 11 + sv.text_width("only in the first definition") + 10 + 11 + sv.text_width("only in the second") + 10
+    f.polygon([(kx, 64), (kx + 6, 64), (kx, 70)], sv.FIRST)
+    f.polygon([(kx + 6, 64), (kx + 6, 70), (kx, 70)], sv.SECOND)
+    f.text(kx + 11, 70, "in both", 7.0, sv.INK_2)
+    f.text(x_share, 92, "shared", 7.0, sv.DIM)
 
-    def square(x, y, kind):
-        if kind == "both":
-            ax.add_patch(Polygon([(x, y), (x + SIZE, y), (x, y + SIZE)], closed=True, facecolor=FIRST, edgecolor="none"))
-            ax.add_patch(Polygon([(x + SIZE, y), (x + SIZE, y + SIZE), (x, y + SIZE)], closed=True, facecolor=SECOND,
-                                 edgecolor="none"))
-        else:
-            ax.add_patch(Rectangle((x, y), SIZE, SIZE, facecolor=FIRST if kind == "first" else SECOND, edgecolor="none"))
-
-    # key
-    ax.text(0.05, 0.14, "Each square is one SNOMED CT concept a definition admits.", fontsize=7.5, color=vs.INK,
-            va="center")
-    kx = 0.05
-    for kind, lab in (("first", "only in the first definition"), ("both", "in both"),
-                      ("second", "only in the second")):
-        square(kx, 0.33, kind)
-        ax.text(kx + SIZE + 0.05, 0.33 + SIZE / 2, lab, fontsize=7, color=vs.INK_2, va="center")
-        kx += SIZE + 0.1 + 0.052 * len(lab)
-
-    y = TOP
-    for cond, alab, blab, o, s, t, bkey, b_only in rows:
-        sq_y = y + 0.22
-        ax.text(X0 - 0.1, sq_y + SIZE / 2 - 0.035, cond, fontsize=7.6, color=vs.INK, ha="right", va="center")
-        share = f"shares {s} of {o + s + t}" if s else "shares none"
-        ax.text(X0 - 0.1, sq_y + SIZE / 2 + 0.09, share, fontsize=7, color=vs.INK_2, ha="right", va="center")
-        kinds = ["first"] * o + ["both"] * s + ["second"] * t
+    y = top
+    for r in rows:
+        f.text(left, y + 4, r["cond"], 7.6, sv.INK)
+        f.text(left, y + 14, f"{r['alab']}  vs  {r['blab']}", 7.0, sv.INK_2)
+        kinds = ["a"] * r["only_a"] + ["ab"] * r["both"] + ["b"] * r["only_b"]
+        assert x_sq + len(kinds) * PITCH < x_share - 8, "squares run into the shared column"
         for k, kind in enumerate(kinds):
-            square(X0 + k * PITCH, sq_y, kind)
-        # first definition: bracket above; second: bracket below
-        a0, a1 = X0, X0 + (o + s - 1) * PITCH + SIZE
-        b0, b1 = X0 + o * PITCH, X0 + (o + s + t - 1) * PITCH + SIZE
-        ax.plot([a0, a0, a1, a1], [sq_y - 0.02, sq_y - 0.06, sq_y - 0.06, sq_y - 0.02], color=FIRST, lw=0.9,
-                solid_capstyle="butt")
-        ax.text(a0, sq_y - 0.09, f"{alab}: {o + s}", fontsize=7, color=vs.INK, va="bottom")
-        yb = sq_y + SIZE
-        ax.plot([b0, b0, b1, b1], [yb + 0.02, yb + 0.06, yb + 0.06, yb + 0.02], color=SECOND, lw=0.9,
-                solid_capstyle="butt")
-        ax.text(b0, yb + 0.085, f"{blab}: {s + t}", fontsize=7, color=vs.INK, va="top")
-        y += ROW
-        if bkey == NOTE_FOR:
-            names = {tgt.loc[c, "concept_name"] for c in b_only}
-            assert all(n in names for n in NOTE_CONCEPTS), "note must name concepts the definition really adds"
-            ax.text(0.05, y - 0.02, "all of K59 adds irritable bowel syndrome, functional diarrhoea,\nneurogenic bowel and more",
-                    fontsize=7, color=vs.INK_2, va="top", linespacing=1.15)
-            y += NOTE
-    vs.save(fig, "fig06_snomed_contents")
+            x0, y0 = x_sq + k * PITCH, y - 3
+            if kind == "ab":
+                f.polygon([(x0, y0), (x0 + SQ, y0), (x0, y0 + SQ)], sv.FIRST, mark=True)
+                f.polygon([(x0 + SQ, y0), (x0 + SQ, y0 + SQ), (x0, y0 + SQ)], sv.SECOND, mark=True)
+            else:
+                f.rect(x0, y0, SQ, SQ, sv.FIRST if kind == "a" else sv.SECOND, rx=1, mark=True)
+        n_a, n_b, total = r["only_a"] + r["both"], r["only_b"] + r["both"], len(kinds)
+        f.text(x_sq, y + 17, f"{r['alab']} {n_a}, {r['blab']} {n_b}", 7.0, sv.DIM)
+        f.text(x_share, y + 5, f"{r['both']} of {total}", 9.0, sv.INK, family=sv.SERIF)
+        f.text(x_share + 34, y + 5, "none" if r["both"] == 0 else f"{100 * r['both'] / total:.0f}%", 7.0, sv.DIM)
+        y += row_h
+        if r["b"] == NOTE_FOR:
+            assert all(n in r["added"] for n in NOTE_NAMES), r["added"]
+            f.text(x_sq, y - 7, "adds irritable bowel syndrome, functional diarrhoea, neurogenic bowel and more", 7.0,
+                   sv.INK_2)
+            y += note_h
+
+    # the reading, computed from the rows
+    by = {(r["cond"], r["blab"]): r for r in rows}
+    apn, con, epi = by[("Sleep apnoea", "any sleep disorder")], by[("Constipation", "all of K59")], by[("Epilepsy", "generalized")]
+    lines = [
+        f"Widening sleep apnoea to any sleep disorder adds {apn['only_b']} concepts to the {apn['both']} they share.",
+        f"All of K59 adds {con['only_b']} to constipation's {con['both']}: a bowel-dysfunction definition, not a constipation one.",
+        f"Focal and generalized epilepsy share {epi['both']} concepts. Laxative purchases have no condition concept at all.",
+    ]
+    f.reading(left, y + 6, W - left - 10, lines, strong=(1,))
+    f.source("OMOP standard vocabularies from Athena; concept IDs published, SNOMED CT content not redistributed")
+    f.save("fig06_snomed_contents")
+    paper_single(rows)
+
+
+def paper_single(rows):
+    """The paper's single-column layout: the same squares, one condition per block, no headline or reading."""
+    W = sv.SINGLE
+    left, right, pitch, sq = 10.0, sv.SINGLE - 8, 11.0, 8.6
+    f = sv.Figure(W, 2000.0)          # drawn tall, trimmed to the content at the end
+    kx = f.key_row(left, 12, [("square", sv.FIRST, "only first"), ("square", sv.SECOND, "only second")])
+    f.polygon([(kx, 6), (kx + 6, 6), (kx, 12)], sv.FIRST)
+    f.polygon([(kx + 6, 6), (kx + 6, 12), (kx, 12)], sv.SECOND)
+    f.text(kx + 11, 12, "in both", 7.0, sv.INK_2)
+    y = 32.0
+    for r in rows:
+        kinds = ["a"] * r["only_a"] + ["ab"] * r["both"] + ["b"] * r["only_b"]
+        assert left + len(kinds) * pitch <= right, "squares run past the column"
+        f.text(left, y, r["cond"], 7.6, sv.INK)
+        f.text(right, y, f"{r['both']} of {len(kinds)} shared", 7.0, sv.INK_2, anchor="end")
+        for k, kind in enumerate(kinds):
+            x0, y0 = left + k * pitch, y + 4
+            if kind == "ab":
+                f.polygon([(x0, y0), (x0 + sq, y0), (x0, y0 + sq)], sv.FIRST, mark=True)
+                f.polygon([(x0 + sq, y0), (x0 + sq, y0 + sq), (x0, y0 + sq)], sv.SECOND, mark=True)
+            else:
+                f.rect(x0, y0, sq, sq, sv.FIRST if kind == "a" else sv.SECOND, rx=1, mark=True)
+        n_a, n_b = r["only_a"] + r["both"], r["only_b"] + r["both"]
+        f.text(left, y + 22, f"{r['alab']} {n_a}, {r['blab']} {n_b}", 7.0, sv.DIM, max_w=right - left)
+        y += 34
+        if r["b"] == NOTE_FOR:
+            f.text(left, y - 3, "adds irritable bowel syndrome, functional", 7.0, sv.INK_2, max_w=right - left)
+            f.text(left, y + 6, "diarrhoea, neurogenic bowel and more", 7.0, sv.INK_2, max_w=right - left)
+            y += 18
+    f.h = y - 6
+    f.parts[0] = f'<rect width="{f.w}" height="{f.h}" fill="{sv.GROUND}"/>'
+    f.save("fig06_snomed_contents_paper", paper=False, png=False)
 
 
 if __name__ == "__main__":

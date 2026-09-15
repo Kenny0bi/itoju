@@ -52,19 +52,19 @@ The genetics of a condition can change with its definition. Depression defined b
 
 
 
-\begin{figure*}[!t]
+\begin{figure}[!tb]
 \centering
-\includegraphics[width=\textwidth]{fig01_design.pdf}
-\caption{Study design, drawn in the visual language of the later figures with one worked example. (1) The three FinnGen R12 sleep apnoea definitions and their case counts. (2) Each definition meets five psychiatric GWAS in LD score regression. (3) The genetic correlation with depression swings from 0.35 under hospital records to 0.42 under any sleep disorder (the arc of Fig.~\ref{fig:sizing}). (4) The shift of 0.068 is set against its noise, $\pm 1.96$ SE of the difference from the shared-block jackknife (the sleeve of Figs.~\ref{fig:detect}, \ref{fig:autism} and \ref{fig:control}). The strip below lists the checks that run beside the design.}
+\includegraphics[width=\columnwidth]{fig01_design_paper.pdf}
+\caption{Study design, walked through once with real numbers. (1) The three FinnGen R12 sleep apnoea definitions as bars of cases, ochre for the first definition and blue for the alternatives. (2) Each definition meets five psychiatric GWAS in LD score regression. (3) The genetic correlation with depression moves from 0.353 under hospital records to 0.420 under any sleep disorder (common SNP set). (4) The shift of 0.068 is set against its noise, $\pm 1.96$ SE of the difference from the shared-block jackknife (0.014), the sleeve of Figs.~\ref{fig:control}, \ref{fig:sizing}, \ref{fig:detect} and \ref{fig:autism}. The strip lists the checks that run beside the design. In every figure, the sentences of the reading panel are computed from the results.}
 \label{fig:design}
-\end{figure*}
+\end{figure}
 
 
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig02_anatomy.pdf}
-\caption{The anatomy of a definition. Each row is one alternative definition. Left: one tile per ICD-10 code used anywhere in that condition's definitions; an indigo tile counts the code in hospital or death records, and a teal corner marks a code also counted from primary care. Right, aligned across conditions: rules that codes cannot show, each drawn as a glyph (key at right): a drug purchase class counts (ATC A06A, laxatives); a drug reimbursement right counts; a case must not also meet another definition; the code must be the person's most frequent related diagnosis; the control rule differs from the first definition in the set. A faint dot means the rule does not apply. Tiles show ICD-10 only.}
+\includegraphics[width=\textwidth]{fig02_anatomy_paper.pdf}
+\caption{The anatomy of a definition. Each row is one alternative definition. Left: one tile per ICD-10 code used anywhere in that condition's definitions (labels read upward); an indigo tile counts the code in hospital or death records, and a teal corner marks a code also counted from primary care. Right, aligned across conditions: rules that codes cannot show, each drawn as a glyph (key at top): a drug purchase class counts (ATC A06A, laxatives); a drug reimbursement right counts; a case must not also meet another definition; the code must be the person's most frequent related diagnosis; the control rule differs from the first definition in the set. A faint dot means the rule does not apply. Tiles show ICD-10 only.}
 \label{fig:anatomy}
 \end{figure*}
 
@@ -96,12 +96,12 @@ This study asked whether the genetic correlation between a psychiatric trait and
 \subsection{Condition Definitions}
 
 
-\begin{figure*}[!t]
+\begin{figure}[!tb]
 \centering
-\includegraphics[width=\textwidth]{fig15_positive_control.pdf}
-\caption{Positive control: depression defined from health records casts a wider genetic net. Left: one spoke per trait or FinnGen endpoint, grouped by body system; distance from the center is $r_g$ with depression (rings at 0, 0.5 and 1). The filled shape joins $r_g$ with EHR-defined depression and the dark outline $r_g$ with clinically defined depression; colored spokes and bold names mark differences with $p < 0.05$. Right: the 31 differences, ranked, each inside its sleeve of $\pm 1.96$ SE (cut at 0.6).}
+\includegraphics[width=\columnwidth]{fig15_positive_control_paper.pdf}
+\caption{Positive control: depression defined from health records casts a wider genetic net. One row per trait or FinnGen endpoint (31), sorted by the difference. Each arrow runs from $r_g$ with clinically defined depression (hollow dot) to $r_g$ with EHR-defined depression (arrowhead), so an arrow pointing right means the EHR definition correlates more strongly; heavier turmeric arrows mark differences with $p < 0.05$.}
 \label{fig:control}
-\end{figure*}
+\end{figure}
 
 
 
@@ -118,8 +118,8 @@ Each definition was taken apart by a script that expanded every code pattern aga
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig06_snomed_contents.pdf}
-\caption{What two definitions of one condition contain, and how much they share, counted in SNOMED CT concepts. Each square is one standard concept that either definition's ICD-10 codes map to: ochre, only in the first definition; split ochre and blue, in both; blue, only in the second. Brackets give each definition's concept count. Widening sleep apnoea to any sleep disorder adds 16 concepts to the one they share, all of K59 adds 13 to constipation's one (including irritable bowel syndrome and functional diarrhoea), and focal and generalized epilepsy share none. Laxative purchases have no condition concept.}
+\includegraphics[width=\columnwidth]{fig06_snomed_contents_paper.pdf}
+\caption{What two definitions of one condition contain, and how much they share, counted in SNOMED CT concepts. Each square is one standard concept that either definition's ICD-10 codes map to, in the order only in the first definition (ochre), in both (split ochre and blue), only in the second (blue), with the shared count at the right. Widening sleep apnoea to any sleep disorder adds 16 concepts to the one they share, all of K59 adds 13 to constipation's one (named in part, including irritable bowel syndrome and functional diarrhoea), and focal and generalized epilepsy share none. Laxative purchases have no condition concept.}
 \label{fig:snomed}
 \end{figure}
 
@@ -127,8 +127,8 @@ Each definition was taken apart by a script that expanded every code pattern aga
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig05_three_lenses.pdf}
-\caption{Overlap between alternative definitions depends on the vocabulary. For each pair, the Jaccard index from ICD-10 codes, phecodeX groups, SNOMED CT concepts, and SNOMED CT concepts together with their ancestors within two levels, drawn as an eclipse: an ochre disc for the first definition and a blue disc for the second, placed so that the dark shared area, divided by the area both discs cover, equals the Jaccard index (key at top), with the value printed beside it. Pairs with identical values in all four vocabularies share a row.}
+\includegraphics[width=\textwidth]{fig05_three_lenses_paper.pdf}
+\caption{Overlap between alternative definitions depends on the vocabulary. For each pair, the Jaccard index from ICD-10 codes, phecodeX groups, SNOMED CT concepts, and SNOMED CT concepts together with their ancestors within two levels, drawn as an eclipse: an ochre disc for the first definition and a blue disc for the second, placed so that the dark shared area, divided by the area both discs cover, equals the Jaccard index (key at top), with the value printed beside it. Pairs with identical values in all four vocabularies share a row, and the last column counts them.}
 \label{fig:lenses}
 \end{figure*}
 
@@ -148,8 +148,8 @@ The cohort lists showed three sources of sample overlap with FinnGen: the full d
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig08_heritability.pdf}
-\caption{Does a wider definition lower heritability? One panel per condition: each definition at its number of cases (log scale) and its liability-scale SNP heritability, using the sample prevalence as the population prevalence. Dot, estimate; thick bar, 50\% interval; thin line, 95\% interval; hollow gray dot, estimate below zero. All panels share the heritability axis.}
+\includegraphics[width=\textwidth]{fig08_heritability_paper.pdf}
+\caption{Does a wider definition lower heritability? One panel per condition: each definition at its number of cases (log scale, each panel its own range) and its liability-scale SNP heritability, using the sample prevalence as the population prevalence. Ochre, the condition's first definition; blue, the alternatives; dot, estimate; bar, 50\% interval; pale sleeve, 95\% interval cut at zero; hollow dot, an estimate below zero. All panels share the heritability axis.}
 \label{fig:h2}
 \end{figure*}
 
@@ -157,8 +157,8 @@ The cohort lists showed three sources of sample overlap with FinnGen: the full d
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig07_validation.pdf}
-\caption{Validation. (a) Autism SNP heritability on the liability scale and the genetic correlation between autism and ADHD, drawn as this pipeline's estimate minus the published value; the pale sleeve is the published 95\% interval or, where the paper prints no standard error, the tolerance of $\pm 0.05$ fixed in the analysis plan. (b) Genetic correlation between the iPSYCH-PGC autism GWAS and the two FinnGen autism endpoints, each drawn as a quantile dot plot of its sampling distribution (20 dots, each one twentieth of the probability); the dashed line marks $r_g = 1$.}
+\includegraphics[width=\columnwidth]{fig07_validation_paper.pdf}
+\caption{Validation. (a) Autism SNP heritability on the liability scale and the genetic correlation between autism and ADHD, drawn as this pipeline's estimate minus the published value; the pale sleeve is the published 95\% interval or, where the paper prints no standard error, the tolerance of $\pm 0.05$ fixed in the analysis plan. (b) Genetic correlation between the iPSYCH-PGC autism GWAS and the two FinnGen autism endpoints, each drawn as a quantile dot plot of its sampling distribution (20 dots, each one twentieth of the probability); the dashed line marks $r_g = 1$, the value if both measured the same genetics.}
 \label{fig:validation}
 \end{figure}
 
@@ -175,8 +175,8 @@ Before any new estimate was trusted, the pipeline reproduced published values: a
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig11_block_geometry.pdf}
-\caption{Why a difference between two genetic correlations can be precise. Top: each dot is one of the 200 genome blocks of the jackknife, at its pseudovalue of $r_g$ under each definition, centered on the estimates. Bottom: quantile dot plots of the per-block differences, each dot standing for 10 blocks; filled dots keep the blocks paired as they are, and hollow dots pair every block of one definition with every block of the other, as if the two estimates shared no people. (a) Depression with sleep apnoea against any sleep disorder, (b) PTSD with constipation against functional intestinal disorders, (c) PTSD with EHR against clinical depression.}
+\includegraphics[width=\textwidth]{fig11_block_geometry_paper.pdf}
+\caption{Why a difference between two genetic correlations can be precise. Top of each panel: the 200 genome blocks of the jackknife, each at its pair of pseudovalues of $r_g$ under the two definitions, centered on the estimates, against the line of equal values. Bottom: every block's difference as a tick, with its density; the colored density keeps the blocks paired as they are, and the gray one pairs each block with a random other block, as if the two estimates shared no people. Each carries its standard error. (a) Depression with sleep apnoea against any sleep disorder, nested definitions; (b) PTSD with constipation or laxatives against all of K59, partly shared cases; (c) PTSD with EHR against clinical depression, almost no shared samples.}
 \label{fig:pseudo}
 \end{figure*}
 
@@ -184,8 +184,8 @@ Before any new estimate was trusted, the pipeline reproduced published values: a
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig20_power.pdf}
-\caption{What buys power: shared cases. The gray map gives the smallest difference in $r_g$ detectable at 80\% power for two estimates with equal standard error (vertical axis, log scale) and a given correlation between their sampling errors (horizontal axis), with contour lines from 0.02 to 1. Dots, colored by psychiatric trait, are the 135 comparisons between definitions of the same condition, placed at their error correlation and the root mean square of their two standard errors; rings are the 31 EHR against clinical depression comparisons. Four comparisons are numbered and named below the plot.}
+\includegraphics[width=\columnwidth]{fig20_power_paper.pdf}
+\caption{What buys power: shared cases. The shaded map gives the smallest difference in $r_g$ detectable at 80\% power for two estimates with equal standard error (vertical axis, log scale) and a given correlation between their sampling errors (horizontal axis); each white contour, from 0.02 to 1, is drawn exactly from the formula. Dots, colored by psychiatric trait, are the 135 comparisons between definitions of the same condition, at their error correlation and the root mean square of their two standard errors; rings are the 31 EHR against clinical depression comparisons. Four comparisons are numbered and named below the map.}
 \label{fig:power}
 \end{figure}
 
@@ -203,8 +203,8 @@ with $n = 200$, exactly as the software computes it. For two definitions $a$ and
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig13_heterogeneity.pdf}
-\caption{Heterogeneity across definitions, with each $p$-value drawn as the tail it is. Rows, definition sets; columns, psychiatric traits. The curve is the $\chi^2$ distribution that Cochran's $Q$ would follow if the definitions made no difference; the tick is the observed $Q$, and the shaded tail beyond it is the $p$-value. Ticks and tails wear the trait's color, and a dot on the tick marks $p < 0.05$; an arrow marks a $Q$ beyond the drawn range.}
+\includegraphics[width=\columnwidth]{fig13_heterogeneity_paper.pdf}
+\caption{Heterogeneity across definitions, with each $p$-value drawn as the tail it is. Rows, definition sets; columns, psychiatric traits. The curve is the $\chi^2$ distribution that Cochran's $Q$ would follow if the definitions made no difference; the tick is the observed $Q$, and the tinted tail beyond it is the $p$-value. A tick in the trait's color with a dot marks $p < 0.05$; an arrow marks a $Q$ beyond the drawn range.}
 \label{fig:hetero}
 \end{figure}
 
@@ -212,8 +212,8 @@ with $n = 200$, exactly as the software computes it. For two definitions $a$ and
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig14_distance_drift.pdf}
-\caption{Do definitions that differ more give genetic correlations that differ more? Each point is one comparison, in the color of its psychiatric trait (filled: sleep, constipation and ADHD; hollow: epilepsy); dark bars are medians and boxes the middle half within each cluster of five or more comparisons at the same distance. (a) Pre-specified distance from codes, data sources and rules. (b) SNOMED CT distance (exploratory). The strip above each panel places the Spearman correlation for each psychiatric trait (dots) and for all 135 comparisons (bar); the correlations are descriptive because comparisons share traits and definitions.}
+\includegraphics[width=\columnwidth]{fig14_distance_drift_paper.pdf}
+\caption{Do definitions that differ more give genetic correlations that differ more? Each point is one comparison, in the color of its psychiatric trait (filled: sleep, bowel and ADHD; hollow: epilepsy), spread sideways by up to 0.012 so identical distances separate; dark bars are medians and boxes the middle half within each cluster of five or more comparisons at the same distance. (a) Pre-specified distance from codes, data sources and rules. (b) SNOMED CT distance (exploratory). The strip above each panel places the Spearman correlation for each psychiatric trait (dots) and for all 135 comparisons (bar); the correlations are descriptive because comparisons share traits and definitions.}
 \label{fig:distance}
 \end{figure}
 
@@ -226,7 +226,7 @@ Within each definition set and psychiatric trait, heterogeneity across all defin
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig19_finnish_ld.pdf}
+\includegraphics[width=\columnwidth]{fig19_finnish_ld_paper.pdf}
 \caption{The LD landscape of chromosomes 21 and 22 through two populations. (a, b) Mean LD score in 250 kb windows along each chromosome, European (1000 Genomes) above the line and Finnish (FinnGen R12) mirrored below it. (c) The per-SNP ratio of Finnish to European LD score as a quantile dot plot (each dot 2\% of SNPs) on a log axis; blue line, median.}
 \label{fig:finnish}
 \end{figure}
@@ -255,12 +255,35 @@ Reading the definitions through SNOMED CT also caught a labelling error in this 
 
 The pipeline reproduced the published autism estimates before any new result was produced (Fig.~\ref{fig:validation}). Autism in the Danish GWAS also correlated strongly with autism in the Finnish registry: $r_g = 0.73$ (SE 0.15) with the narrow FinnGen definition (F84.0, F84.5; 888 cases) and 0.98 (SE 0.21) with the broader one (F84; 1,179 cases).
 
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig09_rg_quilt_paper.pdf}
+\caption{Genetic correlations between seven psychiatric GWAS and 28 FinnGen endpoints. (a) For each condition with alternative definitions and each of five psychiatric traits, the median $r_g$ across its definitions (dot) and the range from the lowest to the highest definition (line). (b) The full matrix, colored with a value-suppressing uncertainty palette~\cite{correll2018}: hue gives $r_g$ and depth of color its precision, so estimates with large standard errors fade toward gray and merge into fewer color steps (fan key under a).}
+\label{fig:quilt}
+\end{figure*}
+
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig09_rg_quilt.pdf}
-\caption{Genetic correlations between seven psychiatric GWAS and 28 FinnGen endpoints. Top: the headline pattern, with the median $r_g$ across each condition's definitions for each of five psychiatric traits. Below: the full matrix, colored with a value-suppressing uncertainty palette~\cite{correll2018}: hue gives $r_g$ and depth of color its precision, so estimates with large standard errors fade toward gray and merge into fewer color steps (fan key). Rows are grouped by condition, with the definitions of one condition stacked together.}
-\label{fig:quilt}
+\includegraphics[width=\columnwidth]{fig18_intercepts_paper.pdf}
+\caption{Cross-trait LD score regression intercepts with the 28 FinnGen endpoints, one dot per endpoint in a beeswarm, grouped by whether the psychiatric GWAS contains FinnGen samples; dark tick, median. The pale band spans $\pm 1.96$ times the median intercept standard error around zero, where a GWAS with no shared samples should fall. Shared samples appear in the intercept, which keeps $r_g$ unbiased.}
+\label{fig:intercepts}
 \end{figure}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig10_what_moves_paper.pdf}
+\caption{What moves the genetics when a definition changes. Rows are six changes to a FinnGen definition, grouped by the kind of change (data source, scope, strictness of a rule); columns are the five psychiatric GWAS. In each cell the gray sleeve spans $\pm 1.96$ SE of the difference, centered on zero, and the stem is the shift in $r_g$ from the first to the second definition, in the trait's color, with its value underneath. A filled dot has $p < 0.05$; a ringed dot also survives Bonferroni correction over 135 comparisons.}
+\label{fig:sizing}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig12_noise_skyline_paper.pdf}
+\caption{Every definition shift inside its own noise. One mark per comparison (166): the gray sleeve spans $\pm 1.96$ SE of the difference, and the stem is the shift in $r_g$ from the first definition to the second (for depression, EHR minus clinical), in the color of its psychiatric trait, drawn thick with an end dot when it escapes its sleeve ($p < 0.05$) and thin otherwise. Families are drawn at different widths per comparison so small families stay legible; sleep apnoea has its own narrower scale, sleeves wider than the axis are cut, and the count of escapes is printed above each panel.}
+\label{fig:detect}
+\end{figure*}
+
+
 
 
 
@@ -274,12 +297,9 @@ Liability-scale heritability varied within conditions (Fig.~\ref{fig:h2}). Gener
 
 
 
-\begin{figure}[!tb]
-\centering
-\includegraphics[width=\columnwidth]{fig18_intercepts.pdf}
-\caption{Cross-trait LD score regression intercepts with the 28 FinnGen endpoints, one dot per endpoint in a beeswarm, grouped by whether the psychiatric GWAS contains FinnGen samples; black tick, median. The pale band spans $\pm 1.96$ times the median intercept standard error around zero, where a GWAS with no shared samples should fall. Shared samples appear in the intercept, which keeps $r_g$ unbiased.}
-\label{fig:intercepts}
-\end{figure}
+
+
+
 
 
 
@@ -290,16 +310,11 @@ Of the 217 genetic correlations estimated, 156 had $p < 0.05$ (Fig.~\ref{fig:qui
 
 
 
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=\textwidth]{fig10_definition_swings.pdf}
-\caption{Definition swings. For each definition set and psychiatric trait, the filled dot is $r_g$ under the first definition, and an arc swings to $r_g$ under each alternative (above the track for the first alternative, below it for the second); an arc rises higher the further the estimate moves. The shaded block spans $\pm 1.96$ SE of the difference around the first estimate: an arc that clears it is solid ($p < 0.05$), one that does not is dashed. The sleep apnoea panel uses a narrower $r_g$ axis.}
-\label{fig:sizing}
-\end{figure*}
 
 
 
-All 198 estimable correlations were re-estimated on the common SNP set with shared jackknife blocks; they correlated 0.991 with the standard estimates (mean absolute difference 0.020). Across 135 comparisons between definitions of the same condition, 40 differences had $p < 0.05$ and nine survived Bonferroni correction ($p < 0.00037$). Fig.~\ref{fig:sizing} shows how each estimate swings between definitions, Fig.~\ref{fig:detect} sets every shift against its own noise, and Table~\ref{tab:q} and Fig.~\ref{fig:hetero} summarise heterogeneity across all definitions in each set.
+
+All 198 estimable correlations were re-estimated on the common SNP set with shared jackknife blocks; they correlated 0.991 with the standard estimates (mean absolute difference 0.020). Across 135 comparisons between definitions of the same condition, 40 differences had $p < 0.05$ and nine survived Bonferroni correction ($p < 0.00037$). Fig.~\ref{fig:sizing} shows the shift for six representative changes of definition, Fig.~\ref{fig:detect} sets every shift against its own noise, and Table~\ref{tab:q} and Fig.~\ref{fig:hetero} summarise heterogeneity across all definitions in each set.
 
 \begin{table}[t]
 \caption{Heterogeneity of genetic correlation across definitions of the same condition}
@@ -325,12 +340,7 @@ Epilepsy (7) & 6.1 & 8.0 & 16.4$^{\dagger}$ & 21.0$^{\dagger}$ & 19.8$^{\dagger}
 
 
 
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=\textwidth]{fig12_noise_skyline.pdf}
-\caption{Every definition shift inside its own noise. One mark per comparison (166): the pale sleeve spans $\pm 1.96$ SE of the difference, and the stem is the shift in $r_g$ from the first definition to the second, in the color of its psychiatric trait, drawn thick with an end dot when it escapes its sleeve ($p < 0.05$) and thin otherwise. Families are drawn at different widths per comparison so that small families stay legible; sleeves wider than 0.5 are cut, and sleep apnoea is repeated magnified. The last panel holds the 31 comparisons between EHR and clinical depression.}
-\label{fig:detect}
-\end{figure*}
+
 
 
 
@@ -359,8 +369,8 @@ Across all 135 comparisons, the smallest detectable difference ranged from 0.015
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{fig16_autism_focus.pdf}
-\caption{Autism in focus: how large a definition effect this study could see, and how large it was. One row per alternative definition, compared with the first definition of its condition. Stem, the observed shift in $r_g$ with iPSYCH-PGC autism; dark sleeve, $\pm 1.96$ SE of the difference; pale sleeve, the smallest shift detectable at 80\% power. A filled dot marks a shift that escapes the dark sleeve ($p < 0.05$); hollow dots stay inside. The right columns give the observed and the detectable shift; sleeves are cut at 0.6.}
+\includegraphics[width=\columnwidth]{fig16_autism_focus_paper.pdf}
+\caption{Autism in focus: how large a definition effect this study could see, and how large it was. One row per alternative definition, compared with the first definition of its condition. Stem, the observed shift in $r_g$ with iPSYCH-PGC autism; dark sleeve, $\pm 1.96$ SE of the difference; pale sleeve, the smallest shift detectable at 80\% power. A filled dot marks $p < 0.05$; hollow dots do not reach it. The numbers at right are the shift and the detectable shift; sleeves are cut at 0.6.}
 \label{fig:autism}
 \end{figure}
 

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="252.0pt" height="357.10pt" viewBox="0 0 252.0 357.10" font-family="Menlo, 'SF Mono', Consolas, 'Liberation Mono', monospace">
+<rect width="252.0" height="357.10" fill="#EEF3F1"/>
+<g transform="translate(0,-58.50)">
+<rect x="11.00" y="70.50" width="9.00" height="6.00" rx="1" fill="#CDD8D4" opacity="1.00"/>
+<text x="23.00" y="76.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">range the paper allows</text>
+<circle cx="128.71" cy="73.50" r="2.80" fill="#6a48c4" opacity="1.00"/>
+<text x="136.71" y="76.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">this pipeline</text>
+<line x1="11.00" y1="85.50" x2="20.00" y2="85.50" stroke="#3A4A51" stroke-width="1.2" stroke-linecap="butt" opacity="1.00" stroke-dasharray="2 1.6"/>
+<text x="23.00" y="88.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">rg = 1: the same genetics</text>
+<text x="12.00" y="110.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">a  Against the published values</text>
+<text x="12.00" y="124.00" font-size="7.2" fill="#14232B" text-anchor="start" xml:space="preserve">Autism SNP heritability, K = 0.012</text>
+<text x="12.00" y="133.50" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">paper 0.118 (SE 0.010); here 0.117</text>
+<rect x="110.83" y="141.00" width="42.34" height="8.00" rx="1.5" fill="#CDD8D4" opacity="1.00"/>
+<line x1="132.00" y1="139.00" x2="132.00" y2="151.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="132.00" y1="145.00" x2="130.81" y2="145.00" stroke="#6a48c4" stroke-width="1.6" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="130.81" cy="145.00" r="2.80" fill="#6a48c4" opacity="1.00"/>
+<text x="12.00" y="162.00" font-size="7.2" fill="#14232B" text-anchor="start" xml:space="preserve">Autism and ADHD genetic correlation</text>
+<text x="12.00" y="171.50" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">paper 0.360, no SE: 0.05 tolerance; here 0.346</text>
+<rect x="78.00" y="179.00" width="108.00" height="8.00" rx="1.5" fill="#CDD8D4" opacity="1.00"/>
+<line x1="132.00" y1="177.00" x2="132.00" y2="189.00" stroke="#A9B8B2" stroke-width="0.6" stroke-linecap="butt" opacity="1.00"/>
+<line x1="132.00" y1="183.00" x2="117.20" y2="183.00" stroke="#6a48c4" stroke-width="1.6" stroke-linecap="butt" opacity="1.00"/>
+<circle cx="117.20" cy="183.00" r="2.80" fill="#6a48c4" opacity="1.00"/>
+<line x1="24.00" y1="192.00" x2="240.00" y2="192.00" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="24.00" y1="192.00" x2="24.00" y2="194.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="24.00" y="202.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">-0.1</text>
+<line x1="78.00" y1="192.00" x2="78.00" y2="194.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="78.00" y="202.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">-0.05</text>
+<line x1="132.00" y1="192.00" x2="132.00" y2="194.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="132.00" y="202.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">0</text>
+<line x1="186.00" y1="192.00" x2="186.00" y2="194.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="186.00" y="202.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">+0.05</text>
+<line x1="240.00" y1="192.00" x2="240.00" y2="194.50" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="240.00" y="202.50" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">+0.1</text>
+<text x="132.00" y="212.00" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">this pipeline minus published</text>
+<text x="12.00" y="236.00" font-size="8.2" fill="#14232B" text-anchor="start" xml:space="preserve" font-family="'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif">b  Finnish registry autism and the GWAS</text>
+<text x="12.00" y="246.00" font-size="7.0" fill="#5E6E72" text-anchor="start" xml:space="preserve">each dot: 1/20 of the estimate&#x27;s probability</text>
+<text x="12.00" y="265.00" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">FinnGen autism (F84.0, F84.5), 888 cases</text>
+<text x="12.00" y="274.00" font-size="7.0" fill="#14232B" text-anchor="start" xml:space="preserve">rg 0.73 (SE 0.15)</text>
+<circle cx="57.94" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="68.74" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="79.54" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="79.54" cy="307.00" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="90.34" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="90.34" cy="307.00" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="90.34" cy="296.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="101.14" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="101.14" cy="307.00" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="101.14" cy="296.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="111.94" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="111.94" cy="307.00" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="111.94" cy="296.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="111.94" cy="285.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="122.74" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="122.74" cy="307.00" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="122.74" cy="296.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="133.54" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="133.54" cy="307.00" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="155.14" cy="317.80" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<line x1="24.00" y1="323.20" x2="240.00" y2="323.20" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="147.43" y1="278.00" x2="147.43" y2="323.20" stroke="#3A4A51" stroke-width="0.8" stroke-linecap="butt" opacity="1.00" stroke-dasharray="2 1.6"/>
+<text x="12.00" y="338.20" font-size="7.0" fill="#3A4A51" text-anchor="start" xml:space="preserve">FinnGen autism spectrum (F84), 1,179 cases</text>
+<text x="12.00" y="347.20" font-size="7.0" fill="#14232B" text-anchor="start" xml:space="preserve">rg 0.98 (SE 0.21)</text>
+<circle cx="79.54" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="101.14" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="101.14" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="111.94" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="122.74" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="122.74" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="133.54" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="133.54" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="133.54" cy="358.60" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="144.34" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="144.34" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="155.14" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="155.14" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="155.14" cy="358.60" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="165.94" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="165.94" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="176.74" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="176.74" cy="369.40" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="187.54" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<circle cx="209.14" cy="380.20" r="4.64" fill="#6a48c4" opacity="1.00"/>
+<line x1="24.00" y1="385.60" x2="240.00" y2="385.60" stroke="#CAD6D1" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="147.43" y1="351.20" x2="147.43" y2="385.60" stroke="#3A4A51" stroke-width="0.8" stroke-linecap="butt" opacity="1.00" stroke-dasharray="2 1.6"/>
+<line x1="24.00" y1="387.60" x2="240.00" y2="387.60" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<line x1="24.00" y1="387.60" x2="24.00" y2="390.10" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="24.00" y="398.10" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">0.2</text>
+<line x1="85.71" y1="387.60" x2="85.71" y2="390.10" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="85.71" y="398.10" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">0.6</text>
+<line x1="147.43" y1="387.60" x2="147.43" y2="390.10" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="147.43" y="398.10" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">1</text>
+<line x1="209.14" y1="387.60" x2="209.14" y2="390.10" stroke="#A9B8B2" stroke-width="0.5" stroke-linecap="butt" opacity="1.00"/>
+<text x="209.14" y="398.10" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">1.4</text>
+<text x="132.00" y="407.60" font-size="7.0" fill="#5E6E72" text-anchor="middle" xml:space="preserve">rg with iPSYCH-PGC autism</text>
+</g>
+</svg>
