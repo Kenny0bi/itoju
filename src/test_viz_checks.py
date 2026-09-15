@@ -111,7 +111,32 @@ def case_tiny_text():
     return fig
 
 
+def _radial(n_labels, fontsize):
+    import numpy as np
+    fig, ax = plt.subplots(figsize=(4, 4))
+    ax.set_xlim(-3, 3); ax.set_ylim(-3, 3); ax.set_aspect("equal"); ax.axis("off")
+    for k in range(n_labels):
+        t = np.deg2rad(360 * k / n_labels)
+        right = np.cos(t) >= 0
+        deg = np.rad2deg(t)
+        ax.text(1.8 * np.cos(t), 1.8 * np.sin(t), "label", rotation=deg if right else deg + 180, rotation_mode="anchor",
+                ha="left" if right else "right", va="center", fontsize=fontsize)
+    return fig
+
+
+def case_radial_labels_clear():
+    """36 radial labels 10 degrees apart: their upright boxes overlap, the labels do not. Must pass."""
+    return _radial(36, 7)
+
+
+def case_radial_labels_colliding():
+    """72 larger radial labels 5 degrees apart really do touch: must be caught."""
+    return _radial(72, 12)
+
+
 EXPECT = {
+    case_radial_labels_clear: None,
+    case_radial_labels_colliding: "overlap",
     case_tiny_text: "text below",
     case_sqrt_axis_correct: None,
     case_sqrt_axis_wrong_label: "tick label misstates value",

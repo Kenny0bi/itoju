@@ -30,7 +30,7 @@ FinnGen, the Finnish biobank of about 500,000 people, publishes several definiti
 
 **Scope moves the genetics. Source and strictness mostly don't.** Adding primary care records to sleep apnoea added almost 6,000 cases and moved the genetic correlation by 0.013 at most, when the test could see shifts as small as 0.015. Strict and mode versions of epilepsy agreed with their plain versions. But widening sleep apnoea to any sleep disorder raised the genetic correlation with every psychiatric trait, and widening insomnia to all nonorganic sleep disorders raised it for all five.
 
-![Sizing strips: the same condition through different definitions](figures/fig10_sizing_strips.png)
+![Definition swings: how far the genetic correlation moves when only the definition changes](figures/fig10_definition_swings.png)
 
 **For autism, the answer was steady.** No definition effect survived correction. Constipation gave the same genetic correlation with autism under both definitions (0.11 and 0.12), and the test could have seen a shift of 0.21. Epilepsy was different: autism's correlation with it was near zero under every definition, and the data are too thin there to say more.
 

@@ -11,13 +11,25 @@
 
 \graphicspath{{../figures/}}
 
+% figures are many and wide, so let pages carry more of them beside the text
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\setcounter{dbltopnumber}{2}
+
 \begin{document}
 
 \title{The Phenotype Definition Problem: How EHR Case Definitions Change the Genetic Overlap Between Autism and Its Co-occurring Medical Conditions}
 
 \author{\IEEEauthorblockN{Kehinde Obidele}
-\IEEEauthorblockA{\textit{Department of Health Informatics, Northeastern University}\\
-ORCID: \href{https://orcid.org/0009-0008-6687-185X}{0009-0008-6687-185X}}}
+\vspace{12.8pt}
+\IEEEauthorblockA{\textit{Department of Health Informatics, Northeastern University}}}
 
 \maketitle
 
@@ -36,7 +48,29 @@ In biobank and health record studies, however, a condition is whatever its defin
 
 The genetics of a condition can change with its definition. Depression defined by a few self-reported items has lower heritability and less specific genetic signal than strictly defined major depression~\cite{cai2020}; SNP heritability of bipolar disorder identified from health records ranged from 0.00 to 0.24 across four algorithms~\cite{chen2018}; and definitions of gout in the UK Biobank differed in heritability and in the number of associated variants they recovered~\cite{cadzow2017}. We found no study that asked the same question of autism's co-occurring medical conditions. This study measured how far the genetic correlation between autism, four other psychiatric traits and a set of medical conditions moves when only the case definition of the medical condition changes, and whether the answer is large enough to matter.
 
-The study makes four contributions. It takes 28 FinnGen definitions apart into their codes, data sources and rules, and maps them to SNOMED CT through the OMOP standard vocabularies. It builds a difference test for two genetic correlations that share a trait, using LD score regression's own block jackknife on shared genome blocks, so that the correlation between the two estimates is part of the standard error. It reports, for every comparison, the smallest shift the data could have detected, so that a null result can be read as well powered or not. And it checks the method against a known definition effect, EHR against clinically defined depression.
+
+
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig01_design.pdf}
+\caption{Study design, drawn in the visual language of the later figures with one worked example. (1) The three FinnGen R12 sleep apnoea definitions and their case counts. (2) Each definition meets five psychiatric GWAS in LD score regression. (3) The genetic correlation with depression swings from 0.35 under hospital records to 0.42 under any sleep disorder (the arc of Fig.~\ref{fig:sizing}). (4) The shift of 0.068 is set against its noise, $\pm 1.96$ SE of the difference from the shared-block jackknife (the sleeve of Figs.~\ref{fig:detect}, \ref{fig:autism} and \ref{fig:control}). The strip below lists the checks that run beside the design.}
+\label{fig:design}
+\end{figure*}
+
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig02_anatomy.pdf}
+\caption{The anatomy of a definition. Each row is one alternative definition. Left: one tile per ICD-10 code used anywhere in that condition's definitions; an indigo tile counts the code in hospital or death records, and a teal corner marks a code also counted from primary care. Right, aligned across conditions: rules that codes cannot show, each drawn as a glyph (key at right): a drug purchase class counts (ATC A06A, laxatives); a drug reimbursement right counts; a case must not also meet another definition; the code must be the person's most frequent related diagnosis; the control rule differs from the first definition in the set. A faint dot means the rule does not apply. Tiles show ICD-10 only.}
+\label{fig:anatomy}
+\end{figure*}
+
+
+
+The study makes four contributions (Fig.~\ref{fig:design}). It takes 28 FinnGen definitions apart into their codes, data sources and rules (Fig.~\ref{fig:anatomy}), and maps them to SNOMED CT through the OMOP standard vocabularies. It builds a difference test for two genetic correlations that share a trait, using LD score regression's own block jackknife on shared genome blocks, so that the correlation between the two estimates is part of the standard error. It reports, for every comparison, the smallest shift the data could have detected, so that a null result can be read as well powered or not. And it checks the method against a known definition effect, EHR against clinically defined depression.
 
 \section{Related Work}
 
@@ -55,9 +89,22 @@ LD score regression estimates heritability and genetic correlation from summary 
 \section{Methods}
 
 \subsection{Study Design}
-This study asked whether the genetic correlation between a psychiatric trait and a medical condition changes when only the electronic health record (EHR) definition of that condition changes (Fig.~\ref{fig:design}). It combined public summary statistics from the FinnGen biobank, which often publishes several definitions of the same condition, with genome-wide association studies (GWAS) of five psychiatric traits. Autism was the focal trait. Schizophrenia, bipolar disorder, major depression and post-traumatic stress disorder (PTSD) were added because their far larger samples make smaller definition effects detectable, and depression defined from EHRs and by clinical assessment served as a positive control where a definition effect is already known~\cite{cai2020}.
+
+
+This study asked whether the genetic correlation between a psychiatric trait and a medical condition changes when only the electronic health record (EHR) definition of that condition changes (Fig.~\ref{fig:design}). It combined public summary statistics from the FinnGen biobank, which often publishes several definitions of the same condition, with genome-wide association studies (GWAS) of five psychiatric traits. Autism was the focal trait. Schizophrenia, bipolar disorder, major depression and post-traumatic stress disorder (PTSD) were added because their far larger samples make smaller definition effects detectable, and depression defined from EHRs and by clinical assessment served as a positive control where a definition effect is already known~\cite{cai2020} (Fig.~\ref{fig:control}).
 
 \subsection{Condition Definitions}
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig15_positive_control.pdf}
+\caption{Positive control: depression defined from health records casts a wider genetic net. Left: one spoke per trait or FinnGen endpoint, grouped by body system; distance from the center is $r_g$ with depression (rings at 0, 0.5 and 1). The filled shape joins $r_g$ with EHR-defined depression and the dark outline $r_g$ with clinically defined depression; colored spokes and bold names mark differences with $p < 0.05$. Right: the 31 differences, ranked, each inside its sleeve of $\pm 1.96$ SE (cut at 0.6).}
+\label{fig:control}
+\end{figure*}
+
+
+
 Condition GWAS came from FinnGen release R12 (500,348 participants)~\cite{kurki2023}. The endpoint definitions were taken from the R12 core and non-core endpoint file, which matches data freeze DF12, and were checked against the DF12 endpoint and control definition files (SHA-256 checksums recorded). A FinnGen endpoint is a set of rules: regular expressions over Finnish ICD-10, ICD-9 and ICD-8 codes in the hospital discharge and cause-of-death registers, optional codes from primary care (Avohilmo), drug purchase classes (ATC codes) and drug reimbursement rights, inclusion of other endpoints, exclusion conditions, a ``mode'' rule requiring the code to be the person's most frequent related diagnosis, and a separate rule for who may serve as a control.
 
 This study grouped 28 endpoints. Eighteen formed six \emph{definition sets}, alternative definitions of one condition whose case groups overlap or nest: epilepsy (any epilepsy; focal, focal strict and focal mode; generalized, generalized strict and generalized mode), sleep apnoea (hospital records; hospital records plus primary care; any sleep disorder), insomnia (F51.0 or G47.0; all of F51 with stricter controls), constipation (the constipation code K59.0 or a laxative purchase; all functional intestinal disorders, K59), attention-deficit/hyperactivity disorder (F90.0; all of F90 with stricter controls) and intellectual disability (mild, F70; any, F7). Ten neighbouring conditions (for example irritable bowel syndrome, reflux and two bladder disorders) were analysed alongside for comparison. The grouping, and the choice of distance measure described below, were fixed in the study notebook before any genetic correlation was estimated. Two candidate groupings were rejected at that stage because their members shared no codes: the two bladder endpoints (N31 and N32) and the irritable bowel, dyspepsia and reflux endpoints are different conditions, not definitions of one.
@@ -65,7 +112,29 @@ This study grouped 28 endpoints. Eighteen formed six \emph{definition sets}, alt
 Each definition was taken apart by a script that expanded every code pattern against the WHO ICD-10 code list, followed inclusion chains, and recorded which data sources and rules could make a person a case (Fig.~\ref{fig:anatomy}). Mild intellectual disability (913 cases) had a heritability estimate below zero and was excluded from all correlation analyses, which left five testable definition sets.
 
 \subsection{Mapping to Standard Vocabularies}
-To make definitions comparable across health systems, each definition's codes were mapped to the Observational Medical Outcomes Partnership (OMOP) standard vocabularies~\cite{hripcsak2015,overhage2012}, downloaded from Athena (WHO ICD-10 2021 release, ICD-9-CM, ATC 2026-02-01, SNOMED CT 2026 International edition, RxNorm 2026-06-01). ICD-10 codes were matched to OMOP ICD10 concepts and followed through the ``Maps to'' relationship to standard SNOMED CT concepts. Finnish ICD-9 codes, which add a letter to four digits, were matched to ICD-9-CM after removing the letter and are reported as approximate. ICD-8 has no OMOP vocabulary, so ICD-8 rules could not be mapped. ATC classes were linked to their substances through the concept ancestor table. The phecodeX map~\cite{shuey2023,wu2019} was used as a second, research-oriented grouping. The overlap between two definitions was measured with the Jaccard index at four levels: ICD-10 codes, phecodes, SNOMED CT concepts, and SNOMED CT concepts together with their ancestors up to two levels.
+
+
+
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=\columnwidth]{fig06_snomed_contents.pdf}
+\caption{What two definitions of one condition contain, and how much they share, counted in SNOMED CT concepts. Each square is one standard concept that either definition's ICD-10 codes map to: ochre, only in the first definition; split ochre and blue, in both; blue, only in the second. Brackets give each definition's concept count. Widening sleep apnoea to any sleep disorder adds 16 concepts to the one they share, all of K59 adds 13 to constipation's one (including irritable bowel syndrome and functional diarrhoea), and focal and generalized epilepsy share none. Laxative purchases have no condition concept.}
+\label{fig:snomed}
+\end{figure}
+
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig05_three_lenses.pdf}
+\caption{Overlap between alternative definitions depends on the vocabulary. For each pair, the Jaccard index from ICD-10 codes, phecodeX groups, SNOMED CT concepts, and SNOMED CT concepts together with their ancestors within two levels, drawn as an eclipse: an ochre disc for the first definition and a blue disc for the second, placed so that the dark shared area, divided by the area both discs cover, equals the Jaccard index (key at top), with the value printed beside it. Pairs with identical values in all four vocabularies share a row.}
+\label{fig:lenses}
+\end{figure*}
+
+
+
+To make definitions comparable across health systems, each definition's codes were mapped to the Observational Medical Outcomes Partnership (OMOP) standard vocabularies~\cite{hripcsak2015,overhage2012}, downloaded from Athena (WHO ICD-10 2021 release, ICD-9-CM, ATC 2026-02-01, SNOMED CT 2026 International edition, RxNorm 2026-06-01). ICD-10 codes were matched to OMOP ICD10 concepts and followed through the ``Maps to'' relationship to standard SNOMED CT concepts. Finnish ICD-9 codes, which add a letter to four digits, were matched to ICD-9-CM after removing the letter and are reported as approximate. ICD-8 has no OMOP vocabulary, so ICD-8 rules could not be mapped. ATC classes were linked to their substances through the concept ancestor table. The phecodeX map~\cite{shuey2023,wu2019} was used as a second, research-oriented grouping. The overlap between two definitions was measured with the Jaccard index at four levels: ICD-10 codes, phecodes, SNOMED CT concepts, and SNOMED CT concepts together with their ancestors up to two levels. Fig.~\ref{fig:snomed} lists the concepts behind three of the comparisons, and Fig.~\ref{fig:lenses} gives all four overlaps for every pair.
 
 \subsection{Psychiatric GWAS}
 Autism summary statistics came from the iPSYCH-PGC meta-analysis (18,381 cases, 27,969 controls)~\cite{grove2019}. The other psychiatric GWAS were the European-ancestry analyses of the Psychiatric Genomics Consortium for schizophrenia~\cite{trubetskoy2022}, bipolar disorder~\cite{mullins2021}, major depression excluding 23andMe~\cite{adams2025} and PTSD~\cite{nievergelt2024}, and the MDD2025 subsets restricted to EHR or registry cohorts (311,831 cases, 1,180,439 controls) and to clinically assessed cohorts (26,778 cases, 51,857 controls)~\cite{adams2025}. Per-SNP effective sample sizes were used for all PGC analyses. For every file, the reported frequency of the effect allele was compared with the 1000 Genomes European frequency of the same allele~\cite{kg2015}; correlations ranged from 0.991 to 0.998 over more than 1.1 million non-palindromic SNPs, confirming that effect alleles were labelled correctly.
@@ -73,96 +142,164 @@ Autism summary statistics came from the iPSYCH-PGC meta-analysis (18,381 cases, 
 The cohort lists showed three sources of sample overlap with FinnGen: the full depression GWAS and its EHR subset both include FinnGen, and the PTSD meta-analysis lists FinnGen among its biobanks. The EHR depression subset also contains iPSYCH, the cohort behind the autism GWAS. Cross-trait LD score regression absorbs such overlap in its intercept~\cite{bulik2015atlas}, and the intercepts were inspected for exactly this pattern.
 
 \subsection{LD Score Regression}
-SNP heritability and genetic correlation were estimated with LD score regression~\cite{bulik2015ldsc,bulik2015atlas} using a maintained Python 3 port of the original software and the European LD scores computed from 1000 Genomes~\cite{kg2015}. FinnGen files were streamed, restricted to HapMap3 SNPs with minor allele frequency of at least 0.01, and never stored; about 1.17 million SNPs remained per endpoint. Heritability was converted to the liability scale~\cite{lee2011}. For FinnGen endpoints the population prevalence was approximated by the sample prevalence, so heritability is compared within a condition rather than across conditions; genetic correlations do not depend on this choice.
+
+
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig08_heritability.pdf}
+\caption{Does a wider definition lower heritability? One panel per condition: each definition at its number of cases (log scale) and its liability-scale SNP heritability, using the sample prevalence as the population prevalence. Dot, estimate; thick bar, 50\% interval; thin line, 95\% interval; hollow gray dot, estimate below zero. All panels share the heritability axis.}
+\label{fig:h2}
+\end{figure*}
+
+
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=\columnwidth]{fig07_validation.pdf}
+\caption{Validation. (a) Autism SNP heritability on the liability scale and the genetic correlation between autism and ADHD, drawn as this pipeline's estimate minus the published value; the pale sleeve is the published 95\% interval or, where the paper prints no standard error, the tolerance of $\pm 0.05$ fixed in the analysis plan. (b) Genetic correlation between the iPSYCH-PGC autism GWAS and the two FinnGen autism endpoints, each drawn as a quantile dot plot of its sampling distribution (20 dots, each one twentieth of the probability); the dashed line marks $r_g = 1$.}
+\label{fig:validation}
+\end{figure}
+
+
+
+SNP heritability and genetic correlation were estimated with LD score regression~\cite{bulik2015ldsc,bulik2015atlas} using a maintained Python 3 port of the original software and the European LD scores computed from 1000 Genomes~\cite{kg2015}. FinnGen files were streamed, restricted to HapMap3 SNPs with minor allele frequency of at least 0.01, and never stored; about 1.17 million SNPs remained per endpoint. Heritability was converted to the liability scale~\cite{lee2011} (Fig.~\ref{fig:h2}). For FinnGen endpoints the population prevalence was approximated by the sample prevalence, so heritability is compared within a condition rather than across conditions; genetic correlations do not depend on this choice.
 
 Before any new estimate was trusted, the pipeline reproduced published values: autism liability-scale heritability 0.117 (SE 0.010) against 0.118 (SE 0.010) in the source paper~\cite{grove2019}, and the genetic correlation between autism and ADHD~\cite{demontis2019} of 0.346 (SE 0.051) against 0.360 (Fig.~\ref{fig:validation}). During this work a defect was found in the Python 3 port: requesting liability-scale output from a genetic correlation run raised an error after the estimate had been printed. Genetic correlations were therefore run without prevalence arguments, which leaves the estimate unchanged.
 
 \subsection{Testing Whether the Definition Moves the Genetic Correlation}
+
+
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig11_block_geometry.pdf}
+\caption{Why a difference between two genetic correlations can be precise. Top: each dot is one of the 200 genome blocks of the jackknife, at its pseudovalue of $r_g$ under each definition, centered on the estimates. Bottom: quantile dot plots of the per-block differences, each dot standing for 10 blocks; filled dots keep the blocks paired as they are, and hollow dots pair every block of one definition with every block of the other, as if the two estimates shared no people. (a) Depression with sleep apnoea against any sleep disorder, (b) PTSD with constipation against functional intestinal disorders, (c) PTSD with EHR against clinical depression.}
+\label{fig:pseudo}
+\end{figure*}
+
+
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=\columnwidth]{fig20_power.pdf}
+\caption{What buys power: shared cases. The gray map gives the smallest difference in $r_g$ detectable at 80\% power for two estimates with equal standard error (vertical axis, log scale) and a given correlation between their sampling errors (horizontal axis), with contour lines from 0.02 to 1. Dots, colored by psychiatric trait, are the 135 comparisons between definitions of the same condition, placed at their error correlation and the root mean square of their two standard errors; rings are the 31 EHR against clinical depression comparisons. Four comparisons are numbered and named below the plot.}
+\label{fig:power}
+\end{figure}
+
+
+
 Two genetic correlations that share a psychiatric trait and describe overlapping case groups have correlated sampling errors, and treating them as independent would overstate the uncertainty of their difference. LD score regression estimates standard errors with a block jackknife over 200 contiguous blocks of SNPs~\cite{busing1999}. All 35 traits were first restricted to one common set of 953,474 SNPs, and every pair was re-estimated with evenly spaced blocks, so that block $k$ covers the same stretch of genome in every analysis. From the delete values of the genetic covariance and the two heritabilities, the jackknife pseudovalue of the genetic correlation in block $k$ is
 \begin{equation}
 \tilde{r}_{k} = n\,\hat{r}_g - (n - 1)\,\frac{\hat{\rho}_{g,(k)}}{\sqrt{\hat{h}^2_{1,(k)}\,\hat{h}^2_{2,(k)}}},
 \end{equation}
-with $n = 200$, exactly as the software computes it. For two definitions $a$ and $b$, the standard error of the difference $\hat{r}_a - \hat{r}_b$ is $\sqrt{\mathrm{var}(\tilde{r}_{a,k} - \tilde{r}_{b,k})/n}$, which includes the covariance between the two estimates. The rebuilt standard error of every single genetic correlation matched the software's own printed value (198 of 198). The smallest difference detectable at a two-sided $\alpha$ of 0.05 with 80\% power is $2.80$ times this standard error.
+with $n = 200$, exactly as the software computes it. For two definitions $a$ and $b$, the standard error of the difference $\hat{r}_a - \hat{r}_b$ is $\sqrt{\mathrm{var}(\tilde{r}_{a,k} - \tilde{r}_{b,k})/n}$, which includes the covariance between the two estimates; Fig.~\ref{fig:pseudo} shows these per-block values for three pairs of definitions. The rebuilt standard error of every single genetic correlation matched the software's own printed value (198 of 198). The smallest difference detectable at a two-sided $\alpha$ of 0.05 with 80\% power is $2.80$ times this standard error, so the correlation between the two estimates' errors, not sample size alone, sets how small a shift can be seen (Fig.~\ref{fig:power}).
 
-Within each definition set and psychiatric trait, heterogeneity across all definitions was tested with Cochran's $Q = \hat{\mathbf{r}}^{\top} W \hat{\mathbf{r}} - (\mathbf{1}^{\top} W \hat{\mathbf{r}})^2 / (\mathbf{1}^{\top} W \mathbf{1})$, where $W$ is the inverse of the jackknife covariance matrix of the definitions' estimates, on $k - 1$ degrees of freedom. The relation between how different two definitions are and how far their genetic correlations move was examined with Spearman correlations against the pre-specified distance (one minus the mean of ICD-10 Jaccard, data-source Jaccard and an indicator that no rule differs) and, as an exploratory analysis, against SNOMED CT distance. Because comparisons share traits and definitions, these correlations are descriptive.
+
+
+
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=\columnwidth]{fig13_heterogeneity.pdf}
+\caption{Heterogeneity across definitions, with each $p$-value drawn as the tail it is. Rows, definition sets; columns, psychiatric traits. The curve is the $\chi^2$ distribution that Cochran's $Q$ would follow if the definitions made no difference; the tick is the observed $Q$, and the shaded tail beyond it is the $p$-value. Ticks and tails wear the trait's color, and a dot on the tick marks $p < 0.05$; an arrow marks a $Q$ beyond the drawn range.}
+\label{fig:hetero}
+\end{figure}
+
+
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=\columnwidth]{fig14_distance_drift.pdf}
+\caption{Do definitions that differ more give genetic correlations that differ more? Each point is one comparison, in the color of its psychiatric trait (filled: sleep, constipation and ADHD; hollow: epilepsy); dark bars are medians and boxes the middle half within each cluster of five or more comparisons at the same distance. (a) Pre-specified distance from codes, data sources and rules. (b) SNOMED CT distance (exploratory). The strip above each panel places the Spearman correlation for each psychiatric trait (dots) and for all 135 comparisons (bar); the correlations are descriptive because comparisons share traits and definitions.}
+\label{fig:distance}
+\end{figure}
+
+
+
+Within each definition set and psychiatric trait, heterogeneity across all definitions was tested with Cochran's $Q = \hat{\mathbf{r}}^{\top} W \hat{\mathbf{r}} - (\mathbf{1}^{\top} W \hat{\mathbf{r}})^2 / (\mathbf{1}^{\top} W \mathbf{1})$, where $W$ is the inverse of the jackknife covariance matrix of the definitions' estimates, on $k - 1$ degrees of freedom (Fig.~\ref{fig:hetero}). The relation between how different two definitions are and how far their genetic correlations move was examined with Spearman correlations against the pre-specified distance (one minus the mean of ICD-10 Jaccard, data-source Jaccard and an indicator that no rule differs) and, as an exploratory analysis, against SNOMED CT distance (Fig.~\ref{fig:distance}). Because comparisons share traits and definitions, these correlations are descriptive.
 
 \subsection{Finnish Linkage Disequilibrium}
-The European LD reference does not match the Finnish population exactly~\cite{lim2014}. As a sensitivity check, LD scores were rebuilt for chromosomes 21 and 22 from the public FinnGen R12 LD matrix (520,210 samples; all variant pairs within 3 Mb with $r^2 > 0.01$), summing $r^2$ over HapMap3 SNPs within 1 Mb, and compared SNP by SNP with the European scores.
+
+
+\begin{figure}[!tb]
+\centering
+\includegraphics[width=\columnwidth]{fig19_finnish_ld.pdf}
+\caption{The LD landscape of chromosomes 21 and 22 through two populations. (a, b) Mean LD score in 250 kb windows along each chromosome, European (1000 Genomes) above the line and Finnish (FinnGen R12) mirrored below it. (c) The per-SNP ratio of Finnish to European LD score as a quantile dot plot (each dot 2\% of SNPs) on a log axis; blue line, median.}
+\label{fig:finnish}
+\end{figure}
+
+
+
+The European LD reference does not match the Finnish population exactly~\cite{lim2014}. As a sensitivity check, LD scores were rebuilt for chromosomes 21 and 22 from the public FinnGen R12 LD matrix (520,210 samples; all variant pairs within 3 Mb with $r^2 > 0.01$), summing $r^2$ over HapMap3 SNPs within 1 Mb, and compared SNP by SNP with the European scores (Fig.~\ref{fig:finnish}).
 
 \section{Results}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig01_design.pdf}
-\caption{Study design. Data came from FinnGen R12 (definitions and summary statistics), five European-ancestry psychiatric GWAS with EHR and clinical depression subsets, and the OMOP vocabularies. Each row follows one strand from preparation to analysis to the question it answers. Every count is taken from this study's files and logs.}
-\label{fig:design}
-\end{figure*}
-
 \subsection{What the Definitions Contain}
-Alternative definitions of the same condition differed in several ways at once (Fig.~\ref{fig:anatomy}). Some shared every ICD-10 code and differed only in their rules: focal, focal strict and focal mode epilepsy all use G40.0 to G40.2, but the strict version excludes anyone who also meets the generalized definition and the mode version requires focal codes to be the person's most frequent epilepsy diagnosis. Others differed in their data sources: the two sleep apnoea definitions share one code (G47.3), and the broader one adds primary care records. The constipation definition counts a laxative purchase as a case, which no code-based view can show.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig02_anatomy.pdf}
-\caption{The anatomy of a definition. Each row is one alternative definition. Left block: one column per ICD-10 code used anywhere in that condition's definitions; a filled tile means the code makes someone a case in hospital or death records, and a white notch marks codes also counted from primary care. Right block: rules that codes cannot show. drug, a drug purchase class counts (ATC A06A, laxatives); reimb, a drug reimbursement right counts; excl, a case must not also meet another definition; mode, the code must be the most frequent related diagnosis; ctrl, the control rule differs from the first definition in the set. Tiles show ICD-10 only.}
-\label{fig:anatomy}
-\end{figure*}
+
+Alternative definitions of the same condition differed in several ways at once (Fig.~\ref{fig:anatomy}). Some shared every ICD-10 code and differed only in their rules: focal, focal strict and focal mode epilepsy all use G40.0 to G40.2, but the strict version excludes anyone who also meets the generalized definition and the mode version requires focal codes to be the person's most frequent epilepsy diagnosis. Others differed in their data sources: the two sleep apnoea definitions share one code (G47.3), and the broader one adds primary care records. The constipation definition counts a laxative purchase as a case, which no code-based view can show.
 
 All 153 ICD-10 codes used across the 28 definitions mapped to standard SNOMED CT concepts (99 distinct concepts). Sixteen of the 28 definitions also contain ICD-8 rules, which have no OMOP counterpart. How much two definitions overlapped depended on the vocabulary used to compare them (Fig.~\ref{fig:lenses}). Attention-deficit/hyperactivity disorder defined as F90.0 or as all of F90 overlapped 0.20 by ICD-10 codes, 1.00 by phecodes, 0.50 by SNOMED CT concepts and 0.80 once SNOMED CT ancestors were included. Any epilepsy and generalized epilepsy overlapped 0.09 by codes but 0.50 in the SNOMED CT hierarchy. The two bladder endpoints shared no codes and no phecodes but 28\% of their SNOMED CT concepts.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig05_three_lenses.pdf}
-\caption{Three lenses on overlap. For each pair of alternative definitions, the Jaccard overlap measured from ICD-10 codes, phecodeX groups, SNOMED CT concepts, and SNOMED CT concepts together with their ancestors within two levels. Black lines are named pairs; gray lines are the remaining pairs; ``x3'' marks identical profiles merged. The flat line at 1.0 is the strict and mode variants, whose code sets are identical.}
-\label{fig:lenses}
-\end{figure}
+
 
 Reading the definitions through SNOMED CT also caught a labelling error in this study's own work (Fig.~\ref{fig:snomed}). The FinnGen endpoint first treated here as a diagnosis-only definition of constipation (K59) maps to 14 SNOMED CT concepts: constipation and its subtypes, but also irritable bowel syndrome, functional diarrhoea, neurogenic bowel, acquired megacolon and post-surgical conditions. FinnGen's own name for it is ``other functional intestinal disorders''. It is a broader bowel dysfunction definition that contains constipation, and it is described as such throughout. In the same way, insomnia defined by F51.0 or G47.0 maps to two concepts, while all of F51 adds sleepwalking, sleep terrors, nightmares, non-organic hypersomnia and sleep-wake schedule disorders (11 concepts).
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig06_snomed_contents.pdf}
-\caption{What a definition contains, read in SNOMED CT. Rows are the standard concepts that each definition's ICD-10 codes map to; a filled dot means the definition includes the concept. (a) Insomnia, (b) constipation against all functional intestinal disorders (K59), (c) ADHD. Concepts in both definitions are in darker text.}
-\label{fig:snomed}
-\end{figure}
-
 \subsection{Validation, Heritability and Genetic Correlations}
+
+
+
+
 The pipeline reproduced the published autism estimates before any new result was produced (Fig.~\ref{fig:validation}). Autism in the Danish GWAS also correlated strongly with autism in the Finnish registry: $r_g = 0.73$ (SE 0.15) with the narrow FinnGen definition (F84.0, F84.5; 888 cases) and 0.98 (SE 0.21) with the broader one (F84; 1,179 cases).
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig07_validation.pdf}
-\caption{Validation. (a) Autism SNP heritability on the liability scale and the genetic correlation between autism and ADHD, from this pipeline (filled, 95\% interval) and as published (hollow; the published correlation has no printed standard error). (b) Genetic correlation between the iPSYCH-PGC autism GWAS and the two FinnGen autism endpoints.}
-\label{fig:validation}
-\end{figure*}
-
-Liability-scale heritability varied within conditions (Fig.~\ref{fig:h2}). Generalized epilepsy (0.135, SE 0.032) was more heritable than focal epilepsy (0.026, SE 0.009), and the broad epilepsy definition fell between them (0.055, SE 0.009). ADHD with all of F90 and stricter controls (0.127, SE 0.019) exceeded F90.0 alone (0.092, SE 0.016). Adding primary care to sleep apnoea left heritability unchanged (0.125 and 0.120). Among the psychiatric traits, clinically defined depression had twice the heritability of EHR-defined depression (0.114, SE 0.012, against 0.057, SE 0.002, at the same population prevalence), the direction reported for strict versus minimal definitions of depression~\cite{cai2020}. Mild intellectual disability (913 cases) had an estimate below zero.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig08_heritability.pdf}
-\caption{SNP heritability by definition. Left: liability-scale heritability with 95\% interval, using the sample prevalence as the population prevalence. Right: number of cases, log scale. A hollow mark at zero is an estimate below zero.}
-\label{fig:h2}
-\end{figure}
-
-Of the 217 genetic correlations estimated, 156 had $p < 0.05$ (Fig.~\ref{fig:quilt}). The genetic correlation between schizophrenia and bipolar disorder was 0.68 (SE 0.02). Autism correlated with both FinnGen ADHD definitions (0.53, SE 0.11; 0.55, SE 0.08), irritable bowel syndrome (0.22, SE 0.07), nonorganic sleep disorders (0.31, SE 0.09) and sleep apnoea (0.12, SE 0.05), but not with any epilepsy definition (estimates from $-0.19$ to $-0.02$). The cross-trait intercepts behaved as expected from the cohort lists (Fig.~\ref{fig:intercepts}): median 0.001 to 0.004 for autism, schizophrenia, bipolar disorder and clinical depression, which contain no FinnGen samples, against 0.012 for PTSD and 0.020 for both depression GWAS that include FinnGen.
-
-\begin{figure}[t]
+\begin{figure}[!tb]
 \centering
 \includegraphics[width=\columnwidth]{fig09_rg_quilt.pdf}
-\caption{Genetic correlations between seven psychiatric GWAS and 28 FinnGen endpoints. Dot color is $r_g$ (capped at $\pm 0.8$); dot area grows with precision, so estimates with wide standard errors shrink; a gray ring marks $p < 0.05$. NA: heritability below zero. Rows are grouped by condition, with the definitions of one condition stacked together.}
+\caption{Genetic correlations between seven psychiatric GWAS and 28 FinnGen endpoints. Top: the headline pattern, with the median $r_g$ across each condition's definitions for each of five psychiatric traits. Below: the full matrix, colored with a value-suppressing uncertainty palette~\cite{correll2018}: hue gives $r_g$ and depth of color its precision, so estimates with large standard errors fade toward gray and merge into fewer color steps (fan key). Rows are grouped by condition, with the definitions of one condition stacked together.}
 \label{fig:quilt}
 \end{figure}
 
-\begin{figure}[t]
+
+
+Liability-scale heritability varied within conditions (Fig.~\ref{fig:h2}). Generalized epilepsy (0.135, SE 0.032) was more heritable than focal epilepsy (0.026, SE 0.009), and the broad epilepsy definition fell between them (0.055, SE 0.009). ADHD with all of F90 and stricter controls (0.127, SE 0.019) exceeded F90.0 alone (0.092, SE 0.016). Adding primary care to sleep apnoea left heritability unchanged (0.125 and 0.120). Among the psychiatric traits, clinically defined depression had twice the heritability of EHR-defined depression (0.114, SE 0.012, against 0.057, SE 0.002, at the same population prevalence), the direction reported for strict versus minimal definitions of depression~\cite{cai2020}. Mild intellectual disability (913 cases) had an estimate below zero.
+
+
+
+
+
+
+
+
+
+\begin{figure}[!tb]
 \centering
 \includegraphics[width=\columnwidth]{fig18_intercepts.pdf}
-\caption{Cross-trait LD score regression intercepts with the 28 FinnGen endpoints, grouped by whether the psychiatric GWAS contains FinnGen samples. One dot per endpoint with 95\% interval; black tick, median. Shared samples appear in the intercept, which keeps $r_g$ unbiased.}
+\caption{Cross-trait LD score regression intercepts with the 28 FinnGen endpoints, one dot per endpoint in a beeswarm, grouped by whether the psychiatric GWAS contains FinnGen samples; black tick, median. The pale band spans $\pm 1.96$ times the median intercept standard error around zero, where a GWAS with no shared samples should fall. Shared samples appear in the intercept, which keeps $r_g$ unbiased.}
 \label{fig:intercepts}
 \end{figure}
 
+
+
+Of the 217 genetic correlations estimated, 156 had $p < 0.05$ (Fig.~\ref{fig:quilt}). The genetic correlation between schizophrenia and bipolar disorder was 0.68 (SE 0.02). Autism correlated with both FinnGen ADHD definitions (0.53, SE 0.11; 0.55, SE 0.08), irritable bowel syndrome (0.22, SE 0.07), nonorganic sleep disorders (0.31, SE 0.09) and sleep apnoea (0.12, SE 0.05), but not with any epilepsy definition (estimates from $-0.19$ to $-0.02$). The cross-trait intercepts behaved as expected from the cohort lists (Fig.~\ref{fig:intercepts}): median 0.001 to 0.004 for autism, schizophrenia, bipolar disorder and clinical depression, which contain no FinnGen samples, against 0.012 for PTSD and 0.020 for both depression GWAS that include FinnGen.
+
 \subsection{Does the Definition Move the Genetic Correlation?}
-All 198 estimable correlations were re-estimated on the common SNP set with shared jackknife blocks; they correlated 0.991 with the standard estimates (mean absolute difference 0.020). Across 135 comparisons between definitions of the same condition, 40 differences had $p < 0.05$ and nine survived Bonferroni correction ($p < 0.00037$). Table~\ref{tab:q} summarises heterogeneity across all definitions in each set, and Fig.~\ref{fig:sizing} shows every estimate against the smallest shift the design could detect.
+
+
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig10_definition_swings.pdf}
+\caption{Definition swings. For each definition set and psychiatric trait, the filled dot is $r_g$ under the first definition, and an arc swings to $r_g$ under each alternative (above the track for the first alternative, below it for the second); an arc rises higher the further the estimate moves. The shaded block spans $\pm 1.96$ SE of the difference around the first estimate: an arc that clears it is solid ($p < 0.05$), one that does not is dashed. The sleep apnoea panel uses a narrower $r_g$ axis.}
+\label{fig:sizing}
+\end{figure*}
+
+
+
+All 198 estimable correlations were re-estimated on the common SNP set with shared jackknife blocks; they correlated 0.991 with the standard estimates (mean absolute difference 0.020). Across 135 comparisons between definitions of the same condition, 40 differences had $p < 0.05$ and nine survived Bonferroni correction ($p < 0.00037$). Fig.~\ref{fig:sizing} shows how each estimate swings between definitions, Fig.~\ref{fig:detect} sets every shift against its own noise, and Table~\ref{tab:q} and Fig.~\ref{fig:hetero} summarise heterogeneity across all definitions in each set.
 
 \begin{table}[t]
 \caption{Heterogeneity of genetic correlation across definitions of the same condition}
@@ -184,90 +321,71 @@ Epilepsy (7) & 6.1 & 8.0 & 16.4$^{\dagger}$ & 21.0$^{\dagger}$ & 19.8$^{\dagger}
 \footnotesize{Cochran's $Q$ with the jackknife covariance, df = definitions $-$ 1. $^{\dagger}p < 0.05$; $^{\ast}p < 0.001$.}
 \end{table}
 
-\begin{figure*}[t]
+
+
+
+
+\begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig10_sizing_strips.pdf}
-\caption{The same condition measured through different definitions. For each definition set and psychiatric trait, every definition's $r_g$ on one axis, joined by a line; thin bars, $\pm 1$ SE. The gray band spans the smallest shift from the first definition this design detects at 80\% power. $\ast$, the definition differs from the first definition at $p < 0.05$.}
-\label{fig:sizing}
+\includegraphics[width=\textwidth]{fig12_noise_skyline.pdf}
+\caption{Every definition shift inside its own noise. One mark per comparison (166): the pale sleeve spans $\pm 1.96$ SE of the difference, and the stem is the shift in $r_g$ from the first definition to the second, in the color of its psychiatric trait, drawn thick with an end dot when it escapes its sleeve ($p < 0.05$) and thin otherwise. Families are drawn at different widths per comparison so that small families stay legible; sleeves wider than 0.5 are cut, and sleep apnoea is repeated magnified. The last panel holds the 31 comparisons between EHR and clinical depression.}
+\label{fig:detect}
 \end{figure*}
+
+
 
 \emph{Sleep apnoea.} Adding primary care records barely moved the genetic correlation: the largest difference was 0.013 (SE 0.006, $p = 0.04$, PTSD), and the smallest detectable differences for this pair were 0.015 to 0.029. Widening the definition from sleep apnoea to any sleep disorder raised the genetic correlation with every psychiatric trait: by 0.068 (SE 0.007) for depression, 0.064 (SE 0.009) for bipolar disorder, 0.063 (SE 0.008) for PTSD, 0.050 (SE 0.008) for schizophrenia and 0.027 (SE 0.013, $p = 0.042$) for autism. These were the most precise comparisons in the study because the two definitions share most of their cases: their sampling errors correlated 0.92 to 0.97 (Fig.~\ref{fig:pseudo}).
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig11_pseudovalues.pdf}
-\caption{Why a difference between two genetic correlations can be precise. Each dot is one of 200 genome blocks: its jackknife pseudovalue of $r_g$ under each definition, centered on the estimate. When definitions share their cases, the blocks fall along the diagonal and most noise cancels in the difference. (a) Depression with sleep apnoea against any sleep disorder, (b) PTSD with constipation against functional intestinal disorders, (c) PTSD with EHR against clinical depression.}
-\label{fig:pseudo}
-\end{figure*}
 
 \emph{Insomnia.} Nonorganic sleep disorders (all of F51, stricter controls) gave higher genetic correlations than insomnia (F51.0 or G47.0) for all five traits: by 0.139 (SE 0.050, $p = 0.005$) for depression, 0.134 (SE 0.048, $p = 0.005$) for bipolar disorder, 0.125 (SE 0.050, $p = 0.013$) for PTSD, 0.090 (SE 0.041, $p = 0.029$) for schizophrenia and 0.093 ($p = 0.079$) for autism. The two definitions differ in scope (parasomnias and hypersomnia added) and in their control rule at the same time, and this design cannot separate the two.
 
 \emph{Constipation.} The broader functional intestinal disorders definition gave a higher genetic correlation than the constipation code or laxative definition for PTSD (0.207, SE 0.055, $p = 0.0002$) and schizophrenia (0.113, SE 0.046, $p = 0.015$), but not for autism (0.010, $p = 0.90$). The error correlation for this pair was only 0.39 to 0.55, because the laxative rule adds many people the diagnosis-based definition does not contain, so the smallest detectable differences were 0.13 to 0.21.
 
+
+
 \emph{Epilepsy and ADHD.} Genetic correlations differed across the seven epilepsy definitions for depression ($Q = 21.0$, df 6, $p = 0.002$), PTSD ($p = 0.003$) and bipolar disorder ($p = 0.012$). The differences ran between focal and generalized epilepsy, not between strict, mode and plain versions of the same subtype. Both ADHD definitions gave the same correlations with every trait (largest difference 0.036), with smallest detectable differences of 0.07 to 0.12.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig12_detectability.pdf}
-\caption{Every comparison against its own power. The horizontal axis is the smallest difference each comparison could detect (80\% power); the vertical axis is the observed difference. Points above the line differ at $p < 0.05$. (a) The 135 comparisons between definitions of the same condition, colored by psychiatric trait and shaped by condition; epilepsy points are drawn lighter because they are numerous. (b) The 31 comparisons between EHR and clinical depression.}
-\label{fig:detect}
-\end{figure*}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig13_heterogeneity.pdf}
-\caption{Heterogeneity across definitions. Rows, definition sets; columns, psychiatric traits. Dot fill is $-\log_{10} p$ of Cochran's $Q$ (capped at 8), dot size the range of $r_g$ across definitions, and a ring marks $p < 0.05$, labelled with $Q$ and its degrees of freedom.}
-\label{fig:hetero}
-\end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig20_power.pdf}
-\caption{What buys power: shared cases. Smallest detectable difference in $r_g$ against the correlation between the two estimates' sampling errors, for all 135 comparisons. Gray curves show the formula for two estimates with equal standard errors of 0.05, 0.10 and 0.20.}
-\label{fig:power}
-\end{figure}
-
-Across all 135 comparisons, the smallest detectable difference ranged from 0.015 to 1.10 (Fig.~\ref{fig:detect}), and it was governed mainly by how strongly the two estimates' errors correlated (Fig.~\ref{fig:power}).
+Across all 135 comparisons, the smallest detectable difference ranged from 0.015 to 1.10, and it was governed mainly by how strongly the two estimates' errors correlated (Fig.~\ref{fig:power}).
 
 \subsection{Autism}
-For autism, no difference between definitions survived multiple-testing correction (Fig.~\ref{fig:autism}). Three were nominally significant: widening sleep apnoea to any sleep disorder, from hospital records (0.027, $p = 0.042$) and from hospital plus primary care records (0.040, $p = 0.017$), in the same direction as for every other trait, and any epilepsy against focal epilepsy under the mode rule (0.197, $p = 0.023$). The design could see a shift of 0.03 to 0.05 for the sleep apnoea definitions, 0.15 for insomnia, 0.21 for constipation and 0.12 for ADHD, but between 0.11 and 0.81 for epilepsy. The constipation result is the clearest statement for autism: whether the definition is narrow constipation or all functional bowel disorders, the genetic correlation with autism is the same (0.11 and 0.12).
 
-\begin{figure}[t]
+
+
+
+
+
+
+
+\begin{figure}[!tb]
 \centering
 \includegraphics[width=\columnwidth]{fig16_autism_focus.pdf}
-\caption{Autism in focus. Left: $r_g$ with iPSYCH-PGC autism and 95\% interval for every definition. Right: the shift from the first definition in each condition, drawn against the smallest shift detectable at 80\% power (gray bar); a ringed dot differs at $p < 0.05$.}
+\caption{Autism in focus: how large a definition effect this study could see, and how large it was. One row per alternative definition, compared with the first definition of its condition. Stem, the observed shift in $r_g$ with iPSYCH-PGC autism; dark sleeve, $\pm 1.96$ SE of the difference; pale sleeve, the smallest shift detectable at 80\% power. A filled dot marks a shift that escapes the dark sleeve ($p < 0.05$); hollow dots stay inside. The right columns give the observed and the detectable shift; sleeves are cut at 0.6.}
 \label{fig:autism}
 \end{figure}
 
+
+
+
+
+For autism, no difference between definitions survived multiple-testing correction (Fig.~\ref{fig:autism}). Three were nominally significant: widening sleep apnoea to any sleep disorder, from hospital records (0.027, $p = 0.042$) and from hospital plus primary care records (0.040, $p = 0.017$), in the same direction as for every other trait, and any epilepsy against focal epilepsy under the mode rule (0.197, $p = 0.023$). The design could see a shift of 0.03 to 0.05 for the sleep apnoea definitions, 0.15 for insomnia, 0.21 for constipation and 0.12 for ADHD, but between 0.11 and 0.81 for epilepsy. The constipation result is the clearest statement for autism: whether the definition is narrow constipation or all functional bowel disorders, the genetic correlation with autism is the same (0.11 and 0.12).
+
 \subsection{Positive Control: EHR and Clinical Depression}
+
+
+
+
+
+
 EHR-defined and clinically defined depression correlated at $r_g = 0.857$ (SE 0.045). Against the other traits and endpoints, EHR depression gave the higher genetic correlation in 25 of 31 comparisons (Fig.~\ref{fig:control}); six differences had $p < 0.05$ and none survived Bonferroni correction. The largest were with PTSD (0.157, SE 0.052, $p = 0.003$) and any epilepsy (0.208, $p = 0.017$). Because the two depression GWAS share almost no samples (intercept 0.013), their errors were only weakly correlated, and the smallest detectable differences were 0.11 to 1.19.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig15_positive_control.pdf}
-\caption{Positive control. For every other trait and FinnGen endpoint, $r_g$ with EHR-defined depression (filled) and with clinically defined depression (hollow). $\ast$, the difference is significant at $p < 0.05$ by the jackknife test.}
-\label{fig:control}
-\end{figure}
-
 \subsection{Distance Between Definitions}
-The pre-specified definition distance, built from shared codes, data sources and rules, did not predict how far the genetic correlation moved (Spearman $\rho = 0.13$ across all comparisons; Fig.~\ref{fig:distance}). Distance in SNOMED CT did ($\rho = 0.49$; 0.84 for schizophrenia, 0.66 for bipolar disorder, 0.54 for autism), an exploratory result carried mostly by the epilepsy comparisons, which make up 105 of the 135.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig14_distance_drift.pdf}
-\caption{Do definitions that differ more give genetic correlations that differ more? Each point is one comparison. (a) Pre-specified distance from codes, data sources and rules. (b) SNOMED CT distance (exploratory). Spearman correlations are descriptive because comparisons share traits and definitions.}
-\label{fig:distance}
-\end{figure*}
+
+The pre-specified definition distance, built from shared codes, data sources and rules, did not predict how far the genetic correlation moved (Spearman $\rho = 0.13$ across all comparisons; Fig.~\ref{fig:distance}). Distance in SNOMED CT did ($\rho = 0.49$; 0.84 for schizophrenia, 0.66 for bipolar disorder, 0.54 for autism), an exploratory result carried mostly by the epilepsy comparisons, which make up 105 of the 135.
 
 \subsection{Finnish Linkage Disequilibrium}
 On chromosomes 21 and 22, Finnish LD scores built from the FinnGen LD matrix correlated 0.970 with the European reference across 33,436 HapMap3 SNPs, with a median Finnish-to-European ratio of 1.009 (Fig.~\ref{fig:finnish}).
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{fig19_finnish_ld.pdf}
-\caption{Finnish against European LD scores on chromosomes 21 and 22. (a) Log-density hexbin, one SNP per point, with the line of equality. (b) Distribution of the per-SNP ratio of Finnish to European LD score on a log axis.}
-\label{fig:finnish}
-\end{figure*}
 
 \section{Discussion}
 
@@ -294,8 +412,9 @@ This study used public summary statistics, so the number of people shared by two
 How a condition is defined in the health record changes what genetics says about it, and here is by how much, for the conditions that matter most to autistic people and their families. Widening a definition to take in related conditions shifted genetic correlations with psychiatric traits by 0.03 to 0.21; adding a data source or tightening a rule did not. For autism, the genetic overlap with bowel dysfunction and sleep apnoea held steady across definitions within the precision these data allow, while epilepsy needs larger samples. A block-jackknife test on shared genome blocks, a statement of the smallest detectable shift, and a map of each definition into a standard vocabulary are enough to make this question routine rather than invisible.
 
 \section*{Data and Code Availability}
-FinnGen R12 summary statistics and endpoint definition files are publicly available from FinnGen (\url{https://www.finngen.fi/en/access_results}; \url{https://www.finngen.fi/en/researchers/clinical-endpoints}). Psychiatric GWAS summary statistics are available from the Psychiatric Genomics Consortium (\url{https://www.med.unc.edu/pgc/download-results/}) and, for MDD2025, from figshare (\url{https://doi.org/10.6084/m9.figshare.27061255}). European LD scores were obtained from Zenodo (\url{https://doi.org/10.5281/zenodo.8182036}). OMOP standard vocabularies are available from Athena (\url{https://athena.ohdsi.org}) under their own licences and are not redistributed; derived concept identifiers and overlap measures are provided with the code. LD score regression was run with the Python 3 port of LDSC at \url{https://github.com/CBIIT/ldsc} (commit 1f09cf0), and exact package versions are listed in the repository's requirements file. All analysis code, including the difference test and every figure script, is available at \url{https://github.com/Kenny0bi/itoju}.
+FinnGen R12 summary statistics and endpoint definition files are publicly available from FinnGen (\url{https://www.finngen.fi/en/access_results}; \url{https://www.finngen.fi/en/researchers/clinical-endpoints}). Psychiatric GWAS summary statistics are available from the Psychiatric Genomics Consortium (\url{https://www.med.unc.edu/pgc/download-results/}) and, for MDD2025, from figshare (\url{https://doi.org/10.6084/m9.figshare.27061255}). European LD scores were obtained from Zenodo (\url{https://doi.org/10.5281/zenodo.8182036}). OMOP standard vocabularies are available from Athena (\url{https://athena.ohdsi.org}) under their own licences and are not redistributed. LD score regression was run with the Python 3 port of LDSC maintained by CBIIT (commit 1f09cf0). The analysis code is available from the author on request.
 
+\clearpage
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 

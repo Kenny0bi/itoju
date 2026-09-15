@@ -1,31 +1,31 @@
 """Figure 2. The anatomy of a definition: what each one actually counts.
 
-Every alternative definition is one row. Left block: one column per ICD-10 code used anywhere in
-that condition's definitions, in code order; a filled tile means the definition counts that code
-in hospital or death records, and a tile with a white notch cut into its corner also counts it
-from primary care. Right block: the rules codes cannot show,
-  drug   counts a drug purchase class (ATC A06A, laxatives)
-  reimb  counts a drug reimbursement right
-  excl   case must not also meet another definition (e.g. focal and not generalized)
-  mode   the code must be the person's most frequent diagnosis of that kind
-  ctrl   the control rule differs from the set's first definition (which people are excluded from
-         controls; it can be more or fewer exclusions)
-Two definitions with identical code rows can still differ in the right block, which is exactly
-where some of them differ. Tiles show ICD-10 only; ICD-9 and ICD-8 rules are in the endpoint file.
-
-The idea follows Dear Data's habit of layering several attributes onto a small hand-built mark
-with one shared key, instead of a Venn diagram of code sets.
+Every alternative definition is one row. Left block: one tile per ICD-10 code used anywhere in that
+condition's definitions, in code order. An indigo tile counts the code in hospital or death records;
+a teal corner means the code also counts from primary care. Right block, aligned for every condition:
+the rules codes cannot show, each drawn as its own small glyph, in the manner of Dear Data's hand-built
+marks with one shared key (right):
+  pill        counts a drug purchase class (ATC A06A, laxatives)
+  card        counts a drug reimbursement right
+  slash       the case must not also meet another definition (focal and not generalized)
+  bars        the code must be the person's most frequent diagnosis of that kind
+  target      the control rule differs from the set's first definition
+A faint dot means the rule does not apply. Two definitions with identical code rows can still differ
+in the right block, which is exactly where some of them differ. Tiles show ICD-10 only; ICD-9 and
+ICD-8 rules are in the endpoint file. Source colors pass the dataviz palette validator on white.
 
 Sources: results/definitions/code_membership.tsv and endpoint_anatomy.tsv (src/02).
 """
 import matplotlib.pyplot as plt
-from matplotlib.patches import Polygon, Rectangle
 import pandas as pd
+from matplotlib.patches import Circle, FancyBboxPatch, Polygon, Rectangle
 
 import viz_style as vs
 from itoju_labels import ENDPOINT_LABEL
 
 ROOT = vs.ROOT
+HOSP = "#4b57c9"
+PRIM = "#12998c"
 SETS = [
     ("Epilepsy", ["G6_EPLEPSY", "FE", "FE_STRICT", "FE_MODE", "GE", "GE_STRICT", "GE_MODE"]),
     ("Sleep apnoea", ["G6_SLEEPAPNO", "G6_SLEEPAPNO_INCLAVO", "SLEEP"]),
@@ -33,7 +33,50 @@ SETS = [
     ("Constipation", ["K11_CONSTIPATION", "K11_OTHFUNC"]),
     ("ADHD", ["F5_ADHD", "KRA_PSY_HYPERKIN_EXMORE"]),
 ]
-RULES = ["drug", "reimb", "excl", "mode", "ctrl"]
+RULES = [("drug", "drug purchase"), ("reimb", "reimbursement"), ("excl", "excludes another\ndefinition"),
+         ("mode", "most frequent\ncode"), ("ctrl", "control rule\ndiffers")]
+RULE_GAP = 1.5
+TOP = 6.4          # header band for the rule names, drawn once
+BLOCK_HEAD = 2.4   # per condition: its name and its rotated code labels
+UNIT_IN = 0.14     # inches per tile
+
+
+def glyph(ax, kind, x, y, on=True):
+    """One rule glyph centered at (x, y), in tile units."""
+    ink = vs.INK_2
+    if not on:
+        ax.add_patch(Circle((x, y), 0.07, facecolor=vs.GRID, edgecolor="none", zorder=3))
+        return
+    if kind == "drug":
+        ax.add_patch(FancyBboxPatch((x - 0.36, y - 0.15), 0.72, 0.30, boxstyle="round,pad=0,rounding_size=0.15",
+                                    facecolor="white", edgecolor=ink, lw=0.8, zorder=3))
+        ax.add_patch(FancyBboxPatch((x - 0.36, y - 0.15), 0.36, 0.30, boxstyle="round,pad=0,rounding_size=0.15",
+                                    facecolor=ink, edgecolor=ink, lw=0.8, zorder=4))
+    elif kind == "reimb":
+        ax.add_patch(Rectangle((x - 0.34, y - 0.24), 0.68, 0.48, facecolor="white", edgecolor=ink, lw=0.8, zorder=3))
+        ax.add_patch(Rectangle((x - 0.34, y - 0.16), 0.68, 0.1, facecolor=ink, edgecolor="none", zorder=4))
+    elif kind == "excl":
+        ax.add_patch(Circle((x, y), 0.28, facecolor="white", edgecolor=ink, lw=0.9, zorder=3))
+        ax.plot([x - 0.2, x + 0.2], [y - 0.2, y + 0.2], color=ink, lw=0.9, zorder=4)
+    elif kind == "mode":
+        for dx, h, fill in ((-0.22, 0.26, False), (0.0, 0.56, True), (0.22, 0.34, False)):
+            ax.add_patch(Rectangle((x + dx - 0.08, y + 0.28 - h), 0.16, h, facecolor=ink if fill else "white",
+                                   edgecolor=ink, lw=0.7, zorder=3))
+    elif kind == "ctrl":
+        ax.add_patch(Circle((x, y), 0.29, facecolor="white", edgecolor=ink, lw=0.8, zorder=3))
+        ax.add_patch(Circle((x, y), 0.11, facecolor=ink, edgecolor="none", zorder=4))
+
+
+def tile(ax, x, y, hosp, prim):
+    if hosp:
+        ax.add_patch(Rectangle((x - 0.42, y - 0.42), 0.84, 0.84, facecolor=HOSP, edgecolor="none", zorder=2))
+        if prim:
+            # y grows downward in these axes, so y - 0.42 is the tile's top edge: a top-right corner
+            ax.add_patch(Polygon([(x + 0.42, y - 0.42), (x + 0.42, y + 0.06), (x - 0.06, y - 0.42)], closed=True,
+                                 facecolor=PRIM, edgecolor="white", lw=0.5, zorder=3))
+    else:
+        ax.add_patch(Rectangle((x - 0.42, y - 0.42), 0.84, 0.84, facecolor="white", edgecolor=vs.GRID, lw=0.5,
+                               zorder=2))
 
 
 def main():
@@ -41,39 +84,48 @@ def main():
     mem = pd.read_csv(ROOT / "results" / "definitions" / "code_membership.tsv", sep="\t")
     ana = pd.read_csv(ROOT / "results" / "definitions" / "endpoint_anatomy.tsv", sep="\t").set_index("endpoint")
 
-    n_rows = sum(len(d) for _, d in SETS) + len(SETS)
-    fig = plt.figure(figsize=(vs.DOUBLE, 0.19 * n_rows + 0.9))
-    ax = fig.add_axes([0.20, 0.09, 0.79, 0.84])
-    ink, soft = vs.INK_2, vs.GRID
-    y = 0
-    max_x = 0
+    layout, y = [], TOP
     for name, defs in SETS:
         codes = sorted(set(mem[mem.endpoint.isin(defs)].icd10))
-        # collapse a three-character parent into its children when both are present, to keep tiles readable
         codes = [c for c in codes if not (len(c) == 3 and any(o.startswith(c) and len(o) > 3 for o in codes))] or codes
-        ax.text(-0.6, y, name, ha="right", va="center", fontsize=7.6, fontweight="bold", color=vs.INK)
+        layout.append((name, defs, codes, y))
+        y += BLOCK_HEAD + len(defs) + 0.6
+    total = y - 0.6 + 0.3
+    rx0 = max(len(c) for _, _, c, _ in layout) + 1.2
+    x_max = rx0 + (len(RULES) - 1) * RULE_GAP + 0.7
+    x_min = -0.7
+
+    left_in, key_in = 1.30, 1.55
+    body_w = (x_max - x_min) * UNIT_IN
+    fig_w = vs.DOUBLE
+    fig_h = total * UNIT_IN + 0.08
+    fig = plt.figure(figsize=(fig_w, fig_h))
+    ax = fig.add_axes([left_in / fig_w, 0.04 / fig_h, body_w / fig_w, total * UNIT_IN / fig_h])
+    ax.set_xlim(x_min, x_max)
+    ax.set_ylim(total, 0)
+    ax.axis("off")
+
+    for j, (_, lab) in enumerate(RULES):
+        ax.text(rx0 + j * RULE_GAP, TOP - 0.5, lab, rotation=90, ha="center", va="bottom", fontsize=7,
+                color=vs.INK_2, linespacing=1.05)
+    ax.text(rx0 - 0.75, TOP - 0.5, "rules", ha="right", va="bottom", fontsize=7, color=vs.MUTED)
+    ax.text(0.0 - 0.42, TOP - 0.5, "ICD-10 codes", ha="left", va="bottom", fontsize=7, color=vs.MUTED)
+
+    for name, defs, codes, y0 in layout:
+        ax.text(x_min, y0 + 0.9, name, ha="right", va="center", fontsize=7.6, fontweight="bold", color=vs.INK)
         for k, c in enumerate(codes):
-            ax.text(k, y, f"{c[:3]}.{c[3:]}" if len(c) > 3 else c, rotation=90, ha="center", va="center",
-                    fontsize=7, color=vs.MUTED)
-        rx0 = len(codes) + 1.2
-        for j, rule in enumerate(RULES):
-            ax.text(rx0 + j * 1.25, y, rule, ha="center", va="center", fontsize=7, color=vs.MUTED, rotation=90)
-        y += 1.3
+            ax.text(k, y0 + BLOCK_HEAD - 0.5, f"{c[:3]}.{c[3:]}" if len(c) > 3 else c, rotation=90, ha="center",
+                    va="bottom", fontsize=7, color=vs.MUTED)
         ref_ctrl = str(ana.loc[defs[0], "control_exclude"]) + str(ana.loc[defs[0], "control_conditions"])
-        for e in defs:
+        for i, e in enumerate(defs):
+            yy = y0 + BLOCK_HEAD + i
             a = ana.loc[e]
-            ax.text(-0.6, y, ENDPOINT_LABEL[e], ha="right", va="center", fontsize=7, color=vs.INK_2)
+            ax.text(x_min, yy, ENDPOINT_LABEL[e], ha="right", va="center", fontsize=7, color=vs.INK_2)
             m = mem[mem.endpoint == e]
             hd = set(m[m.source.isin(["HD", "COD"])].icd10)
             op = set(m[m.source == "OUTPAT"].icd10)
             for k, c in enumerate(codes):
-                covered = c in hd or any(h.startswith(c) for h in hd)
-                ax.add_patch(Rectangle((k - 0.42, y - 0.36), 0.84, 0.72, facecolor=ink if covered else "white",
-                                       edgecolor=ink if covered else soft, linewidth=0.5))
-                if c in op or any(o.startswith(c) for o in op):
-                    # a white notch cut into the tile: no trait color is borrowed for a non-trait meaning
-                    ax.add_patch(Polygon([(k + 0.42, y - 0.36), (k + 0.42, y + 0.02), (k + 0.04, y - 0.36)],
-                                         closed=True, facecolor=vs.SURFACE, edgecolor="none", zorder=3))
+                tile(ax, k, yy, c in hd or any(h.startswith(c) for h in hd), c in op or any(o.startswith(c) for o in op))
             sources = str(a.sources).split()
             flags = {
                 "drug": "KELA_ATC" in sources,
@@ -82,31 +134,32 @@ def main():
                 "mode": bool(a.mode_rule),
                 "ctrl": (str(a.control_exclude) + str(a.control_conditions)) != ref_ctrl,
             }
-            for j, rule in enumerate(RULES):
-                x = rx0 + j * 1.25
-                if flags[rule]:
-                    ax.scatter(x, y, s=34, marker="o", facecolor=ink, edgecolor=ink, zorder=3)
-                else:
-                    ax.scatter(x, y, s=10, marker="o", facecolor="white", edgecolor=soft, linewidths=0.6, zorder=3)
-            y += 1
-            max_x = max(max_x, rx0 + len(RULES) * 1.25)
-        y += 0.6
-    ax.set_xlim(-0.6, max_x)
-    ax.set_ylim(y - 0.4, -0.8)
-    ax.set_aspect("equal")
-    ax.axis("off")
-    # key, two rows
-    kx, ky, ky2 = 0.20, 0.045, 0.015
-    fig.add_artist(Rectangle((kx, ky - 0.008), 0.012, 0.018, transform=fig.transFigure, facecolor=ink, edgecolor=ink))
-    fig.text(kx + 0.018, ky, "code counted (hospital or death records)", fontsize=7, color=vs.INK_2, va="center")
-    fig.add_artist(Rectangle((kx + 0.33, ky - 0.008), 0.012, 0.018, transform=fig.transFigure, facecolor=ink,
-                             edgecolor=ink))
-    fig.add_artist(Polygon([(kx + 0.342, ky - 0.008), (kx + 0.342, ky + 0.003), (kx + 0.334, ky - 0.008)], closed=True,
-                           transform=fig.transFigure, facecolor=vs.SURFACE, edgecolor="none"))
-    fig.text(kx + 0.348, ky, "notched: also counted from primary care", fontsize=7, color=vs.INK_2, va="center")
-    fig.add_artist(plt.Line2D([kx + 0.006], [ky2], marker="o", markersize=5, color=ink, ls="", transform=fig.transFigure))
-    fig.text(kx + 0.018, ky2, "rule applies: drug purchase, reimbursement, exclusion of another definition, mode rule, "
-             "control rule differs from the first row", fontsize=7, color=vs.INK_2, va="center")
+            for j, (kind, _) in enumerate(RULES):
+                glyph(ax, kind, rx0 + j * RULE_GAP, yy, flags[kind])
+
+    # key, a vertical list on the right, every mark drawn by the same functions as the figure
+    kx0 = (left_in + body_w + 0.25) / fig_w
+    kw = 1 - kx0 - 0.01
+    items = [("tile", (True, False), "code counted in hospital\nor death records"),
+             ("tile", (True, True), "also counted from\nprimary care"),
+             ("tile", (False, False), "code not counted"),
+             *[("glyph", k, lab.replace("\n", " ")) for k, lab in RULES],
+             ("off", None, "rule does not apply")]
+    key_units = 1.6 + 1.55 * len(items)
+    kax = fig.add_axes([kx0, 1 - (0.2 + key_units * UNIT_IN) / fig_h, kw, key_units * UNIT_IN / fig_h])
+    kax.set_xlim(-0.6, kw * fig_w / UNIT_IN - 0.6)
+    kax.set_ylim(key_units, 0)
+    kax.axis("off")
+    kax.text(-0.5, 0.5, "Key", fontsize=8, color=vs.INK, va="center")
+    for i, (kind, arg, lab) in enumerate(items):
+        yy = 1.9 + 1.55 * i
+        if kind == "tile":
+            tile(kax, 0, yy, *arg)
+        elif kind == "glyph":
+            glyph(kax, arg, 0, yy, True)
+        else:
+            glyph(kax, "none", 0, yy, False)
+        kax.text(0.9, yy, lab, va="center", fontsize=7, color=vs.INK_2, linespacing=1.1)
     vs.save(fig, "fig02_anatomy")
 
 

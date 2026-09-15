@@ -13,3 +13,4 @@ __pycache__/
 
 # Manim render cache
 animation/media/
+.DS_Store

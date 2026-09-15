@@ -202,37 +202,95 @@ def check_layout(fig, min_gap_pt: float = 1.0) -> list[str]:
     texts = [t for t in fig.findobj(mpl.text.Text)
              if id(t) not in hidden and t.get_visible() and t.get_text().strip() and t.get_alpha() != 0]
     boxes = [(t, t.get_window_extent(renderer)) for t in texts]
+    # rotated text (radial labels) is tested by its true drawn outline, not its upright bounding box,
+    # which for a label at 45 degrees is mostly empty space and would report collisions that are not there
+    polys = [_text_polygon(t, renderer) for t in texts]
+    rotated = [_is_rotated(t) for t in texts]
     pad = min_gap_pt * fig.dpi / 72
     fb = fig.bbox
     problems = []
 
     # Text sitting on another panel's plotting area (e.g., a y-label running into the next panel).
     plot_axes = [a for a in fig.axes if a.get_visible()]
-    for t, b in boxes:
+    for (t, b), poly, rot in zip(boxes, polys, rotated):
         owner = t.axes
         for a in plot_axes:
             if a is owner or _is_colorbar(a) or (owner is not None and _is_colorbar(owner) and a is getattr(owner, "_colorbar_parent", None)):
                 continue
             e = a.get_window_extent(renderer)
             # shrink by 2 px so text merely touching a frame edge is not flagged
-            if b.x0 < e.x1 - 2 and e.x0 + 2 < b.x1 and b.y0 < e.y1 - 2 and e.y0 + 2 < b.y1:
-                if owner is None or not _overlap_is_intentional(owner, a):
-                    problems.append(f"text on another panel: {t.get_text()!r}")
-                    break
+            if rot:
+                frame = np.array([[e.x0 + 2, e.y0 + 2], [e.x1 - 2, e.y0 + 2], [e.x1 - 2, e.y1 - 2], [e.x0 + 2, e.y1 - 2]])
+                hit = _polygons_overlap(poly, frame)
+            else:
+                hit = b.x0 < e.x1 - 2 and e.x0 + 2 < b.x1 and b.y0 < e.y1 - 2 and e.y0 + 2 < b.y1
+            if hit and (owner is None or not _overlap_is_intentional(owner, a)):
+                problems.append(f"text on another panel: {t.get_text()!r}")
+                break
 
     problems.extend(check_legend_colors(fig))
     problems.extend(check_tick_labels(fig))
     problems.extend(check_font_sizes(fig))
-    for t, b in boxes:
-        if b.x0 < fb.x0 - 1 or b.x1 > fb.x1 + 1 or b.y0 < fb.y0 - 1 or b.y1 > fb.y1 + 1:
+    for (t, _), poly in zip(boxes, polys):
+        if poly[:, 0].min() < fb.x0 - 1 or poly[:, 0].max() > fb.x1 + 1 or poly[:, 1].min() < fb.y0 - 1 or poly[:, 1].max() > fb.y1 + 1:
             problems.append(f"outside figure: {t.get_text()!r}")
     for i in range(len(boxes)):
         a = boxes[i][1]
         for j in range(i + 1, len(boxes)):
             b = boxes[j][1]
-            if a.x0 - pad < b.x1 and b.x0 - pad < a.x1 and a.y0 - pad < b.y1 and b.y0 - pad < a.y1:
+            if rotated[i] or rotated[j]:
+                hit = _polygons_overlap(polys[i], polys[j], pad)
+            else:
+                hit = a.x0 - pad < b.x1 and b.x0 - pad < a.x1 and a.y0 - pad < b.y1 and b.y0 - pad < a.y1
+            if hit:
                 problems.append(f"overlap: {boxes[i][0].get_text()!r} <-> {boxes[j][0].get_text()!r}")
     return problems
+
+
+def _is_rotated(t) -> bool:
+    r = t.get_rotation() % 360
+    return min(r, 360 - r) > 1e-6
+
+
+def _text_polygon(t, renderer) -> np.ndarray:
+    """Corners of a text's drawn box in display coordinates, following its rotation."""
+    b = t.get_window_extent(renderer)
+    if not _is_rotated(t):
+        return np.array([[b.x0, b.y0], [b.x1, b.y0], [b.x1, b.y1], [b.x0, b.y1]])
+    rot = t.get_rotation()
+    t.set_rotation(0)
+    b0 = t.get_window_extent(renderer)
+    t.set_rotation(rot)
+    w, h = b0.width, b0.height
+    a = np.deg2rad(rot)
+    R = np.array([[np.cos(a), -np.sin(a)], [np.sin(a), np.cos(a)]])
+    if t.get_rotation_mode() == "anchor":
+        # aligned in the unrotated frame, then turned about the anchor point
+        x0 = {"left": 0.0, "center": -w / 2, "right": -w}[t.get_horizontalalignment()]
+        y0 = {"bottom": 0.0, "baseline": 0.0, "center": -h / 2, "center_baseline": -h / 2, "top": -h}[t.get_verticalalignment()]
+        origin = np.asarray(t.get_transform().transform(t.get_unitless_position()), dtype=float)
+    else:
+        # rotated first, then its upright bounding box is aligned: the box center is the text center
+        x0, y0 = -w / 2, -h / 2
+        origin = np.array([(b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2])
+    corners = np.array([[x0, y0], [x0 + w, y0], [x0 + w, y0 + h], [x0, y0 + h]])
+    return corners @ R.T + origin
+
+
+def _polygons_overlap(p: np.ndarray, q: np.ndarray, pad: float = 0.0) -> bool:
+    """Separating axis test for two convex polygons; closer than pad counts as touching."""
+    for poly in (p, q):
+        for i in range(len(poly)):
+            e = poly[(i + 1) % len(poly)] - poly[i]
+            n = np.array([-e[1], e[0]])
+            length = np.hypot(*n)
+            if length == 0:
+                continue
+            n = n / length
+            pp, qq = p @ n, q @ n
+            if pp.max() + pad <= qq.min() or qq.max() + pad <= pp.min():
+                return False
+    return True
 
 
 def save(fig, name: str) -> None:
