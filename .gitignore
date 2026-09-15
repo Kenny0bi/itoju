@@ -1,0 +1,15 @@
+# LaTeX build files
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+
+# Python
+__pycache__/
+*.pyc
+
+# Manim render cache
+animation/media/

@@ -1,0 +1,11 @@
+# Analysis, figures and animation (Python 3.10)
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.15.2
+matplotlib==3.9.3
+manim==0.18.1
+
+# LD score regression runs in its own environment, because the CBIIT Python 3 port of LDSC
+# needs older numpy and pandas:
+#   git clone https://github.com/CBIIT/ldsc  (commit 1f09cf0c5e61a38a281016fefcc1e0583cc78402)
+#   numpy==1.26.4 pandas==1.5.3 scipy==1.11.4 bitarray==3.11.0
