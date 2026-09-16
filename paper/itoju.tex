@@ -424,6 +424,8 @@ How a condition is defined in the health record changes what genetics says about
 \section*{Data and Code Availability}
 FinnGen R12 summary statistics and endpoint definition files are publicly available from FinnGen (\url{https://www.finngen.fi/en/access_results}; \url{https://www.finngen.fi/en/researchers/clinical-endpoints}). Psychiatric GWAS summary statistics are available from the Psychiatric Genomics Consortium (\url{https://www.med.unc.edu/pgc/download-results/}) and, for MDD2025, from figshare (\url{https://doi.org/10.6084/m9.figshare.27061255}). European LD scores were obtained from Zenodo (\url{https://doi.org/10.5281/zenodo.8182036}). OMOP standard vocabularies are available from Athena (\url{https://athena.ohdsi.org}) under their own licences and are not redistributed. LD score regression was run with the Python 3 port of LDSC maintained by CBIIT (commit 1f09cf0).
 
+Analysis code, including the FinnGen ingestion and munging pipeline, the endpoint definition anatomy, the heritability and genetic correlation stages, the standard error of a difference between two correlations that share a trait, the Finnish LD score computation, the definition-effect test, the OMOP vocabulary mapping and every figure script, is available in the project repository. Each figure in this paper is produced by a named script from recorded intermediate files, and the reference list is checked against Crossref by a script that verifies the title, first author, year and journal of every entry before the manuscript is compiled.
+
 \clearpage
 \bibliographystyle{IEEEtran}
 \bibliography{references}
