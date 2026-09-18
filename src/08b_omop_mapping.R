@@ -1,31 +1,8 @@
 ## Map every FinnGen endpoint definition to the OMOP standard vocabularies.
+## ICD-10 and ICD-9 to SNOMED, ATC to RxNorm. ICD-8 has no OMOP vocabulary and is
+## counted as unmappable.
 ##
-## R implementation of src/08b_omop_mapping.py. Deterministic: same pattern expansion,
-## same "Maps to" traversal, same ancestor closure depth, so the three output tables
-## match the Python.
-##
-## Why: FinnGen writes definitions as regular expressions over Finnish ICD-10, ICD-9
-## and ICD-8 codes plus Finnish drug and reimbursement codes. To compare definitions
-## with each other, and to rebuild them in any OMOP CDM database, each definition is
-## translated to standard concepts:
-##   - ICD-10 (WHO) codes -> "Maps to" -> SNOMED CT standard condition concepts;
-##   - Finnish ICD-9 codes -> ICD-9-CM (approximate: Finnish ICD-9 uses 4 digits plus
-##     an optional letter, e.g. 5965B; the letter is dropped and the code is dotted,
-##     596.5) -> SNOMED;
-##   - ICD-8 has no OMOP vocabulary, so ICD-8 rules are counted as unmappable;
-##   - ATC classes (e.g. A06A, drugs for constipation) -> RxNorm ingredients via
-##     CONCEPT_ANCESTOR.
-##
-## Overlap between two definitions of the same condition is then measured three ways,
-## from coarse to clinical: ICD-10 code Jaccard (from 02), phecodeX Jaccard (from 02),
-## SNOMED exact-concept Jaccard, and SNOMED hierarchy-aware Jaccard (each concept
-## expanded to its ancestors up to MAX_LEVELS levels, so a parent and a child concept
-## count as related rather than disjoint).
-##
-## Inputs: data/ref/omop/* (src/08a_extract_omop.sh), results/definitions/
-## endpoint_anatomy.tsv and pairwise_distance.tsv (src/02), the R12 endpoint file.
-## Outputs: results/omop/endpoint_omop.tsv, endpoint_snomed_concepts.tsv,
-## pairwise_omop.tsv
+## Usage: Rscript src/08b_omop_mapping.R
 
 suppressPackageStartupMessages({
   library(data.table)

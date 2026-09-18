@@ -1,32 +1,8 @@
 ## Standard error of a difference between two genetic correlations that share a trait.
-##
-## R implementation of src/05_delta_rg.py. This one is a true translation: it reads
-## the same LDSC log files and .delete files and rebuilds the same pseudovalues, so
-## it produces the same numbers as the Python to floating-point precision. Nothing
-## here is simulated, so there is no RNG divergence.
-##
-## Question: does rg(X, definition 1) differ from rg(X, definition 2) by more than
-## chance allows? The two estimates share trait X, and the two definitions share
-## cases and controls, so their errors are correlated. Treating them as independent
-## would overstate the SE of the difference.
-##
-## Method. LDSC estimates rg as gencov / sqrt(h2_1 * h2_2) and gets its SE from a
-## 200-block jackknife. When both pairs are run on one common SNP set with the
-## one-step estimator (--two-step 99999), their jackknife blocks are identical, so
-## the block-level estimates line up:
-##   rg_del[k]  = gencov_del[k] / sqrt(h2_1_del[k] * h2_2_del[k])   (block k left out)
-##   pseudo[k]  = n * rg_hat - (n - 1) * rg_del[k]                  (LDSC RatioJackknife)
-##   delta[k]   = pseudo_A[k] - pseudo_B[k]
-##   SE(delta)  = sqrt(var(delta) / n)
-## The minimum detectable difference at two-sided alpha 0.05 and 80% power is
-## (z_0.975 + z_0.80) * SE(delta).
-##
-## Self-check: before any difference is reported, the rebuilt single-pair SE must
-## reproduce the SE LDSC printed for that pair (relative gap below 1e-3), and the
-## block counts must match.
+## The two estimates share people, so their errors are correlated and subtracting
+## block by block cancels the shared noise.
 ##
 ## Usage: Rscript src/05_delta_rg.R LOG_A LOG_B
-##   where LOG_* are LDSC --rg logs run with --print-delete-vals on the common SNP set.
 
 Z_MDD <- qnorm(0.975) + qnorm(0.80)
 

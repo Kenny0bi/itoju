@@ -1,19 +1,5 @@
 ## Real numbers for the jackknife part of the animation.
-##
-## R implementation of animation/export_block_numbers.py. Deterministic: it reads
-## the same LDSC .delete files and the same pairwise_delta.tsv, so it writes the
-## same block_numbers.json to floating-point precision.
-##
-## LDSC's standard error comes from a jackknife over 200 genome blocks. On the common
-## SNP set, block k is the same stretch of genome for every trait, so for two
-## definitions of one condition the per-block pseudovalues can be paired. This
-## exports, for depression with sleep apnoea (hospital records) and with any sleep
-## disorder, the 200 pseudovalues under each definition, both estimates, the paired
-## standard error of the difference, and the standard error if the pairing is broken
-## (as if the two estimates shared no people). Values come from
-## results/definition_effect/ldsc, the same files the paper uses.
-##
-## Writes animation/block_numbers.json.
+## Writes animation/block_numbers.json from the same files the paper uses.
 
 suppressPackageStartupMessages({
   library(data.table)

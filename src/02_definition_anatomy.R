@@ -1,29 +1,7 @@
 ## Turn FinnGen R12 endpoint definitions into comparable code sets and distances.
+## Resolves INCLUDE chains, expands ICD-10 patterns, maps to phecodeX.
 ##
-## R implementation of src/02_definition_anatomy.py. Deterministic throughout, so the
-## three output tables match the Python exactly. The .xlsx endpoint file is read with
-## readxl rather than pandas; the parsed contents are the same.
-##
-## For every endpoint in the study, this script:
-##   1. resolves INCLUDE chains, so an endpoint like SLEEP inherits the rules of the
-##      endpoints it unions;
-##   2. expands each registry's ICD-10 patterns against the WHO ICD-10 code universe
-##      (the codes present in the phecodeX WHO map, plus their three-character parents);
-##   3. records which data sources can make someone a case: hospital discharge (HD),
-##      cause of death (COD), primary care (OUTPAT, Avohilmo), drug purchases (KELA_ATC),
-##      drug reimbursement (KELA_REIMB), and extra case conditions (CONDITIONS) or
-##      control rules;
-##   4. maps the expanded ICD-10 set to phecodeX, the shared standard vocabulary;
-##   5. computes pairwise definition distances within each condition family.
-##
-## FinnGen pattern syntax (FinnGen endpoint file format description):
-##   "|" separates alternatives, each a regular expression matched from the start of
-##   the code; "%" marks a "mode" rule (the code must be the most common among the
-##   related diagnoses); "$!$" means the registry is deliberately not used;
-##   "!NAME" in CONDITIONS means "and not a case of NAME".
-##
-## Outputs: results/definitions/endpoint_anatomy.tsv, code_membership.tsv,
-## pairwise_distance.tsv
+## Usage: Rscript src/02_definition_anatomy.R
 
 suppressPackageStartupMessages({
   library(data.table)

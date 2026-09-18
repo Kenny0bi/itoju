@@ -1,30 +1,7 @@
-## SNP heritability of every munged trait, and genetic correlations for the study design.
+## SNP heritability of every munged trait, and genetic correlations for the design.
+## rg runs carry no prevalence flags: rg is the same on either scale.
 ##
-## R implementation of src/03_ldsc.py. LDSC itself is a Python program with no R
-## equivalent, so this shells out to exactly the same binary with exactly the same
-## arguments and parses the same log files. The numbers are therefore identical;
-## what differs is only the language driving the calls.
-##
-## Traits:
-##   - psychiatric GWAS (focal ASD, plus SCZ, BIP, MDD, PTSD) and the MDD EHR and
-##     clinical subsets;
-##   - every munged FinnGen R12 endpoint.
-## Correlations:
-##   - each psychiatric trait x each FinnGen endpoint;
-##   - every pair of psychiatric traits (includes the positive control MDD_EHR x MDD_Clin).
-##
-## Resumable: a run is skipped when its log already contains the result line.
-## "Analysis finished" is not enough, because the CBIIT port writes it even after a
-## traceback.
-##
-## Scales. rg runs carry no prevalence flags: rg is the same on either scale, and the
-## CBIIT port crashes in _get_rg_table when --pop-prev is given with --rg (NameError,
-## `i` for `it`). Liability h2 comes from separate --h2 runs. FinnGen endpoints use
-## K = sample prevalence, a stated approximation for a biobank drawn largely from the
-## population and hospital patients. PGC traits use effective N, so their sample
-## prevalence is 0.5, with population prevalences from the source papers.
-##
-## Outputs: results/ldsc/h2.tsv, results/ldsc/rg.tsv
+## Usage: Rscript src/03_ldsc.R
 
 suppressPackageStartupMessages(library(data.table))
 

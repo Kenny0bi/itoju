@@ -1,34 +1,8 @@
-## The core test: does the genetic correlation move when only the case definition changes?
+## The core test: does the genetic correlation move when only the case definition
+## changes? Every trait is restricted to one common SNP set so the 200 jackknife
+## blocks line up across pairs and the pseudovalues can be subtracted.
 ##
-## R implementation of src/07_definition_effect.py. LDSC is driven by the same
-## subprocess calls and the same .delete files are read back, so the pseudovalues,
-## deltas, heterogeneity statistics and SE rebuild checks all match the Python.
-##
-## Design, fixed in docs/ANALYSIS_PLAN.md before any rg was estimated:
-##   DEFINITION_SETS  alternative definitions of one construct (they overlap or nest)
-##   NEIGHBOURS       different conditions, kept as a comparison for how far rg moves
-##                    between conditions
-##   SHARED           the trait each definition is correlated with (autism is focal)
-##   POSITIVE CONTROL MDD_EHR vs MDD_Clin, two definitions of depression with a known
-##                    definition effect
-##
-## Steps
-##   1. Restrict every trait to one common SNP set (non-missing Z in all), so LDSC's
-##      200 jackknife blocks are identical across pairs.
-##   2. For each shared trait X, run one LDSC call X,D1,D2,... with --two-step 99999
-##      and --print-delete-vals (one-step estimator, evenly spaced blocks).
-##   3. Rebuild per-block rg pseudovalues exactly as LDSC's RatioJackknife does, and
-##      check that they reproduce LDSC's printed SE.
-##   4. Within each definition set and shared trait:
-##        - pairwise delta rg, SE from the pseudovalue difference, z, p, error
-##          correlation, minimum detectable delta (alpha 0.05, power 0.80);
-##        - heterogeneity Q = r' W r - (1' W r)^2 / (1' W 1), W = inverse jackknife
-##          covariance, df = k - 1 (pseudo-inverse if the covariance is near singular;
-##          condition number reported).
-##   5. Join pairwise deltas to the definition distances from src/02_definition_anatomy.
-##
-## Outputs (results/definition_effect/): rg_common.tsv, pairwise_delta.tsv,
-## heterogeneity.tsv
+## Usage: Rscript src/07_definition_effect.R
 
 suppressPackageStartupMessages({
   library(data.table)

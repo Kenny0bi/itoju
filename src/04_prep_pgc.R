@@ -1,21 +1,7 @@
-## Prepare the PGC psychiatric GWAS for LDSC and check allele alignment against 1000 Genomes.
+## Prepare the PGC psychiatric GWAS for LDSC and check allele alignment against 1000G.
+## A mislabelled allele column flips the sign of every rg, so the check is not optional.
 ##
-## R implementation of src/04_prep_pgc.py. Deterministic throughout, so the written
-## tables and the reported allele-frequency correlations match the Python exactly.
-## munge_sumstats.py has no R equivalent and is invoked identically by both.
-##
-## Each file is streamed (never modified; the originals are read-only symlinks), the
-## '##' metadata block is skipped, rows are restricted to HapMap3 rsIDs, and a clean
-## table is written with SNP A1 A2 SIGNED P N FRQ [INFO]. munge_sumstats.py then
-## produces data/munged/<trait>.sumstats.gz.
-##
-## Alignment check. LDSC reads the signed statistic as the effect of A1. A mislabelled
-## allele column flips the sign of every z-score, which flips the sign of every rg. The
-## reported allele frequency (FCON or FREQ) belongs to the same allele as the effect, so
-## it should track the 1000 Genomes EUR frequency of that allele closely (r near +1). A
-## swap would show r near -1.
-##
-## Usage: Rscript src/04_prep_pgc.R TRAIT [TRAIT ...]   (resumable via data/munged/<trait>.done)
+## Usage: Rscript src/04_prep_pgc.R TRAIT [TRAIT ...]
 
 suppressPackageStartupMessages(library(data.table))
 

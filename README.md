@@ -133,9 +133,9 @@ The published result tables carry SNOMED CT concept IDs only, never concept cont
 
 ### The same analysis in R
 
-Every analysis script above also exists in R beside its Python sibling: `src/01_fetch_munge_finngen.R`, `src/02_definition_anatomy.R`, `src/03_ldsc.R`, `src/04_prep_pgc.R`, `src/05_delta_rg.R`, `src/06_finnish_ldscores.R`, `src/07_definition_effect.R`, `src/08b_omop_mapping.R`, `src/verify_refs.R` and `animation/export_block_numbers.R`. They use data.table, readxl, jsonlite, curl, digest and MASS, and they drive the same LDSC and munge_sumstats calls, so the numbers come from the same tool either way.
+Every analysis script above has an R version beside it under the same name. They call the same LDSC and munge_sumstats, so the numbers come from the same tool either way.
 
-Nothing here is simulated, so there is no random-number divergence: the jackknife pseudovalues, deltas, Cochran's Q and the SE rebuild check all reproduce the Python to floating-point precision. **The R is syntax-checked but has not been run end to end**, and the results in this repository come from the Python. One known difference is documented in the R files themselves: the reference checker uses a normalised edit distance where the Python uses `difflib`, so a borderline title could in principle be judged differently at the 0.90 cut.
+The R has not been run end to end, and the results here came from the Python.
 
 - Bulik-Sullivan et al. (2015), *LD Score regression distinguishes confounding from polygenicity in genome-wide association studies*, Nature Genetics. [doi:10.1038/ng.3211](https://doi.org/10.1038/ng.3211)
 - Bulik-Sullivan et al. (2015), *An atlas of genetic correlations across human diseases and traits*, Nature Genetics. [doi:10.1038/ng.3406](https://doi.org/10.1038/ng.3406)

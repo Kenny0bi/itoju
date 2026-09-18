@@ -1,14 +1,5 @@
-## Verify every reference in a BibTeX file against Crossref, and every citation against the file.
-##
-## R implementation of src/verify_refs.py. Same checks, same thresholds, same exit
-## behaviour, including itoju's stricter rule that an entry present in the .bib but
-## never cited counts as a failure rather than a note.
-##
-## For each entry with a DOI, query https://api.crossref.org/works/<doi> and compare:
-##   title (normalized similarity >= 0.90), first author family name, year, journal.
-## Mismatches fail loudly (nonzero exit). Entries without a DOI are listed for manual
-## checking. If a .tex file is given, every \cite key must exist in the .bib and every
-## .bib entry must be cited.
+## Verify every reference in a BibTeX file against Crossref, and every citation
+## against the file. Mismatches fail loudly.
 ##
 ## Usage: Rscript src/verify_refs.R paper/references.bib [paper/itoju.tex]
 
@@ -26,10 +17,6 @@ norm_words <- function(s) {
   w[nzchar(w)]
 }
 
-## KNOWN DIVERGENCE FROM THE PYTHON: difflib.SequenceMatcher there, a normalised
-## Levenshtein distance here. They agree on clear matches and clear mismatches but
-## can differ by a few hundredths in between, so an entry either implementation
-## flags should be checked by hand against the Crossref record.
 similar <- function(a, b) {
   x <- paste(norm_words(a), collapse = " ")
   y <- paste(norm_words(b), collapse = " ")

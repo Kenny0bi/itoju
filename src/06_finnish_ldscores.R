@@ -1,27 +1,7 @@
 ## Finnish LD scores for HapMap3 SNPs from the public FinnGen R12 LD matrix.
+## FinnGen is Finnish, so the standard European reference is not matched to it.
 ##
-## R implementation of src/06_finnish_ldscores.py. Deterministic: same window, same
-## r^2 sum, same self-LD term, so the written .l2.ldscore.gz files match the Python.
-##
-## The standard LDSC reference (eur_w_ld_chr) sums r^2 over HapMap3 SNPs in 489
-## European 1000 Genomes samples. FinnGen is Finnish, a population with its own LD
-## structure, so this builds the same quantity from LD measured in the 520,210
-## FinnGen R12 samples and lets rg be recomputed with a matched reference.
-##
-## Source: gs://finngen-public-data-r12/ld_matrix/finngen_r12_chr{c}_ld.tsv.gz, all
-## variant pairs within 3 Mb with r^2 > 0.01, listed in both directions
-## (PLINK 2 --r-unphased). Each file is streamed and never stored.
-##
-## For each HapMap3 SNP j:  L2_j = 1 + sum over HapMap3 SNPs k != j within WINDOW_BP of r^2_jk
-## The 1 is the SNP's LD with itself, which LDSC includes and the FinnGen file omits.
-## Two differences from eur_w_ld_chr, to report: the window is 1 Mb in physical
-## distance (no genetic map here) instead of 1 cM, and pairs with r^2 <= 0.01 are
-## missing from the source, which biases L2 slightly downward. The comparison against
-## eur_w_ld_chr quantifies both together.
-##
-## Usage: Rscript src/06_finnish_ldscores.R CHR [CHR ...]   (resumable per chromosome)
-## Output: data/ref/finngen_ld/{c}.l2.ldscore.gz (CHR SNP BP L2), {c}.l2.M_5_50, and a
-## comparison line.
+## Usage: Rscript src/06_finnish_ldscores.R CHR [CHR ...]
 
 suppressPackageStartupMessages(library(data.table))
 

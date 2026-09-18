@@ -1,23 +1,7 @@
 ## Stream one FinnGen R12 endpoint, keep HapMap3 SNPs, and write an LDSC-ready file.
-##
-## R implementation of src/01_fetch_munge_finngen.py. Same filtering rule, same
-## output columns, same resumption markers, and the same md5 of the streamed gzip
-## recorded for provenance, so either language can produce the munged inputs.
-##
-## The raw FinnGen file (0.3 to 0.8 GB) is never written to disk. It is read straight
-## from the public bucket, filtered to the HapMap3 rsIDs in the LDSC w_hm3.snplist,
-## and saved as a small tab-separated file that munge_sumstats.py then turns into
-## .sumstats.gz.
-##
-## FinnGen R12 columns: #chrom pos ref alt rsids nearest_genes pval mlogp beta sebeta
-## af_alt af_alt_cases af_alt_controls (GRCh38; beta is for alt). LDSC merges on rsID,
-## so the genome build does not matter for the regression itself.
-##
-## munge_sumstats.py is Python and has no R equivalent; this script shells out to it
-## exactly as the Python version does, so both languages call the same tool.
+## The raw file is never kept: it is filtered in one pass and the md5 recorded.
 ##
 ## Usage: Rscript src/01_fetch_munge_finngen.R ENDPOINT [ENDPOINT ...]
-## Resumable: an endpoint with a finished marker in data/munged is skipped.
 
 suppressPackageStartupMessages({
   library(data.table)
