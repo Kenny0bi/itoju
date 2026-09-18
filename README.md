@@ -137,6 +137,8 @@ Every analysis script above has an R version beside it under the same name. They
 
 The R has not been run end to end, and the results here came from the Python.
 
+## Papers
+
 - Bulik-Sullivan et al. (2015), *LD Score regression distinguishes confounding from polygenicity in genome-wide association studies*, Nature Genetics. [doi:10.1038/ng.3211](https://doi.org/10.1038/ng.3211)
 - Bulik-Sullivan et al. (2015), *An atlas of genetic correlations across human diseases and traits*, Nature Genetics. [doi:10.1038/ng.3406](https://doi.org/10.1038/ng.3406)
 - Cai et al. (2020), *Minimal phenotyping yields genome-wide association signals of low specificity for major depression*, Nature Genetics. The known definition effect used as the positive control. [doi:10.1038/s41588-020-0594-5](https://doi.org/10.1038/s41588-020-0594-5)
